@@ -1,0 +1,984 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+  <collection xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+    <record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+      <leader>     nz  a22     n  4500</leader>
+      <controlfield tag="FMT">AU</controlfield>
+      <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+      <controlfield tag="001">000000001</controlfield>
+      <controlfield tag="008">000921|||a||||aab|||||||||||||||||||||||</controlfield>
+      <datafield tag="110" ind1="2" ind2=" ">
+        <subfield code="a">&quot;Aesculap&quot;, Societatea pentru Sustinerea si Ingrijirea Membrilor sai Bolnavi</subfield>
+        <subfield code="9">lat</subfield>
+      </datafield>
+      <datafield tag="410" ind1="2" ind2=" ">
+        <subfield code="a">Societatea &quot;Aesculap&quot;</subfield>
+        <subfield code="9">lat</subfield>
+      </datafield>
+      <datafield tag="410" ind1="2" ind2=" ">
+        <subfield code="a">&quot;Aesculap&quot;, Societatea pentru Ingrijirea si Sustinerea Membrilor sai Bolnavi</subfield>
+        <subfield code="9">lat</subfield>
+      </datafield>
+      <datafield tag="680" ind1=" " ind2=" ">
+        <subfield code="a">Cf.: Bilantul si darea de seama. f.1876</subfield>
+      </datafield>
+      <datafield tag="901" ind1=" " ind2=" ">
+        <subfield code="a">145953329</subfield>
+      </datafield>
+    </record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000002</controlfield>
+  <controlfield tag="005">20150723093952.0</controlfield>
+  <controlfield tag="008">000108|||az|||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">CU-HE</subfield>
+    <subfield code="b">mul</subfield>
+    <subfield code="e">rda</subfield>
+    <subfield code="c">CU-HE</subfield>
+  </datafield>
+  <datafield tag="046" ind1=" " ind2=" ">
+    <subfield code="s">1932</subfield>
+  </datafield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">Bet ḥolim Alin</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">בית חולים אלי&quot;ן (ירושלים)</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="370" ind1=" " ind2=" ">
+    <subfield code="e">Jerusalem (Israel)</subfield>
+  </datafield>
+  <datafield tag="372" ind1=" " ind2=" ">
+    <subfield code="a">Children--Hospitals</subfield>
+    <subfield code="2">lcsh</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Alin Hospital</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Alin (Jerusalem)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Alyn Hospital</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Alyn&quot;, bet holim ortopedi shel ha-Agudda leezrat yeladim nakhim (Jerusalem)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">אלי&quot;ן</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">אגודה לעזרת ילדים נכים - אלי&quot;ן</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">אגדה לעזרת ילדים נכים (אלי&quot;ן)</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">בית חולים אלי&quot;ן - מרכז לשיקום ילדים ונוער (ירושלים)</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">אל&quot;ין - מרכז לשיקום ילדים ונוער (ירושלים)</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">בית חולים אלי&quot;ן - מרכז לשקום ילדים ונער (ירושלים)</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">אלי&quot;ן - בית החולים האורטופדי (ירושלים)</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Orthopaedic Hospital and Rehabilitation Center for Physically Handicapped Children (Jerusalem)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="1" ind2=" ">
+    <subfield code="a">Jerusalem.</subfield>
+    <subfield code="b">&quot;Alyn&quot;, Bet Holim Ortopedi Shel Ha-Agudda Leezrat Yeladim Nakhim</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Dorothy and Malcolm Woldenberg Orthopaedic Hospital and Rehabilitation Center for Physically Handicapped Children</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Alyn&quot;, Orthopaedic Hospital of the Society for Crippled Children (Jerusalem)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Agudda Leezrat Yeladim Nakhim (&quot;Alyn&quot;).</subfield>
+    <subfield code="b">Bet Holim Ortopedi</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Woldenberg Orthopaedic Hospital and Rehabilitation Center for Physically Handicapped Children</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Alyn&quot;, Woldenberg Orthopaedic Hospital and Rehabilitation Center for Physically Handicapped Children</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">ALYN Woldenberg Family Hospital</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">ALYN Hospital (Jerusalem)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Agudda Leezrat Yeladim Nakhim (&quot;alyn&quot;)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Alyn&quot; (Agudda Leezrat Yeladim Nakhim)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Society for Crippled Children (&quot;Alyn&quot;)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="1" ind2=" ">
+    <subfield code="a">ירושלים.</subfield>
+    <subfield code="b">אלי&quot;ן.</subfield>
+    <subfield code="b">בית חולים אורטופדי</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">בית החולים האורטופדי אלי&quot;ן (ירושלים)</subfield>
+    <subfield code="9">heb</subfield>
+  </datafield>
+  <datafield tag="667" ind1=" " ind2=" ">
+    <subfield code="a">Heading merged from record: 000165020</subfield>
+  </datafield>
+  <datafield tag="670" ind1=" " ind2=" ">
+    <subfield code="a">אלי&quot;ן = Alin, 2014:</subfield>
+    <subfield code="b">t.p. verso (Alyn hospital)</subfield>
+  </datafield>
+  <datafield tag="670" ind1=" " ind2=" ">
+    <subfield code="a">Ṿiḳipedyah, Aug. 1, 2014</subfield>
+    <subfield code="b">(בית חולים אלי&quot;ן = Bet ḥolim Alin; אגידה לעזרת ילדים נכים = Agudah le-ʻezrat yeladim nakhim; children&apos;s hospital founded in 1932 in Jerusalem)</subfield>
+  </datafield>
+  <datafield tag="670" ind1=" " ind2=" ">
+    <subfield code="a">OCALC: Bet ḥolim Alin</subfield>
+  </datafield>
+  <datafield tag="675" ind1=" " ind2=" ">
+    <subfield code="a">Enc. Judaica, c2007.</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">142436223</subfield>
+  </datafield>
+  <datafield tag="933" ind1=" " ind2=" ">
+    <subfield code="a">lre 201310</subfield>
+  </datafield>
+  <datafield tag="933" ind1=" " ind2=" ">
+    <subfield code="a">hsr 201402</subfield>
+  </datafield>
+  <datafield tag="933" ind1=" " ind2=" ">
+    <subfield code="a">hmh 201403</subfield>
+  </datafield>
+  <datafield tag="933" ind1=" " ind2=" ">
+    <subfield code="a">lre 201507</subfield>
+  </datafield>
+  <datafield tag="COR" ind1=" " ind2=" ">
+    <subfield code="a">&quot;Alyn&quot;, bet holim ortopedi shel ha-Agudda leezrat yeladim nakhim (Jerusalem)</subfield>
+    <subfield code="9">lat</subfield>
+    <subfield code="0">10</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000003</controlfield>
+  <controlfield tag="005">20150723094206.0</controlfield>
+  <controlfield tag="008">001024|||az|||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="b">mul</subfield>
+    <subfield code="e">rda</subfield>
+  </datafield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">Bet ḥolim Alin.</subfield>
+    <subfield code="b">&lt;&lt;Ha&gt;&gt;-Merkaz lemahalot sheririm</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="370" ind1=" " ind2=" ">
+    <subfield code="e">Jerusalem (Israel)</subfield>
+  </datafield>
+  <datafield tag="372" ind1=" " ind2=" ">
+    <subfield code="a">Children--Hospitals</subfield>
+    <subfield code="2">lcsh</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Alyn&quot;, bet holim ortopedi shel ha-Agudda leezrat yeladim nakhim (Jerusalem).</subfield>
+    <subfield code="b">&lt;&lt;Ha&gt;&gt;-Merkaz lemahalot sheririm</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Center for Muscle Diseases, &quot;Alyn&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&lt;&lt;ha-&gt;&gt;Merkaz lemahalot sheririm, &quot;Alyn&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Alyn&quot;, bet holim ortopedi shel ha-agudda leezrat yeladim nakhim (Jerusalem).</subfield>
+    <subfield code="b">Center for Muscle Diseases</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Bet ḥolim Alin.</subfield>
+    <subfield code="b">Center for Muscle Diseases</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Jerusalem Symposium on Neuromuscular Diseases</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">143613319</subfield>
+  </datafield>
+  <datafield tag="933" ind1=" " ind2=" ">
+    <subfield code="a">lre 201507</subfield>
+  </datafield>
+  <datafield tag="COR" ind1=" " ind2=" ">
+    <subfield code="a">&quot;Alyn&quot;, bet holim ortopedi shel ha-Agudda leezrat yeladim nakhim (Jerusalem).</subfield>
+    <subfield code="b">&lt;&lt;Ha&gt;&gt;-Merkaz lemahalot sheririm</subfield>
+    <subfield code="9">lat</subfield>
+    <subfield code="0">10</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000004</controlfield>
+  <controlfield tag="008">000108|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Caritatea&quot;, Societate pentru Întretinerea Spitalului Israelit din Botosani</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Societatea &quot;Caritatea&quot; din Botosani</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">MRC</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">f.1909</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">150638916</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000005</controlfield>
+  <controlfield tag="008">010401|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;DDR im Ueberblick&quot; (Firm)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Panorama DDR (Firm).</subfield>
+    <subfield code="b">&quot;DRR im Ueberblick&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Apercus sur la R.D.A.&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="667" ind1=" " ind2=" ">
+    <subfield code="a">MARC AUTH.</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">151309011</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000006</controlfield>
+  <controlfield tag="008">020204|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Dr. Iuliu Barasch&quot;, Societate pentru Binefaceri, Ingrijirea si Sustinerea Membrilor sai În Caz de Boala si Deces</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Doctor Iuliu Barasch&quot;, Societate de Binefacere si Ajutor Mutual</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Societate pentru Binefaceri, Ingrijirea si Sustinerea Membrilor sai În caz de Boala si Deces, Dr. Iuliu Barasch</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Iuliu Barasch, Societate pentru Binefaceri, Ingrijirea si Sustinerea Membrilor sai În caz de Boala si Deces</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Dr. Iuliu Barasch&quot;, Societate de Binefacere, Cultura si Ajutor</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Societatea de Binefacere si Ajutor Reciproc &quot;Dr. Iuliu Barasch&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Cf.: Istoricul societatii</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">f.1872</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">147120539</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000007</controlfield>
+  <controlfield tag="005">20090129145519.0</controlfield>
+  <controlfield tag="008">000920|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Fraternitatea&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Societatea &quot;Fraternitatea&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Founded: 1904</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">148294263</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000008</controlfield>
+  <controlfield tag="005">20100311170302.0</controlfield>
+  <controlfield tag="008">050118|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Haavara&quot; Misrad Neemanut</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Treuhand-Und Transfer-Stelle &quot;haavara&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Haavara-Transfer Ltd.</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Trust and Transfer Office &quot;haavara&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Komitee zur öffentlichen Kontrolle des Handels mit Deutschland</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Transfer</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="670" ind1=" " ind2=" ">
+    <subfield code="a">קטלוג עברי: העברה (חברה) (אודות)</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">134238384</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000009</controlfield>
+  <controlfield tag="008">000108|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="111" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Hagar&apos;s Well&quot;, Bi-National Conference on Education of Holland and Israel</subfield>
+    <subfield code="d">(1986 :</subfield>
+    <subfield code="c">Yeruham)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Bi-national Conference on Education of Holland and Israel</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">135410832</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000010</controlfield>
+  <controlfield tag="005">20090127050316.0</controlfield>
+  <controlfield tag="008">000918|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Hygeea&quot;, Societate Filantropica Comerciala</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Societatea Filantropica Comerciala &quot;Hygeea&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Societatea &quot;Hygeea&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Cf.: Statutul si regulamentul. f.1898.</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">148294271</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000011</controlfield>
+  <controlfield tag="005">20090127050342.0</controlfield>
+  <controlfield tag="008">000108|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Israel&quot;, Nederlandsche Centrale Vereeniging Tot Steun aan Noodlijdende Joden in het Buitenland</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Nederlandsche Centrale Vereeniging Tot Steun Aan Noodlijdende Joden in Het Buitenland, &quot;israel&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Cf.: the organization&apos;s Jaarverslag, 1930</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">147120541</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000012</controlfield>
+  <controlfield tag="008">000918|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Iubirea Aproapelui&quot;, Societate de Ajutor Reciproc</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Societatea &quot;Iubirea Aproapelui&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Societatea de Ajutor Reciproc &quot;Iubirea Aproapelui&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Cf.: Statut si regulament. f.1927.</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">151811598</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000013</controlfield>
+  <controlfield tag="008">010401|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Jehudith&quot; Kolozsvari Zsidonok Kulturegyesulete</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Kolozsvari Zsidonok Kulturegyesulete</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">150638928</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000015</controlfield>
+  <controlfield tag="008">000108|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Kehot&quot; Publication Society</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="670" ind1=" " ind2=" ">
+    <subfield code="a">LCN</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">262359209</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000016</controlfield>
+  <controlfield tag="008">010401|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Migdal&quot; hevra levittuah</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Migdal&quot; Insurance Co. Ltd.</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="667" ind1=" " ind2=" ">
+    <subfield code="a">Palestine directory 1942</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">145953338</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000017</controlfield>
+  <controlfield tag="008">010401|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Mirjam&quot; Zsidó Leányegyesület (Fagaras)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Fogarasi &quot;mirjam&quot; Zsidó Leányegyesület</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">144787784</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000019</controlfield>
+  <controlfield tag="008">000108|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Pionul&quot; - Societate economica a functionarilor din Districtul Neamtu</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Cf.: Statut. f.1877</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">137747656</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000020</controlfield>
+  <controlfield tag="005">20090127050408.0</controlfield>
+  <controlfield tag="008">010401|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Renaissance&quot;, Hug shohare ommanut</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Hug Shohare Ommanut &quot;renaissance&quot; (Haifa)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Renaissance&quot;, Art Appreciation Circle (Haifa)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Art Appreciation Circle &quot;renaissance&quot; (Haifa)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">137747673</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000021</controlfield>
+  <controlfield tag="008">000921|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Salvarea&quot;, Societatea de Binefacere si de Ajutorare si Ingrijirea Membrilor sai si a Famillilor lor în Caz de Boala si Deces</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Cf.: Darea de seama. f.1894</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">138923557</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000022</controlfield>
+  <controlfield tag="005">20140703172625.0</controlfield>
+  <controlfield tag="008">000108|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Sefer&quot; (Moscow)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">Центр научных работников и преподавателей иудаики в вузах &quot;Сэфер&quot;</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">TSentr nauchnykh rabotnikov i prepodavatelei iudaiki v vuzakh &quot;Sefer&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Moskovskii tsentr nauchnykh rabotnikov i prepodavatelei iudaiki v vuzakh &quot;Sefer&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">TSentr &quot;Sefer&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">International Center for University Teaching of Jewish Civilization (Moscow)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Moscow Center for University Teaching of Jewish Civilization &quot;Sefer&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Центр &quot;Сэфер&quot;</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Московский центр научных работников и преподавателей иудаики в вузах &quot;Сэфер&quot;</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Сэфер&quot;, Московский центр научных работников и преподавателей иудаики в вузах</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="667" ind1=" " ind2=" ">
+    <subfield code="a">Heading merged from record: 000158123</subfield>
+  </datafield>
+  <datafield tag="670" ind1=" " ind2=" ">
+    <subfield code="a">LCN</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Cf.: Academic directory of Jewish studies in the CIS ..., 1999</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">127605346</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000023</controlfield>
+  <controlfield tag="008">000108|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Solidaritatea Grafica&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Solidaritatea Grafica&quot;, Societate de Ajutor Reciproc, Cultura Si Binefacere</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Solidaritatea Grafica&quot;, Societate de Ajutor Reciproc</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">see: 1763608</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">founded: 1926</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">141264182</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000024</controlfield>
+  <controlfield tag="005">20090127050427.0</controlfield>
+  <controlfield tag="008">010401|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Sprijinul Copilului&quot;, Asociatiune pentru Asistenta Copilului si Cantina Scolara</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Asociatia &quot;sprijinul Copilului&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Cf.: Darea de seama</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">131897191</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000025</controlfield>
+  <controlfield tag="008">030120|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Ungarischen isr. Cultusbeamten-Vereines&quot;</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">&quot;Das fünfundzwanzigjährige&quot; ... 1895.</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">133066078</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000026</controlfield>
+  <controlfield tag="008">031113|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Zhongguo shou ce&quot; bian ji wei yuan hui</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">China Handbook Editorial Committee</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Chung-kuo shou tse&quot; pien chi wei yuan hui</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Zhong guo shou ce&quot; bian ji wei yuan hui</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="670" ind1=" " ind2=" ">
+    <subfield code="a">LCN</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">273481879</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000028</controlfield>
+  <controlfield tag="008">000108|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;moria&quot; Societate Pentru Întretinerea Scoalei Primare Israelite-Române de Baieti (Bucharest)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">f.1895</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">Cf.: Darea de seama si bilantul</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">147120556</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000029</controlfield>
+  <controlfield tag="008">020318|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Кыргызстан-Сорос&quot; фонду</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Фонд &quot;Сорос-Кыргызстан&quot;</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="680" ind1=" " ind2=" ">
+    <subfield code="a">По книге: Еврей эл жомоктору. Бишкек, 2000.</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">122523801</subfield>
+  </datafield>
+</record>
+
+<record xmlns="http://www.loc.gov/MARC21/slim"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.loc.gov/MARC21/slim
+http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>     nz  a22     n  4500</leader>
+  <controlfield tag="FMT">AU</controlfield>
+  <controlfield tag="LDR">     nz  a22     n  4500</controlfield>
+  <controlfield tag="001">000000030</controlfield>
+  <controlfield tag="005">20130430114705.0</controlfield>
+  <controlfield tag="008">000108|||a||||aab|||||||||||||||||||||||</controlfield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">&quot;Память&quot; (Организация)</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">Pamiat (Organization : Russia)</subfield>
+    <subfield code="9">lat</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Патриотическое объединение &quot;Память&quot;</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">НПФ &quot;Память&quot;</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Русское национальное единство (Организация)</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="410" ind1="2" ind2=" ">
+    <subfield code="a">Национально-Патриотический фронт &quot;Память&quot;</subfield>
+    <subfield code="9">cyr</subfield>
+  </datafield>
+  <datafield tag="670" ind1=" " ind2=" ">
+    <subfield code="a">LCN</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">136137159</subfield>
+  </datafield>
+</record>
