@@ -1,5 +1,4 @@
-import xml.etree.ElementTree as ET
-# from lxml import etree
+from lxml import etree
 
 
 def clear_element(e):
@@ -10,7 +9,7 @@ def clear_element(e):
 
 def parse_file(filename):
     with open(filename, "rb") as f:
-        context = ET.iterparse(f,
+        context = etree.iterparse(f,
                                tag="{http://www.loc.gov/MARC21/slim}record")
         for action, elem in context:
             parse_record(elem)
