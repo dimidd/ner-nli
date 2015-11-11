@@ -2,6 +2,7 @@
 # coding=utf-8
 
 from lxml import etree
+from pprint import pprint
 
 
 def extract_words_from_alto_xml(filename):
@@ -46,4 +47,4 @@ if __name__ == "__main__":
         {'id': 1, 'name': 'חייבים', },
         ]
     res = look_for_entities(words, entities)
-    print(res)
+    pprint(res)
