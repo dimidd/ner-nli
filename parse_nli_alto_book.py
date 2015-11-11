@@ -15,9 +15,9 @@ def extract_words_from_alto_xml(filename):
         tree = etree.parse(f)
     words = []
     for word in tree.xpath("//String[@CONTENT]"):
-        words.append({"ID:": word.get("ID"),
-                      "CONTENT:": word.get("CONTENT"),
-                      "parent:": word.getparent().get("ID"),
+        words.append({"ID": word.get("ID"),
+                      "CONTENT": word.get("CONTENT"),
+                      "PARENT": word.getparent().get("ID"),
                       })
     return words
 
