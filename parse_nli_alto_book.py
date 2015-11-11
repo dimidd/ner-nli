@@ -46,5 +46,6 @@ if __name__ == "__main__":
     entities = [
         {'id': 1, 'name': 'חייבים', },
         ]
+    # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
     pprint(res)
