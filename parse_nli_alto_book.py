@@ -29,7 +29,7 @@ def lookup(word, entities):
     """
     for record in entities:
         if word == record['name']:
-            return record
+            return record['id']
     return None
 
 
@@ -38,7 +38,7 @@ def look_for_entities(words, entities):
     for word in words:
         t = lookup(word["CONTENT"], entities)
         if t:
-            res.append(t)
+            res.append((t, word))
     return res
 
 if __name__ == "__main__":
