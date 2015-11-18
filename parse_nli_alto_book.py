@@ -23,12 +23,12 @@ def extract_words_from_alto_xml(filename):
     return words
 
 
-def lookup(word, entities):
+def lookup(candidate, entities):
     """
-        return first record in entities that match word
+        return first record in entities that match candidate
     """
     for record in entities:
-        if word == record['name']:
+        if candidate == record['name']:
             return record['id']
     return None
 
