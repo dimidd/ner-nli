@@ -39,7 +39,7 @@ def slice(l, size):
 
 
 def candidate2text(candidate):
-    return " ".join([w['CONTENT'] for w in candidate])
+    return ", ".join([w['CONTENT'] for w in candidate])
 
 
 def look_for_entities(words, entities):
@@ -53,9 +53,10 @@ def look_for_entities(words, entities):
 if __name__ == "__main__":
     words = extract_words_from_alto_xml("books_alto_fmt/1227225-140-0100.xml")
     entities = [
-        {'id': 1, 'name': 'חייבים לשמוע', },
-        {'id': 2, 'name': 'ישראל בניגוד', },
-        {'id': 2, 'name': 'לחוק התורהl', },
+        {'id': 1, 'name': 'לחוק, התורהl', },
+        {'id': 2, 'name': 'חייבים, לשמוע', },
+        {'id': 3, 'name': 'ישראל, בניגוד', },
+        {'id': 4, 'name': 'לחוק, בניגוד', },
         ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
