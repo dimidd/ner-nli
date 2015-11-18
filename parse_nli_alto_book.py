@@ -42,12 +42,18 @@ def candidate2text(candidate):
     return ", ".join([w['CONTENT'] for w in candidate])
 
 
+def generate_candidate_variants(candidate):
+    candidate_as_str = candidate2text(candidate)
+    yield candidate_as_str
+
+
 def look_for_entities(words, entities):
     res = []
     for candidate in slice(words, 2):
-        t = lookup(candidate2text(candidate), entities)
-        if t:
-            res.append((t, candidate))
+        for candidate_as_str in generate_candidate_variants(candidate):
+            t = lookup(candidate_as_str, entities)
+            if t:
+                res.append((t, candidate, candidate_as_str))
     return res
 
 if __name__ == "__main__":
