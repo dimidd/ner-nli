@@ -15,9 +15,11 @@ code2type = {
     u'400': 'person'
 }
 
-with open('nnl2.json', 'r', buffering=1) as inputfile:
-    js = json.load(inputfile)
-
+data = ''
+with open('nnl2.json', 'r') as inputfile:
+    for line in inputfile:
+        data += line
+js = json.loads(data, 'utf-8')
 
 for record in js['items']:
     ent_aliases = []
