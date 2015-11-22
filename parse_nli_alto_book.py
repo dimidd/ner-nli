@@ -3,22 +3,25 @@
 
 from lxml import etree
 from pprint import pprint
+from pathlib import Path
 
 
-def extract_words_from_alto_xml(filename):
+def extract_words_from_alto_xml(filepath):
     """
     extract words from an xml file in alto format
     return list of words, each word is accompanied with metadata
     to locate its source
 
     """
-    with open(filename, "rb") as f:
+    with filepath.open() as f:
         tree = etree.parse(f)
     words = []
     for word in tree.xpath("//String[@CONTENT]"):
         words.append({"ID": word.get("ID"),
                       "CONTENT": word.get("CONTENT"),
                       "PARENT": word.getparent().get("ID"),
+                      "GRANDPARENT": word.getparent().getparent().get("ID"),
+                      "PAGE_FILE": filepath,
                       })
     return words
 
@@ -56,8 +59,22 @@ def look_for_entities(words, entities):
                 res.append((t, candidate, candidate_as_str))
     return res
 
+
+def gather_info_from_folder(path):
+    folder = Path(path)
+    res = []
+    l = list(folder.glob('*.xml'))
+    l = sorted(l)
+    for f in l:
+        words = extract_words_from_alto_xml(f)
+        res += words
+    return res
+
+
 if __name__ == "__main__":
-    words = extract_words_from_alto_xml("books_alto_fmt/1227225-140-0100.xml")
+    path = "../nli_entities_sample_data/additional_books/IE26721743/REP26723234/"
+    words = gather_info_from_folder(path)
+    # pprint(res)
     entities = [
         {'id': 1, 'name': 'לחוק, התורהl', },
         {'id': 2, 'name': 'חייבים, לשמוע', },
@@ -66,4 +83,5 @@ if __name__ == "__main__":
         ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
+    print("number of result: {}".format(len(res)))
     pprint(res)
