@@ -48,6 +48,8 @@ def candidate2text(candidate):
 def generate_candidate_variants(candidate):
     candidate_as_str = candidate2text(candidate)
     yield candidate_as_str
+    candidate_as_str = candidate2text(candidate[::-1])
+    yield candidate_as_str
 
 
 def look_for_entities(words, entities):
