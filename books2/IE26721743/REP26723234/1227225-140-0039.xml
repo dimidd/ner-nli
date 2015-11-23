@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.ccs-gmbh.com/docworks/version20/alto-1-4.xsd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<Description>
+		<MeasurementUnit>inch1200</MeasurementUnit>
+		<sourceImageInformation>
+			<fileName>//Nlinetapp3/CCS/IN/NLI-Rosetta/Batch01/1227225-140/0074.tif</fileName>
+		</sourceImageInformation>
+		<OCRProcessing ID="OCRPROCESSING_1">
+			<preProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+				</processingSoftware>
+			</preProcessingStep>
+			<ocrProcessingStep>
+				<processingSoftware>
+					<softwareCreator>ABBYY (BIT Software), Russia</softwareCreator>
+					<softwareName>FineReader</softwareName>
+					<softwareVersion>11.0</softwareVersion>
+				</processingSoftware>
+			</ocrProcessingStep>
+			<postProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+					<applicationDescription>docWorks: Text modified manually, or automatically replaced</applicationDescription>
+				</processingSoftware>
+			</postProcessingStep>
+		</OCRProcessing>
+	</Description>
+	<Styles>
+		<TextStyle ID="TXT_0" FONTSIZE="9" FONTFAMILY="Gisha"/>
+		<ParagraphStyle ID="PAR_CENTER" ALIGN="Center"/>
+	</Styles>
+	<Layout>
+		<Page ID="P39" PHYSICAL_IMG_NR="39" HEIGHT="10000" WIDTH="6356" PC="0.872">
+			<TopMargin ID="P39_TM00001" HPOS="0" VPOS="0" WIDTH="6354" HEIGHT="468"/>
+			<LeftMargin ID="P39_LM00001" HPOS="0" VPOS="468" WIDTH="902" HEIGHT="8197"/>
+			<RightMargin ID="P39_RM00001" HPOS="5457" VPOS="468" WIDTH="898" HEIGHT="8197"/>
+			<BottomMargin ID="P39_BM00001" HPOS="0" VPOS="8665" WIDTH="6354" HEIGHT="1337"/>
+			<PrintSpace ID="P39_PS00001" HPOS="902" VPOS="468" WIDTH="4554" HEIGHT="8197">
+				<TextBlock ID="P39_TB00001" HPOS="1091" VPOS="7290" WIDTH="4365" HEIGHT="132" STYLEREFS="TXT_0 PAR_CENTER">
+					<TextLine ID="P39_TL00001" HPOS="1091" VPOS="7294" WIDTH="4365" HEIGHT="128">
+						<String ID="P39_ST00001" HPOS="5083" VPOS="7309" WIDTH="373" HEIGHT="80" CONTENT="מראשי" WC="0.97" CC="65070"/>
+						<SP ID="P39_SP00001" HPOS="5457" VPOS="7389" WIDTH="-958"/>
+						<String ID="P39_ST00002" HPOS="4498" VPOS="7294" WIDTH="510" HEIGHT="99" CONTENT="הלוחמים" WC="0.99" CC="5004406"/>
+						<SP ID="P39_SP00002" HPOS="5457" VPOS="7394" WIDTH="-1459"/>
+						<String ID="P39_ST00003" HPOS="3997" VPOS="7313" WIDTH="425" HEIGHT="94" CONTENT='ב"שרות' WC="0.65" CC="600401"/>
+						<SP ID="P39_SP00003" HPOS="5457" VPOS="7408" WIDTH="-2007"/>
+						<String ID="P39_ST00004" HPOS="3449" VPOS="7294" WIDTH="472" HEIGHT="128" CONTENT='לאומי":' WC="0.99" CC="6054000"/>
+						<SP ID="P39_SP00004" HPOS="5457" VPOS="7422" WIDTH="-2305"/>
+						<String ID="P39_ST00005" HPOS="3151" VPOS="7323" WIDTH="175" HEIGHT="80" CONTENT="רבי" WC="0.95" CC="560"/>
+						<SP ID="P39_SP00005" HPOS="5457" VPOS="7422" WIDTH="-2961"/>
+						<String ID="P39_ST00006" HPOS="2494" VPOS="7323" WIDTH="576" HEIGHT="85" CONTENT="הירש־פסח" WC="0.62" CC="63450341"/>
+						<SP ID="P39_SP00006" HPOS="5457" VPOS="7422" WIDTH="-3424"/>
+						<String ID="P39_ST00007" HPOS="2031" VPOS="7328" WIDTH="378" HEIGHT="94" CONTENT="פראנק," WC="0.97" CC="666450"/>
+						<SP ID="P39_SP00007" HPOS="5457" VPOS="7422" WIDTH="-3840"/>
+						<String ID="P39_ST00008" HPOS="1616" VPOS="7323" WIDTH="335" HEIGHT="90" CONTENT='גאב"ד' WC="0.61" CC="56002"/>
+						<SP ID="P39_SP00008" HPOS="5457" VPOS="7422" WIDTH="-4364"/>
+						<String ID="P39_ST00009" HPOS="1091" VPOS="7318" WIDTH="449" HEIGHT="99" CONTENT="ירושלים" WC="0.97" CC="4566733"/>
+					</TextLine>
+				</TextBlock>
+			</PrintSpace>
+		</Page>
+	</Layout>
+</alto>

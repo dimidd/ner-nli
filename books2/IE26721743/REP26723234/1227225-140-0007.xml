@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.ccs-gmbh.com/docworks/version20/alto-1-4.xsd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<Description>
+		<MeasurementUnit>inch1200</MeasurementUnit>
+		<sourceImageInformation>
+			<fileName>//Nlinetapp3/CCS/IN/NLI-Rosetta/Batch01/1227225-140/0089.tif</fileName>
+		</sourceImageInformation>
+		<OCRProcessing ID="OCRPROCESSING_1">
+			<preProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+				</processingSoftware>
+			</preProcessingStep>
+			<ocrProcessingStep>
+				<processingSoftware>
+					<softwareCreator>ABBYY (BIT Software), Russia</softwareCreator>
+					<softwareName>FineReader</softwareName>
+					<softwareVersion>11.0</softwareVersion>
+				</processingSoftware>
+			</ocrProcessingStep>
+			<postProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+					<applicationDescription>docWorks: Text modified manually, or automatically replaced</applicationDescription>
+				</processingSoftware>
+			</postProcessingStep>
+		</OCRProcessing>
+	</Description>
+	<Styles>
+		<TextStyle ID="TXT_0" FONTSIZE="58" FONTFAMILY="Special#Default Metrics Font"/>
+		<TextStyle ID="TXT_1" FONTSIZE="13" FONTFAMILY="Gisha" FONTSTYLE="bold"/>
+		<TextStyle ID="TXT_2" FONTSIZE="13" FONTFAMILY="Gisha"/>
+		<TextStyle ID="TXT_3" FONTSIZE="19" FONTFAMILY="Gisha" FONTSTYLE="bold"/>
+		<TextStyle ID="TXT_4" FONTSIZE="11" FONTFAMILY="Gisha" FONTSTYLE="bold"/>
+		<TextStyle ID="TXT_5" FONTSIZE="7" FONTFAMILY="Gisha" FONTSTYLE="bold"/>
+		<TextStyle ID="TXT_6" FONTSIZE="12" FONTFAMILY="Gisha"/>
+		<ParagraphStyle ID="PAR_RIGHT" ALIGN="Right"/>
+		<ParagraphStyle ID="PAR_LEFT" ALIGN="Left"/>
+		<ParagraphStyle ID="PAR_CENTER" ALIGN="Center"/>
+	</Styles>
+	<Layout>
+		<Page ID="P7" PHYSICAL_IMG_NR="7" HEIGHT="10000" WIDTH="6356" PC="0.802">
+			<TopMargin ID="P7_TM00001" HPOS="0" VPOS="0" WIDTH="6354" HEIGHT="1039"/>
+			<LeftMargin ID="P7_LM00001" HPOS="0" VPOS="1039" WIDTH="0" HEIGHT="8329"/>
+			<RightMargin ID="P7_RM00001" HPOS="6354" VPOS="1039" WIDTH="0" HEIGHT="8329"/>
+			<BottomMargin ID="P7_BM00001" HPOS="0" VPOS="9369" WIDTH="6354" HEIGHT="633"/>
+			<PrintSpace ID="P7_PS00001" HPOS="0" VPOS="1039" WIDTH="6354" HEIGHT="8329">
+				<TextBlock ID="P7_TB00001" HPOS="718" VPOS="1937" WIDTH="4734" HEIGHT="529" STYLEREFS="TXT_0 PAR_RIGHT">
+					<TextLine ID="P7_TL00001" HPOS="3373" VPOS="1937" WIDTH="2079" HEIGHT="524">
+						<String ID="P7_ST00001" HPOS="3373" VPOS="1937" WIDTH="2074" HEIGHT="524" CONTENT="פאר" WC="0.93" CC="675"/>
+						<SP ID="P7_SP00001" HPOS="5447" VPOS="2461" WIDTH="0"/>
+						<String ID="P7_ST00002" HPOS="5447" VPOS="1937" WIDTH="5" HEIGHT="524" CONTENT="הדור" WC="0.98" CC="0000"/>
+					</TextLine>
+				</TextBlock>
+				<TextBlock ID="P7_TB00002" HPOS="983" VPOS="3354" WIDTH="4205" HEIGHT="3704" STYLEREFS="TXT_1 PAR_LEFT">
+					<TextLine ID="P7_TL00002" HPOS="1668" VPOS="3359" WIDTH="2830" HEIGHT="184">
+						<String ID="P7_ST00003" HPOS="3950" VPOS="3387" WIDTH="548" HEIGHT="156" CONTENT="פרקים" WC="0.97" CC="44405" STYLEREFS="TXT_2"/>
+						<SP ID="P7_SP00002" HPOS="4498" VPOS="3543" WIDTH="-1303"/>
+						<String ID="P7_ST00004" HPOS="3194" VPOS="3387" WIDTH="643" HEIGHT="123" CONTENT="ממסכת" WC="0.98" CC="00623" STYLEREFS="TXT_2"/>
+						<SP ID="P7_SP00003" HPOS="4498" VPOS="3543" WIDTH="-1747"/>
+						<String ID="P7_ST00005" HPOS="2750" VPOS="3387" WIDTH="331" HEIGHT="123" CONTENT="חייו" WC="0.98" CC="4005" STYLEREFS="TXT_2"/>
+						<SP ID="P7_SP00004" HPOS="4498" VPOS="3543" WIDTH="-2489"/>
+						<String ID="P7_ST00006" HPOS="2008" VPOS="3387" WIDTH="628" HEIGHT="118" CONTENT="ויצירתו" WC="0.98" CC="4354155" STYLEREFS="TXT_2"/>
+						<SP ID="P7_SP00005" HPOS="4498" VPOS="3543" WIDTH="-2829"/>
+						<String ID="P7_ST00007" HPOS="1668" VPOS="3359" WIDTH="227" HEIGHT="146" CONTENT="של" WC="0.81" CC="30" STYLEREFS="TXT_2"/>
+					</TextLine>
+					<TextLine ID="P7_TL00003" HPOS="2428" VPOS="3676" WIDTH="1309" HEIGHT="156">
+						<String ID="P7_ST00008" HPOS="3392" VPOS="3676" WIDTH="345" HEIGHT="156" CONTENT="גאון" WC="0.97" CC="4351" STYLEREFS="TXT_2"/>
+						<SP ID="P7_SP00006" HPOS="3737" VPOS="3831" WIDTH="-887"/>
+						<String ID="P7_ST00009" HPOS="2849" VPOS="3676" WIDTH="420" HEIGHT="118" CONTENT="דורנו" WC="0.98" CC="05064" STYLEREFS="TXT_2"/>
+						<SP ID="P7_SP00007" HPOS="3737" VPOS="3831" WIDTH="-1308"/>
+						<String ID="P7_ST00010" HPOS="2428" VPOS="3676" WIDTH="298" HEIGHT="156" CONTENT="מרן" WC="0.98" CC="040" STYLEREFS="TXT_2"/>
+					</TextLine>
+					<TextLine ID="P7_TL00004" HPOS="992" VPOS="4110" WIDTH="4196" HEIGHT="265">
+						<String ID="P7_ST00011" HPOS="4890" VPOS="4172" WIDTH="298" HEIGHT="146" CONTENT="יב&lt;" WC="0.46" CC="573"/>
+						<SP ID="P7_SP00008" HPOS="5187" VPOS="4318" WIDTH="-2593"/>
+						<String ID="P7_ST00012" HPOS="2594" VPOS="4148" WIDTH="2098" HEIGHT="203" CONTENT="אברהם־&lt;שע&lt;הו" WC="0.43" CC="755560639656" STYLEREFS="TXT_3"/>
+						<SP ID="P7_SP00009" HPOS="5187" VPOS="4351" WIDTH="-3608"/>
+						<String ID="P7_ST00013" HPOS="1578" VPOS="4110" WIDTH="817" HEIGHT="265" CONTENT="קרליץ" WC="0.31" CC="76677" STYLEREFS="TXT_3"/>
+						<SP ID="P7_SP00010" HPOS="5187" VPOS="4375" WIDTH="-4194"/>
+						<String ID="P7_ST00014" HPOS="992" VPOS="4143" WIDTH="387" HEIGHT="175" CONTENT='זצ"ל' WC="0.46" CC="0707"/>
+					</TextLine>
+					<TextLine ID="P7_TL00005" HPOS="2008" VPOS="4535" WIDTH="2117" HEIGHT="194">
+						<String ID="P7_ST00015" HPOS="3756" VPOS="4535" WIDTH="369" HEIGHT="180" CONTENT="בעל" WC="0.93" CC="666"/>
+						<SP ID="P7_SP00011" HPOS="4124" VPOS="4715" WIDTH="-1256"/>
+						<String ID="P7_ST00016" HPOS="2868" VPOS="4564" WIDTH="657" HEIGHT="165" CONTENT='"חזון' WC="0.97" CC="06265" STYLEREFS="TXT_2"/>
+						<SP ID="P7_SP00012" HPOS="4124" VPOS="4729" WIDTH="-1624"/>
+						<String ID="P7_ST00017" HPOS="2499" VPOS="4564" WIDTH="132" HEIGHT="132" CONTENT="א" WC="0.35" CC="6"/>
+						<String ID="P7_ST00018" HPOS="2362" VPOS="4564" WIDTH="61" HEIGHT="94" CONTENT="י" WC="0.22" CC="7"/>
+						<SP ID="P7_SP00013" HPOS="4124" VPOS="4729" WIDTH="-2002"/>
+						<String ID="P7_ST00019" HPOS="2121" VPOS="4564" WIDTH="165" HEIGHT="137" CONTENT="ש" WC="0.60" CC="3"/>
+						<SP ID="P7_SP00014" HPOS="4124" VPOS="4729" WIDTH="-2116"/>
+						<String ID="P7_ST00020" HPOS="2008" VPOS="4564" WIDTH="28" HEIGHT="43" CONTENT="-" WC="1.00" CC="0"/>
+					</TextLine>
+					<TextLine ID="P7_TL00006" HPOS="1828" VPOS="5750" WIDTH="2504" HEIGHT="142">
+						<String ID="P7_ST00021" HPOS="3704" VPOS="5754" WIDTH="628" HEIGHT="137" CONTENT="בעריכת" WC="0.96" CC="665666" STYLEREFS="TXT_4"/>
+						<SP ID="P7_SP00015" HPOS="4332" VPOS="5891" WIDTH="-1086"/>
+						<String ID="P7_ST00022" HPOS="3246" VPOS="5754" WIDTH="331" HEIGHT="118" CONTENT="חבר" WC="0.94" CC="466" STYLEREFS="TXT_4"/>
+						<SP ID="P7_SP00016" HPOS="4332" VPOS="5891" WIDTH="-1832"/>
+						<String ID="P7_ST00023" HPOS="2499" VPOS="5754" WIDTH="619" HEIGHT="113" CONTENT="סופרים" WC="0.98" CC="762600" STYLEREFS="TXT_4"/>
+						<SP ID="P7_SP00017" HPOS="4332" VPOS="5891" WIDTH="-2503"/>
+						<String ID="P7_ST00024" HPOS="1828" VPOS="5750" WIDTH="543" HEIGHT="123" CONTENT="חרדים" WC="0.96" CC="56665" STYLEREFS="TXT_4"/>
+					</TextLine>
+					<TextLine ID="P7_TL00007" HPOS="2660" VPOS="6586" WIDTH="841" HEIGHT="104">
+						<String ID="P7_ST00025" HPOS="3269" VPOS="6586" WIDTH="231" HEIGHT="94" CONTENT='מ"ר' WC="0.34" CC="907" STYLEREFS="TXT_5"/>
+						<SP ID="P7_SP00018" HPOS="3501" VPOS="6680" WIDTH="-840"/>
+						<String ID="P7_ST00026" HPOS="2660" VPOS="6600" WIDTH="529" HEIGHT="90" CONTENT="המערכת;" WC="0.97" CC="6667793" STYLEREFS="TXT_5"/>
+					</TextLine>
+					<TextLine ID="P7_TL00008" HPOS="2202" VPOS="6865" WIDTH="1729" HEIGHT="184">
+						<String ID="P7_ST00027" HPOS="3605" VPOS="6893" WIDTH="326" HEIGHT="123" CONTENT="הרב" WC="0.93" CC="567" STYLEREFS="TXT_4"/>
+						<SP ID="P7_SP00019" HPOS="3931" VPOS="7016" WIDTH="-930"/>
+						<String ID="P7_ST00028" HPOS="3000" VPOS="6865" WIDTH="496" HEIGHT="151" CONTENT="שלמה" WC="0.96" CC="6075" STYLEREFS="TXT_4"/>
+						<SP ID="P7_SP00020" HPOS="3931" VPOS="7016" WIDTH="-1345"/>
+						<String ID="P7_ST00029" HPOS="2584" VPOS="6893" WIDTH="302" HEIGHT="156" CONTENT="כהן" WC="0.96" CC="056" STYLEREFS="TXT_4"/>
+						<SP ID="P7_SP00021" HPOS="3931" VPOS="7049" WIDTH="-1728"/>
+						<String ID="P7_ST00030" HPOS="2202" VPOS="6865" WIDTH="269" HEIGHT="151" CONTENT='ז"ל' WC="0.44" CC="602" STYLEREFS="TXT_4"/>
+					</TextLine>
+				</TextBlock>
+				<TextBlock ID="P7_TB00003" HPOS="2372" VPOS="7824" WIDTH="1394" HEIGHT="198" STYLEREFS="TXT_6 PAR_CENTER">
+					<TextLine ID="P7_TL00009" HPOS="2372" VPOS="7833" WIDTH="1394" HEIGHT="151">
+						<String ID="P7_ST00031" HPOS="2372" VPOS="7833" WIDTH="463" HEIGHT="151" CONTENT="חלק" WC="0.98" CC="000"/>
+						<SP ID="P7_SP00022" HPOS="2835" VPOS="7984" WIDTH="156"/>
+						<String ID="P7_ST00032" HPOS="2991" VPOS="7833" WIDTH="775" HEIGHT="151" CONTENT="חמישי" WC="0.98" CC="00000"/>
+					</TextLine>
+				</TextBlock>
+			</PrintSpace>
+		</Page>
+	</Layout>
+</alto>
