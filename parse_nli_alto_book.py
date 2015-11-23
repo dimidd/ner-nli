@@ -73,10 +73,41 @@ def gather_info_from_folder(path):
     return res
 
 
+def reverse_results(res):
+    reverse_res = {}
+    for r in res:
+        for word in r[1]:  # this was the candidate which is a list of words
+            reverse_res[word['ID']] = r[0]  # the id in the database
+    return reverse_res
+
+
+def generate_tei_xml(words, res):
+    str = ""
+    str += "<text>"
+    str += "<body>"
+    str += "<p>"
+    while words:
+        word = words.pop(0)
+        if res.get(word['ID'], None):
+            str += '<persName corresp="{}">'.format(res[word['ID']])  # TODO DRY access ID of res
+            str += word['CONTENT'] + ' '
+            word = words.pop(0) # for now entities are two words exactly
+            str += word['CONTENT'] + ' '
+            str += '</persName>'
+        else:
+            str += word['CONTENT'] + ' '
+
+    str += "</p>"
+    str += "</body>"
+    str += "</text>"
+    return str
+
+
 if __name__ == "__main__":
     path = "../nli_entities_sample_data/additional_books/IE26721743/REP26723234/"
     words = gather_info_from_folder(path)
-    # pprint(res)
+    print("num of words:", len(words))
+    # pprint(words)
     entities = [
         {'id': 1, 'name': 'לחוק, התורהl', },
         {'id': 2, 'name': 'חייבים, לשמוע', },
@@ -87,3 +118,8 @@ if __name__ == "__main__":
     res = look_for_entities(words, entities)
     print("number of result: {}".format(len(res)))
     pprint(res)
+    reverse_res = reverse_results(res)
+    # pprint(reverse_res)
+    tei_xml = generate_tei_xml(words, reverse_res)
+    with open('IE26721743_tei.xml', 'w') as f:
+        f.write(tei_xml)
