@@ -111,8 +111,12 @@ def generate_tei_xml(words, res):
             </text>
         </TEI>""")
     content = ""
+    prev_line = None
     while words:
         word = words.pop(0)
+        if prev_line != word['PARENT']:
+            content += "\n</p>\n<p>\n"
+        prev_line = word['PARENT']
         if res.get(word['ID'], None):
             content += '<persName corresp="{}">'.format(res[word['ID']])  # TODO DRY access ID of res
             content += word['CONTENT'] + ' '
