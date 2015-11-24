@@ -39,7 +39,7 @@ def lookup(candidate, entities):
 
 def slice(l, size):
     for i in range(len(l) + 1 - size):
-        yield l[i:i+size]
+        yield l[i:i + size]
 
 
 def candidate2text(candidate):
@@ -83,7 +83,7 @@ if __name__ == "__main__":
         {'id': 2, 'name': 'חייבים, לשמוע', },
         {'id': 3, 'name': 'ישראל, בניגוד', },
         {'id': 4, 'name': 'לחוק, בניגוד', },
-        ]
+    ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
     print("number of result: {}".format(len(res)))
