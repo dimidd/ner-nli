@@ -75,7 +75,7 @@ def gather_info_from_folder(path):
 
 
 if __name__ == "__main__":
-    path = "../nli_entities_sample_data/additional_books/IE26721743/REP26723234/"
+    path = "books2/IE26721743/REP26723234/"
     words = gather_info_from_folder(path)
     # pprint(res)
     entities = [
