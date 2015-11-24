@@ -4,6 +4,7 @@
 from lxml import etree
 from pprint import pprint
 from pathlib import Path
+import db_api
 
 
 def extract_words_from_alto_xml(filepath):
@@ -56,9 +57,9 @@ def look_for_entities(words, entities):
     res = []
     for candidate in slice(words, 2):
         for candidate_as_str in generate_candidate_variants(candidate):
-            t = lookup(candidate_as_str, entities)
+            t = db_api.lookup(candidate_as_str, None)
             if t:
-                res.append((t, candidate, candidate_as_str))
+                res.append((t['id'], candidate, candidate_as_str))
     return res
 
 
