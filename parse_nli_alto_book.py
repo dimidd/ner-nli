@@ -4,6 +4,7 @@
 from lxml import etree
 from pprint import pprint
 from pathlib import Path
+import db_api
 
 
 def extract_words_from_alto_xml(filepath):
@@ -38,11 +39,11 @@ def lookup(candidate, entities):
 
 def slice(l, size):
     for i in range(len(l) + 1 - size):
-        yield l[i:i+size]
+        yield l[i:i + size]
 
 
 def candidate2text(candidate):
-    return ", ".join([w['CONTENT'] for w in candidate])
+    return " ".join([w['CONTENT'] for w in candidate])
 
 
 def generate_candidate_variants(candidate):
@@ -194,9 +195,11 @@ def look_for_entities(words, entities):
     for candidate in slice(words, 2):
         for candidate_as_str in generate_candidate_variants(candidate):
             query_count += 1
-            t = lookup(candidate_as_str, entities)
+            # t = lookup(candidate_as_str, entities)
+            t = db_api.lookup(candidate_as_str)
             if t:
-                res.append((t, candidate, candidate_as_str))
+                # res.append((t, candidate, candidate_as_str))
+                res.append((t['id'], candidate, candidate_as_str))
     print("number of queries: {}".format(query_count))
     return res
 
@@ -213,15 +216,15 @@ def gather_info_from_folder(path):
 
 
 if __name__ == "__main__":
-    path = "../nli_entities_sample_data/additional_books/IE26721743/REP26723234/"
+    path = "books2/IE26721743/REP26723234/"
     words = gather_info_from_folder(path)
     # pprint(res)
     entities = [
-        {'id': 1, 'name': 'לחוק, התורהl', },
-        {'id': 2, 'name': 'חייבים, לשמוע', },
-        {'id': 3, 'name': 'ישראל, בניגוד', },
-        {'id': 4, 'name': 'לחוק, בניגוד', },
-        ]
+        {'id': 1, 'name': 'לחוק התורהl', },
+        {'id': 2, 'name': 'חייבים לשמוע', },
+        {'id': 3, 'name': 'ישראל בניגוד', },
+        {'id': 4, 'name': 'לחוק בניגוד', },
+    ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
     print("number of result: {}".format(len(res)))

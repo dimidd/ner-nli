@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.ccs-gmbh.com/docworks/version20/alto-1-4.xsd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<Description>
+		<MeasurementUnit>inch1200</MeasurementUnit>
+		<sourceImageInformation>
+			<fileName>//Nlinetapp3/CCS/IN/NLI-Rosetta/Batch01/1227225-140/0053.tif</fileName>
+		</sourceImageInformation>
+		<OCRProcessing ID="OCRPROCESSING_1">
+			<preProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+				</processingSoftware>
+			</preProcessingStep>
+			<ocrProcessingStep>
+				<processingSoftware>
+					<softwareCreator>ABBYY (BIT Software), Russia</softwareCreator>
+					<softwareName>FineReader</softwareName>
+					<softwareVersion>11.0</softwareVersion>
+				</processingSoftware>
+			</ocrProcessingStep>
+			<postProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+					<applicationDescription>docWorks: Text modified manually, or automatically replaced</applicationDescription>
+				</processingSoftware>
+			</postProcessingStep>
+		</OCRProcessing>
+	</Description>
+	<Styles>
+		<TextStyle ID="TXT_0" FONTSIZE="8" FONTFAMILY="Times New Roman"/>
+		<TextStyle ID="TXT_1" FONTSIZE="9" FONTFAMILY="Gisha"/>
+		<ParagraphStyle ID="PAR_LEFT" ALIGN="Left"/>
+	</Styles>
+	<Layout>
+		<Page ID="P81" PHYSICAL_IMG_NR="81" HEIGHT="10000" WIDTH="6356" PC="0.909">
+			<TopMargin ID="P81_TM00001" HPOS="0" VPOS="0" WIDTH="6354" HEIGHT="586"/>
+			<LeftMargin ID="P81_LM00001" HPOS="0" VPOS="586" WIDTH="1082" HEIGHT="8343"/>
+			<RightMargin ID="P81_RM00001" HPOS="5594" VPOS="586" WIDTH="761" HEIGHT="8343"/>
+			<BottomMargin ID="P81_BM00001" HPOS="0" VPOS="8929" WIDTH="6354" HEIGHT="1072"/>
+			<PrintSpace ID="P81_PS00001" HPOS="1082" VPOS="586" WIDTH="4512" HEIGHT="8343">
+				<TextBlock ID="P81_TB00001" HPOS="1082" VPOS="3269" WIDTH="4512" HEIGHT="308" STYLEREFS="TXT_0 PAR_LEFT">
+					<TextLine ID="P81_TL00001" HPOS="1087" VPOS="3279" WIDTH="4502" HEIGHT="123">
+						<String ID="P81_ST00001" HPOS="5131" VPOS="3298" WIDTH="458" HEIGHT="80" CONTENT="ממראות" WC="0.98" CC="460006"/>
+						<SP ID="P81_SP00001" HPOS="5589" VPOS="3378" WIDTH="-911"/>
+						<String ID="P81_ST00002" HPOS="4677" VPOS="3298" WIDTH="378" HEIGHT="90" CONTENT="הזוועה" WC="0.98" CC="444065"/>
+						<SP ID="P81_SP00002" HPOS="5589" VPOS="3387" WIDTH="-1497"/>
+						<String ID="P81_ST00003" HPOS="4091" VPOS="3279" WIDTH="520" HEIGHT="99" CONTENT="בירושלים" WC="0.99" CC="00666004"/>
+						<SP ID="P81_SP00003" HPOS="5589" VPOS="3387" WIDTH="-2168"/>
+						<String ID="P81_ST00004" HPOS="3420" VPOS="3298" WIDTH="605" HEIGHT="104" CONTENT="עיר־הקודש" WC="0.68" CC="106044505"/>
+						<SP ID="P81_SP00004" HPOS="5589" VPOS="3402" WIDTH="-2243"/>
+						<String ID="P81_ST00005" HPOS="3345" VPOS="3279" WIDTH="19" HEIGHT="123" CONTENT=":" WC="0.56" CC="4"/>
+						<SP ID="P81_SP00005" HPOS="5589" VPOS="3402" WIDTH="-2621"/>
+						<String ID="P81_ST00006" HPOS="2967" VPOS="3298" WIDTH="265" HEIGHT="80" CONTENT="אנשי" WC="0.97" CC="6620"/>
+						<SP ID="P81_SP00006" HPOS="5589" VPOS="3402" WIDTH="-3197"/>
+						<String ID="P81_ST00007" HPOS="2391" VPOS="3298" WIDTH="501" HEIGHT="80" CONTENT="המשטרה" WC="0.97" CC="526264"/>
+						<SP ID="P81_SP00007" HPOS="5589" VPOS="3402" WIDTH="-3760"/>
+						<String ID="P81_ST00008" HPOS="1828" VPOS="3279" WIDTH="487" HEIGHT="99" CONTENT="מתנפלים" WC="0.98" CC="4543905"/>
+						<SP ID="P81_SP00008" HPOS="5589" VPOS="3402" WIDTH="-4501"/>
+						<String ID="P81_ST00009" HPOS="1087" VPOS="3279" WIDTH="676" HEIGHT="99" CONTENT="בברוטאליות" WC="0.98" CC="6504569016"/>
+					</TextLine>
+					<TextLine ID="P81_TL00002" HPOS="1087" VPOS="3454" WIDTH="4507" HEIGHT="123">
+						<String ID="P81_ST00010" HPOS="5457" VPOS="3454" WIDTH="137" HEIGHT="118" CONTENT="על" WC="0.70" CC="50"/>
+						<SP ID="P81_SP00009" HPOS="5594" VPOS="3572" WIDTH="-594"/>
+						<String ID="P81_ST00011" HPOS="4998" VPOS="3477" WIDTH="354" HEIGHT="80" CONTENT="הנשים" WC="0.98" CC="13605"/>
+						<SP ID="P81_SP00010" HPOS="5594" VPOS="3572" WIDTH="-1190"/>
+						<String ID="P81_ST00012" HPOS="4403" VPOS="3468" WIDTH="491" HEIGHT="94" CONTENT="החרדיות" WC="0.98" CC="0406055"/>
+						<SP ID="P81_SP00011" HPOS="5594" VPOS="3572" WIDTH="-1719"/>
+						<String ID="P81_ST00013" HPOS="3874" VPOS="3477" WIDTH="425" HEIGHT="80" CONTENT="שהפגינו" WC="0.99" CC="0133074"/>
+						<SP ID="P81_SP00012" HPOS="5594" VPOS="3572" WIDTH="-1979"/>
+						<String ID="P81_ST00014" HPOS="3614" VPOS="3477" WIDTH="156" HEIGHT="80" CONTENT="נגד" WC="0.93" CC="555"/>
+						<SP ID="P81_SP00013" HPOS="5594" VPOS="3572" WIDTH="-2300"/>
+						<String ID="P81_ST00015" HPOS="3293" VPOS="3477" WIDTH="213" HEIGHT="99" CONTENT="חוק" WC="0.95" CC="453"/>
+						<SP ID="P81_SP00014" HPOS="5594" VPOS="3576" WIDTH="-2763"/>
+						<String ID="P81_ST00016" HPOS="2830" VPOS="3477" WIDTH="354" HEIGHT="94" CONTENT="~שרות" WC="0.97" CC="01545"/>
+						<SP ID="P81_SP00015" HPOS="5594" VPOS="3576" WIDTH="-3273"/>
+						<String ID="P81_ST00017" HPOS="2320" VPOS="3454" WIDTH="402" HEIGHT="104" CONTENT='לאומי"' WC="0.99" CC="002500"/>
+						<SP ID="P81_SP00016" HPOS="5594" VPOS="3576" WIDTH="-3580"/>
+						<String ID="P81_ST00018" HPOS="2013" VPOS="3454" WIDTH="194" HEIGHT="104" CONTENT="מול" WC="0.97" CC="250"/>
+						<SP ID="P81_SP00017" HPOS="5594" VPOS="3576" WIDTH="-3887"/>
+						<String ID="P81_ST00019" HPOS="1706" VPOS="3477" WIDTH="203" HEIGHT="99" CONTENT="בנין" WC="0.96" CC="5707"/>
+						<SP ID="P81_SP00018" HPOS="5594" VPOS="3576" WIDTH="-4506"/>
+						<String ID="P81_ST00020" HPOS="1087" VPOS="3463" WIDTH="510" HEIGHT="109" CONTENT='ה"כנסת"' WC="0.75" CC="3056200"/>
+					</TextLine>
+				</TextBlock>
+				<TextBlock ID="P81_TB00002" HPOS="1786" VPOS="8570" WIDTH="3066" HEIGHT="359" STYLEREFS="TXT_1 PAR_LEFT">
+					<TextLine ID="P81_TL00003" HPOS="1795" VPOS="8584" WIDTH="3052" HEIGHT="104">
+						<String ID="P81_ST00021" HPOS="4578" VPOS="8603" WIDTH="269" HEIGHT="80" CONTENT="אנשי" WC="0.97" CC="5430"/>
+						<SP ID="P81_SP00019" HPOS="4847" VPOS="8683" WIDTH="-868"/>
+						<String ID="P81_ST00022" HPOS="3978" VPOS="8603" WIDTH="506" HEIGHT="85" CONTENT="המשטרה" WC="0.97" CC="451564"/>
+						<SP ID="P81_SP00020" HPOS="4847" VPOS="8688" WIDTH="-1360"/>
+						<String ID="P81_ST00023" HPOS="3487" VPOS="8603" WIDTH="397" HEIGHT="85" CONTENT="מניסים" WC="0.98" CC="560505"/>
+						<SP ID="P81_SP00021" HPOS="4847" VPOS="8688" WIDTH="-1629"/>
+						<String ID="P81_ST00024" HPOS="3217" VPOS="8603" WIDTH="175" HEIGHT="85" CONTENT="את" WC="0.38" CC="65"/>
+						<SP ID="P81_SP00022" HPOS="4847" VPOS="8688" WIDTH="-2243"/>
+						<String ID="P81_ST00025" HPOS="2603" VPOS="8598" WIDTH="524" HEIGHT="90" CONTENT="המפגינות" WC="0.99" CC="30450615"/>
+						<SP ID="P81_SP00023" HPOS="4847" VPOS="8688" WIDTH="-2739"/>
+						<String ID="P81_ST00026" HPOS="2107" VPOS="8584" WIDTH="406" HEIGHT="104" CONTENT="בסילוני" WC="0.98" CC="6666060"/>
+						<SP ID="P81_SP00024" HPOS="4847" VPOS="8688" WIDTH="-3051"/>
+						<String ID="P81_ST00027" HPOS="1795" VPOS="8603" WIDTH="213" HEIGHT="80" CONTENT="מים" WC="0.97" CC="402"/>
+					</TextLine>
+					<TextLine ID="P81_TL00004" HPOS="3165" VPOS="8797" WIDTH="302" HEIGHT="128">
+						<String ID="P81_ST00028" HPOS="3165" VPOS="8797" WIDTH="302" HEIGHT="128" CONTENT="[עז]" WC="0.96" CC="1556"/>
+					</TextLine>
+				</TextBlock>
+			</PrintSpace>
+		</Page>
+	</Layout>
+</alto>
