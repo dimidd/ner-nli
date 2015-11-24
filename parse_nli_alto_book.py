@@ -4,6 +4,7 @@
 from lxml import etree
 from pprint import pprint
 from pathlib import Path
+import textwrap
 
 
 def extract_words_from_alto_xml(filepath):
@@ -82,25 +83,46 @@ def reverse_results(res):
 
 
 def generate_tei_xml(words, res):
-    str = ""
-    str += "<text>"
-    str += "<body>"
-    str += "<p>"
+    str = textwrap.dedent("""\
+        <?xml version="1.0" encoding="UTF-8"?>
+        <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+        <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+            schematypens="http://purl.oclc.org/dsdl/schematron"?>
+        <TEI xmlns="http://www.tei-c.org/ns/1.0">
+            <teiHeader>
+                <fileDesc>
+                    <titleStmt>
+                        <title>Title</title>
+                    </titleStmt>
+                    <publicationStmt>
+                        <p>Publication Information</p>
+                    </publicationStmt>
+                    <sourceDesc>
+                        <p>Information about the source</p>
+                    </sourceDesc>
+                </fileDesc>
+            </teiHeader>
+            <text>
+                <body>
+                    <p>
+                        {}
+                    </p>
+                </body>
+            </text>
+        </TEI>""")
+    content = ""
     while words:
         word = words.pop(0)
         if res.get(word['ID'], None):
-            str += '<persName corresp="{}">'.format(res[word['ID']])  # TODO DRY access ID of res
-            str += word['CONTENT'] + ' '
-            word = words.pop(0) # for now entities are two words exactly
-            str += word['CONTENT'] + ' '
-            str += '</persName>'
+            content += '<persName corresp="{}">'.format(res[word['ID']])  # TODO DRY access ID of res
+            content += word['CONTENT'] + ' '
+            word = words.pop(0)  # for now entities are two words exactly
+            content += word['CONTENT'] + ' '
+            content += '</persName>'
         else:
-            str += word['CONTENT'] + ' '
+            content += word['CONTENT'] + ' '
 
-    str += "</p>"
-    str += "</body>"
-    str += "</text>"
-    return str
+    return str.format(content)
 
 
 if __name__ == "__main__":
