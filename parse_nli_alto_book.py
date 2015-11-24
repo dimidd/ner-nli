@@ -2,6 +2,7 @@
 # coding=utf-8
 
 from lxml import etree
+from xml.sax.saxutils import escape as xml_escape
 from pprint import pprint
 from pathlib import Path
 import textwrap
@@ -119,12 +120,12 @@ def generate_tei_xml(words, res):
         prev_line = word['PARENT']
         if res.get(word['ID'], None):
             content += '<persName corresp="{}">'.format(res[word['ID']])  # TODO DRY access ID of res
-            content += word['CONTENT'] + ' '
+            content += xml_escape(word['CONTENT']) + ' '
             word = words.pop(0)  # for now entities are two words exactly
-            content += word['CONTENT'] + ' '
+            content += xml_escape(word['CONTENT']) + ' '
             content += '</persName>'
         else:
-            content += word['CONTENT'] + ' '
+            content += xml_escape(word['CONTENT']) + ' '
 
     return str.format(content)
 
