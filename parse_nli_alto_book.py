@@ -43,7 +43,7 @@ def slice(l, size):
 
 
 def candidate2text(candidate):
-    return ", ".join([w['CONTENT'] for w in candidate])
+    return " ".join([w['CONTENT'] for w in candidate])
 
 
 def generate_candidate_variants(candidate):
