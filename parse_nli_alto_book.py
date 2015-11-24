@@ -54,11 +54,14 @@ def generate_candidate_variants(candidate):
 
 def look_for_entities(words, entities):
     res = []
+    query_count = 0
     for candidate in slice(words, 2):
         for candidate_as_str in generate_candidate_variants(candidate):
+            query_count += 1
             t = lookup(candidate_as_str, entities)
             if t:
                 res.append((t, candidate, candidate_as_str))
+    print("number of queries: {}".format(query_count))
     return res
 
 
