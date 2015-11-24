@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.ccs-gmbh.com/docworks/version20/alto-1-4.xsd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<Description>
+		<MeasurementUnit>inch1200</MeasurementUnit>
+		<sourceImageInformation>
+			<fileName>//Nlinetapp3/CCS/IN/NLI-Rosetta/Batch01/1227225-140/0090.tif</fileName>
+		</sourceImageInformation>
+		<OCRProcessing ID="OCRPROCESSING_1">
+			<preProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+				</processingSoftware>
+			</preProcessingStep>
+			<ocrProcessingStep>
+				<processingSoftware>
+					<softwareCreator>ABBYY (BIT Software), Russia</softwareCreator>
+					<softwareName>FineReader</softwareName>
+					<softwareVersion>11.0</softwareVersion>
+				</processingSoftware>
+			</ocrProcessingStep>
+		</OCRProcessing>
+	</Description>
+	<Styles>
+		<TextStyle ID="TXT_0" FONTSIZE="12" FONTFAMILY="Times New Roman" FONTSTYLE="bold"/>
+		<ParagraphStyle ID="PAR_LEFT" ALIGN="Left"/>
+	</Styles>
+	<Layout>
+		<Page ID="P5" PHYSICAL_IMG_NR="5" HEIGHT="9988" WIDTH="6108" PC="0.820">
+			<TopMargin ID="P5_TM00001" HPOS="0" VPOS="0" WIDTH="6109" HEIGHT="954"/>
+			<LeftMargin ID="P5_LM00001" HPOS="0" VPOS="954" WIDTH="265" HEIGHT="9019"/>
+			<RightMargin ID="P5_RM00001" HPOS="5962" VPOS="954" WIDTH="146" HEIGHT="9019"/>
+			<BottomMargin ID="P5_BM00001" HPOS="0" VPOS="9973" WIDTH="6109" HEIGHT="14"/>
+			<PrintSpace ID="P5_PS00001" HPOS="265" VPOS="954" WIDTH="5698" HEIGHT="9019">
+				<TextBlock ID="P5_TB00001" HPOS="945" VPOS="954" WIDTH="2693" HEIGHT="487" STYLEREFS="TXT_0 PAR_LEFT">
+					<TextLine ID="P5_TL00001" HPOS="1063" VPOS="1115" WIDTH="2414" HEIGHT="184">
+						<String ID="P5_ST00001" HPOS="3142" VPOS="1157" WIDTH="335" HEIGHT="123" CONTENT="פאר" WC="0.94" CC="266"/>
+						<SP ID="P5_SP00001" HPOS="3477" VPOS="1280" WIDTH="-854"/>
+						<String ID="P5_ST00002" HPOS="2622" VPOS="1148" WIDTH="397" HEIGHT="123" CONTENT="הדור" WC="0.95" CC="5765"/>
+						<SP ID="P5_SP00002" HPOS="3477" VPOS="1280" WIDTH="-1034"/>
+						<String ID="P5_ST00003" HPOS="2443" VPOS="1153" WIDTH="80" HEIGHT="146" CONTENT="/" WC="0.74" CC="2"/>
+						<SP ID="P5_SP00003" HPOS="3477" VPOS="1299" WIDTH="-1397"/>
+						<String ID="P5_ST00004" HPOS="2079" VPOS="1134" WIDTH="255" HEIGHT="128" CONTENT="חיי" WC="0.93" CC="666"/>
+						<SP ID="P5_SP00004" HPOS="3477" VPOS="1299" WIDTH="-2413"/>
+						<String ID="P5_ST00005" HPOS="1063" VPOS="1115" WIDTH="902" HEIGHT="165" CONTENT="החזון־איש" WC="0.54" CC="775670006"/>
+					</TextLine>
+				</TextBlock>
+			</PrintSpace>
+		</Page>
+	</Layout>
+</alto>

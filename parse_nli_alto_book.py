@@ -5,6 +5,7 @@ from lxml import etree
 from xml.sax.saxutils import escape as xml_escape
 from pprint import pprint
 from pathlib import Path
+import db_api
 import textwrap
 
 
@@ -40,14 +41,150 @@ def lookup(candidate, entities):
 
 def slice(l, size):
     for i in range(len(l) + 1 - size):
-        yield l[i:i+size]
+        yield l[i:i + size]
 
 
 def candidate2text(candidate):
-    return ", ".join([w['CONTENT'] for w in candidate])
+    return " ".join([w['CONTENT'] for w in candidate])
 
 
 def generate_candidate_variants(candidate):
+    just_the_words = [w['CONTENT'] for w in candidate]
+    words_to_discard = [
+        'את',
+        'של',
+        'על',
+        'לא',
+        'כי',
+        'כל',
+        'הוא',
+        'עם',
+        'גם',
+        'זה',
+        'אל',
+        'ולא',
+        'היה',
+        'שלא',
+        'לו',
+        'זו',
+        'אם',
+        'אין',
+        'מה',
+        'בכל',
+        'מן',
+        'אחרי',
+        'עד',
+        'אלא',
+        'רק',
+        'אף',
+        'אבל',
+        'יש',
+        'בין',
+        'אנו',
+        'עוד',
+        'ביום',
+        "עמ'",
+        'נגד',
+        'י',
+        'אך',
+        'הם',
+        'היא',
+        'או',
+        'ראה',
+        'כדי',
+        ':',
+        'להוסיף:',
+        'אני',
+        'אותו',
+        'להם',
+        'וראה',
+        'אולם',
+        'שאין',
+        'כן',
+        'אמר',
+        'לפי',
+        'ואל',
+        'כמה',
+        'באותו',
+        'אליו',
+        'שם',
+        'מתוך',
+        'מר',
+        'לנו',
+        'בו',
+        'מי',
+        'יותר',
+        "גל'",
+        'בת',
+        'אינו',
+        'כאשר',
+        'אצל',
+        'שום',
+        'לכל',
+        'כך',
+        'ועל',
+        "ה'",
+        'אז',
+        'שנה',
+        'שהוא',
+        'מפני',
+        'היו',
+        'כפי',
+        'מאת',
+        'וכל',
+        'הרי',
+        'היתה',
+        'בפני',
+        'מכל',
+        'לי',
+        'להלן',
+        'זאת',
+        'בענין',
+        'צריך',
+        'להיות',
+        'הלא',
+        'אחת',
+        '1',
+        '?',
+        'פה',
+        'זו,',
+        'זה,',
+        'ואין',
+        'בעד',
+        'אפילו',
+        'עליו',
+        'כבר',
+        'וכן',
+        'ואם',
+        'הנ"ל',
+        'בקרב',
+        'בספר',
+        'בהם',
+        'אב',
+        'עצמו',
+        'מטעם',
+        'מהם',
+        'מ.',
+        'לפניו',
+        'כאילו',
+        'בזה',
+        'אסור',
+        '*',
+        '.',
+        'שהיא',
+        'יכול',
+        'בשנת',
+        'פח.',
+        'לה',
+        'חזר',
+        'זה.',
+        'אלה',
+        '♦',
+        '-',
+    ]
+    for w in just_the_words:
+        if w in words_to_discard:
+            return  # skip this candidate
     candidate_as_str = candidate2text(candidate)
     yield candidate_as_str
     candidate_as_str = candidate2text(candidate[::-1])
@@ -56,11 +193,16 @@ def generate_candidate_variants(candidate):
 
 def look_for_entities(words, entities):
     res = []
+    query_count = 0
     for candidate in slice(words, 2):
         for candidate_as_str in generate_candidate_variants(candidate):
-            t = lookup(candidate_as_str, entities)
+            query_count += 1
+            # t = lookup(candidate_as_str, entities)
+            t = db_api.lookup(candidate_as_str)
             if t:
-                res.append((t, candidate, candidate_as_str))
+                # res.append((t, candidate, candidate_as_str))
+                res.append((t['id'], candidate, candidate_as_str))
+    print("number of queries: {}".format(query_count))
     return res
 
 
@@ -131,16 +273,16 @@ def generate_tei_xml(words, res):
 
 
 if __name__ == "__main__":
-    path = "../nli_entities_sample_data/additional_books/IE26721743/REP26723234/"
+    path = "books2/IE26721743/REP26723234/"
     words = gather_info_from_folder(path)
     print("num of words:", len(words))
     # pprint(words)
     entities = [
-        {'id': 1, 'name': 'לחוק, התורהl', },
-        {'id': 2, 'name': 'חייבים, לשמוע', },
-        {'id': 3, 'name': 'ישראל, בניגוד', },
-        {'id': 4, 'name': 'לחוק, בניגוד', },
-        ]
+        {'id': 1, 'name': 'לחוק התורהl', },
+        {'id': 2, 'name': 'חייבים לשמוע', },
+        {'id': 3, 'name': 'ישראל בניגוד', },
+        {'id': 4, 'name': 'לחוק בניגוד', },
+    ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
     print("number of result: {}".format(len(res)))

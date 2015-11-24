@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.ccs-gmbh.com/docworks/version20/alto-1-4.xsd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<Description>
+		<MeasurementUnit>inch1200</MeasurementUnit>
+		<sourceImageInformation>
+			<fileName>//Nlinetapp3/CCS/IN/NLI-Rosetta/Batch01/1227225-140/0026.tif</fileName>
+		</sourceImageInformation>
+		<OCRProcessing ID="OCRPROCESSING_1">
+			<preProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+				</processingSoftware>
+			</preProcessingStep>
+			<ocrProcessingStep>
+				<processingSoftware>
+					<softwareCreator>ABBYY (BIT Software), Russia</softwareCreator>
+					<softwareName>FineReader</softwareName>
+					<softwareVersion>11.0</softwareVersion>
+				</processingSoftware>
+			</ocrProcessingStep>
+			<postProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+					<applicationDescription>docWorks: Text modified manually, or automatically replaced</applicationDescription>
+				</processingSoftware>
+			</postProcessingStep>
+		</OCRProcessing>
+	</Description>
+	<Styles>
+		<TextStyle ID="TXT_0" FONTSIZE="20" FONTFAMILY="Courier New"/>
+		<ParagraphStyle ID="PAR_RIGHT" ALIGN="Right"/>
+	</Styles>
+	<Layout>
+		<Page ID="P135" PHYSICAL_IMG_NR="135" HEIGHT="9968" WIDTH="6364" PC="0.980">
+			<TopMargin ID="P135_TM00001" HPOS="0" VPOS="0" WIDTH="6364" HEIGHT="1039"/>
+			<LeftMargin ID="P135_LM00001" HPOS="0" VPOS="1039" WIDTH="0" HEIGHT="8329"/>
+			<RightMargin ID="P135_RM00001" HPOS="6359" VPOS="1039" WIDTH="5" HEIGHT="8329"/>
+			<BottomMargin ID="P135_BM00001" HPOS="0" VPOS="9369" WIDTH="6364" HEIGHT="600"/>
+			<PrintSpace ID="P135_PS00001" HPOS="0" VPOS="1039" WIDTH="6359" HEIGHT="8329">
+				<TextBlock ID="P135_TB00001" HPOS="2457" VPOS="2584" WIDTH="1743" HEIGHT="194" STYLEREFS="TXT_0 PAR_RIGHT">
+					<TextLine ID="P135_TL00001" HPOS="2457" VPOS="2584" WIDTH="1743" HEIGHT="184">
+						<String ID="P135_ST00001" HPOS="2457" VPOS="2584" WIDTH="1743" HEIGHT="184" CONTENT="נספחות" WC="0.98" CC="000000"/>
+					</TextLine>
+				</TextBlock>
+			</PrintSpace>
+		</Page>
+	</Layout>
+</alto>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.ccs-gmbh.com/docworks/version20/alto-1-4.xsd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<Description>
+		<MeasurementUnit>inch1200</MeasurementUnit>
+		<sourceImageInformation>
+			<fileName>//Nlinetapp3/CCS/IN/NLI-Rosetta/Batch01/1227225-140/0092.tif</fileName>
+		</sourceImageInformation>
+		<OCRProcessing ID="OCRPROCESSING_1">
+			<preProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+				</processingSoftware>
+			</preProcessingStep>
+			<ocrProcessingStep>
+				<processingSoftware>
+					<softwareCreator>CCS Content Conversion Specialists GmbH, Germany</softwareCreator>
+					<softwareName>CCS docWorks</softwareName>
+					<softwareVersion>6.8-1.25</softwareVersion>
+				</processingSoftware>
+			</ocrProcessingStep>
+		</OCRProcessing>
+	</Description>
+	<Styles/>
+	<Layout>
+		<Page ID="P1" PHYSICAL_IMG_NR="1" HEIGHT="10452" WIDTH="6800">
+			<TopMargin ID="P1_TM00001" HPOS="0" VPOS="0" WIDTH="6798" HEIGHT="0"/>
+			<LeftMargin ID="P1_LM00001" HPOS="0" VPOS="0" WIDTH="0" HEIGHT="10446"/>
+			<RightMargin ID="P1_RM00001" HPOS="6794" VPOS="0" WIDTH="5" HEIGHT="10446"/>
+			<BottomMargin ID="P1_BM00001" HPOS="0" VPOS="10446" WIDTH="6798" HEIGHT="5"/>
+			<PrintSpace ID="P1_PS00001" HPOS="0" VPOS="0" WIDTH="6794" HEIGHT="10446"/>
+		</Page>
+	</Layout>
+</alto>
