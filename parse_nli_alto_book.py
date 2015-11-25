@@ -5,7 +5,7 @@ from lxml import etree
 from xml.sax.saxutils import escape as xml_escape
 from pprint import pprint
 from pathlib import Path
-import db_api
+# import db_api
 import textwrap
 
 
@@ -197,11 +197,11 @@ def look_for_entities(words, entities):
     for candidate in slice(words, 2):
         for candidate_as_str in generate_candidate_variants(candidate):
             query_count += 1
-            # t = lookup(candidate_as_str, entities)
-            t = db_api.lookup(candidate_as_str)
+            t = lookup(candidate_as_str, entities)
+            # t = db_api.lookup(candidate_as_str)
             if t:
-                # res.append((t, candidate, candidate_as_str))
-                res.append((t['id'], candidate, candidate_as_str))
+                res.append((t, candidate, candidate_as_str))
+                # res.append((t['id'], candidate, candidate_as_str))
     print("number of queries: {}".format(query_count))
     return res
 
@@ -224,6 +224,25 @@ def reverse_results(res):
             reverse_res[word['ID']] = r[0]  # the id in the database
     return reverse_res
 
+
+def generate_tei_txt(words, res):
+    content = ""
+    prev_line = None
+    while words:
+        word = words.pop(0)
+        if prev_line != word['PARENT']:
+            content += "\n"
+        prev_line = word['PARENT']
+        if res.get(word['ID'], None):
+            content += '<persName corresp="{}">'.format(res[word['ID']])  # TODO DRY access ID of res
+            content += xml_escape(word['CONTENT']) + ' '
+            word = words.pop(0)  # for now entities are two words exactly
+            content += xml_escape(word['CONTENT']) + ' '
+            content += '</persName>'
+        else:
+            content += xml_escape(word['CONTENT']) + ' '
+
+    return content
 
 def generate_tei_xml(words, res):
     str = textwrap.dedent("""\
@@ -278,10 +297,10 @@ if __name__ == "__main__":
     print("num of words:", len(words))
     # pprint(words)
     entities = [
-        {'id': 1, 'name': 'לחוק התורהl', },
-        {'id': 2, 'name': 'חייבים לשמוע', },
-        {'id': 3, 'name': 'ישראל בניגוד', },
-        {'id': 4, 'name': 'לחוק בניגוד', },
+        # {'id': 1, 'name': 'לחוק התורהl', },
+        # {'id': 2, 'name': 'חייבים לשמוע', },
+        # {'id': 3, 'name': 'ישראל בניגוד', },
+        # {'id': 4, 'name': 'לחוק בניגוד', },
     ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
@@ -289,6 +308,9 @@ if __name__ == "__main__":
     pprint(res)
     reverse_res = reverse_results(res)
     # pprint(reverse_res)
+    tei_txt = generate_tei_txt(words, reverse_res)
+    with open('IE26721743_tei.txt', 'w') as f:
+        f.write(tei_txt)
     tei_xml = generate_tei_xml(words, reverse_res)
     with open('IE26721743_tei.xml', 'w') as f:
         f.write(tei_xml)
