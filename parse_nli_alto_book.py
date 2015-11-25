@@ -57,9 +57,11 @@ def look_for_entities(words, entities):
     res = []
     for candidate in slice(words, 2):
         for candidate_as_str in generate_candidate_variants(candidate):
-            t = db_api.lookup(candidate_as_str, None)
+            t = db_api.lookup(candidate_as_str)
             if t:
-                res.append((t['id'], candidate, candidate_as_str))
+                for a in t['aliases']:
+                    if a.find(candidate_as_str) > -1:
+                        res.append((t['id'], a, candidate, candidate_as_str))
     return res
 
 
