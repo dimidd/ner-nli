@@ -11,21 +11,15 @@ def parse_file_and_add_to_es(filename, es, index_name, id=0):
 
     for div in tree.xpath("//def:div[@LABEL]",
                           namespaces={'def': 'http://www.loc.gov/METS/'}):
-        if div.get("TYPE") != "TEXT":
-            continue
-        chapter_div = div.getparent()
-        while "CHAPTER" != chapter_div.get("TYPE"):
-            chapter_div = chapter_div.getparent()
-        # print(
-        #    "CHAPTER ORDER:", chapter_div.get("ORDER"),
-        #    "ORDER:", div.get("ORDER"),
-        #    "LABEL:", div.get("LABEL")[:40]
-        #    )
+        # chapter_div = div.getparent()
+        # while "CHAPTER" != chapter_div.get("TYPE"):
+        #     chapter_div = chapter_div.getparent()
         es.index(index=index_name, doc_type="doc_test", id=id, body={
             "filename": filename,
-            "chapter_order": chapter_div.get("ORDER"),
-            "order:": div.get("ORDER"),
-            "label:": div.get("LABEL"),
+            # "chapter_div_id": chapter_div.get("ID"),
+            "div_id": div.get("ID"),
+            "label": div.get("LABEL"),
+            "mets_type": div.get("TYPE"),
         })
         id += 1
 

@@ -18,10 +18,10 @@ if __name__ == "__main__":
                     "type": "string",
                     "index": "not_analyzed",
                 },
-                "chapter_div_id": {
-                    "type": "string",
-                    "index": "not_analyzed",
-                },
+                # "chapter_div_id": {
+                #     "type": "string",
+                #     "index": "not_analyzed",
+                # },
                 "div_id": {
                     "type": "string",
                     "index": "not_analyzed",
