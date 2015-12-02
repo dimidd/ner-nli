@@ -3,6 +3,7 @@
 
 from lxml import etree
 from elasticsearch import Elasticsearch
+import os
 
 
 def parse_file_and_add_to_es(filename, es, index_name, id=0):
@@ -22,12 +23,19 @@ def parse_file_and_add_to_es(filename, es, index_name, id=0):
             "mets_type": div.get("TYPE"),
         })
         id += 1
+    return id
 
 
 if __name__ == "__main__":
     # parse_file_and_add_to_es("books_fmt/2704714-10-TEXT_utf8.xml")  # book in French
     # parse_file_and_add_to_es("books_fmt/2696068-10-TEXT_utf8.xml")  # book in English
     es = Elasticsearch()
+    books_directory = "books_fmt"
+    old_directory = os.getcwd()
+    os.chdir(books_directory)
     index_name = "books"
     es_count = es.count(index=index_name)['count']
-    parse_file_and_add_to_es("books_fmt/1227225-140-TEXT_utf8.xml", es, index_name, es_count)  # book in Hebrew
+    id_count = parse_file_and_add_to_es("1227225-140-TEXT_utf8.xml", es, index_name, es_count)  # book in Hebrew
+    print("indexed {} documents".format(id_count))
+    os.chdir(old_directory)
+
