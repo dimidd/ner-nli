@@ -4,9 +4,18 @@
 from lxml import etree
 from elasticsearch import Elasticsearch
 import os
+import json
 
 
 def parse_file_and_add_to_es(filename, es, index_name, id=0):
+    # ensure we won't enter same file again with new ids
+    query = {"match": {"filename": filename}}
+    r = es.search(index=index_name,
+                  doc_type="doc_test",
+                  body=json.dumps({"query": query}))
+    if (r['hits']['total']) > 0:
+        return 0
+
     with open(filename, "rb") as f:
         tree = etree.parse(f)
 
