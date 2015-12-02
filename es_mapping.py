@@ -18,11 +18,13 @@ if __name__ == "__main__":
                     "type": "string",
                     "index": "not_analyzed",
                 },
-                "chapter_div": {
-                    "type": "long",
+                "chapter_div_id": {
+                    "type": "string",
+                    "index": "not_analyzed",
                 },
-                "div": {
-                    "type": "long",
+                "div_id": {
+                    "type": "string",
+                    "index": "not_analyzed",
                 },
                 "mets_type": {
                     "type": "string",
