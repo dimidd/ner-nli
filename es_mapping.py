@@ -9,10 +9,10 @@ import json
 if __name__ == "__main__":
     es = Elasticsearch()
     index_name = "books"
-    # doc_type = "doc_test"
+    doc_type = "mets_paragraph"
 
     mapping = {
-        index_name: {
+        doc_type: {
             "properties": {
                 "filename": {
                     "type": "string",
