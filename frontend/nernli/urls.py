@@ -20,6 +20,8 @@ from page import views as page_views
 
 urlpatterns = [
 
+    url(r'^$', page_views.alto_section),
+    url(r'^alto-section/$', page_views.alto_section),
     url(r'^alto-section/(?P<section_id>.*)$', page_views.alto_section),
 
     url(r'^admin/', admin.site.urls),
