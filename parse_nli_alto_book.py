@@ -1,10 +1,11 @@
 #! /usr/bin/python3
 # coding=utf-8
 
+import re
 from lxml import etree
 from pprint import pprint
 from pathlib import Path
-import db_api
+# import db_api
 
 
 def extract_words_from_alto_xml(filepath):
@@ -44,6 +45,11 @@ def slice(l, size):
 
 def candidate2text(candidate):
     return " ".join([w['CONTENT'] for w in candidate])
+
+
+def remove_special_chars(candidate_as_str):
+    temp_str = re.sub(r'[:/-_־,\'".!]', ' ', candidate_as_str)
+    return re.sub(r' +', ' ', temp_str.strip())
 
 
 def generate_candidate_variants(candidate):
@@ -185,8 +191,10 @@ def generate_candidate_variants(candidate):
             return  # skip this candidate
     candidate_as_str = candidate2text(candidate)
     yield candidate_as_str
+    yield remove_special_chars(candidate_as_str)
     candidate_as_str = candidate2text(candidate[::-1])
     yield candidate_as_str
+    yield remove_special_chars(candidate_as_str)
 
 
 def look_for_entities(words, entities):
@@ -194,12 +202,13 @@ def look_for_entities(words, entities):
     query_count = 0
     for candidate in slice(words, 2):
         for candidate_as_str in generate_candidate_variants(candidate):
+            # print(candidate_as_str)
             query_count += 1
-            # t = lookup(candidate_as_str, entities)
-            t = db_api.lookup(candidate_as_str)
+            t = lookup(candidate_as_str, entities)
+            # t = db_api.lookup(candidate_as_str)
             if t:
-                # res.append((t, candidate, candidate_as_str))
-                res.append((t['id'], candidate, candidate_as_str))
+                res.append((t, candidate, candidate_as_str))
+                # res.append((t['id'], candidate, candidate_as_str))
     print("number of queries: {}".format(query_count))
     return res
 
@@ -224,6 +233,7 @@ if __name__ == "__main__":
         {'id': 2, 'name': 'חייבים לשמוע', },
         {'id': 3, 'name': 'ישראל בניגוד', },
         {'id': 4, 'name': 'לחוק בניגוד', },
+        {'id': 5, 'name': 'יונתן בן עוזיאל', },
     ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
