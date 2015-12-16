@@ -190,12 +190,14 @@ def generate_candidate_variants(candidate):
         if w in words_to_discard:
             return  # skip this candidate
     candidate_as_str = candidate2text(candidate)
-    yield candidate_as_str
-    yield remove_special_chars(candidate_as_str)
+    candidates = set()
+    candidates.add(candidate_as_str)
+    candidates.add(remove_special_chars(candidate_as_str))
     candidate_as_str = candidate2text(candidate[::-1])
-    yield candidate_as_str
-    yield remove_special_chars(candidate_as_str)
-
+    candidates.add(candidate_as_str)
+    candidates.add(remove_special_chars(candidate_as_str))
+    for i in candidates:
+        yield i
 
 def look_for_entities(words, entities):
     res = []
