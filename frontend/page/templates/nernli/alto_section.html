@@ -1,3 +1,11 @@
 hello alto section {{section_id}}
 <br/>
 xml_filename: {{xml_filename}}
+<br/>
+{% for paragraph in paragraphs %}
+    <p dir="rtl">
+        {% for line in paragraph %}
+            {% for word in line %}{{ word }} {% endfor %}<br/>
+        {% endfor %}
+    </p>
+{% endfor %}
