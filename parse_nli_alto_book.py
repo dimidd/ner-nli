@@ -1,10 +1,14 @@
 #! /usr/bin/python3
 # coding=utf-8
 
+import re
 from lxml import etree
 from pprint import pprint
 from pathlib import Path
-import db_api
+# import db_api
+
+
+chars_to_remove = re.compile(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+')
 
 
 def extract_words_from_alto_xml(filepath):
@@ -46,22 +50,171 @@ def candidate2text(candidate):
     return " ".join([w['CONTENT'] for w in candidate])
 
 
-def generate_candidate_variants(candidate):
-    candidate_as_str = candidate2text(candidate)
-    yield candidate_as_str
-    candidate_as_str = candidate2text(candidate[::-1])
-    yield candidate_as_str
+def remove_special_chars(candidate_as_str):
+    temp_str = chars_to_remove.sub(' ', candidate_as_str)
+    return re.sub(r' +', ' ', temp_str.strip())
 
+
+def generate_candidate_variants(candidate):
+    just_the_words = [w['CONTENT'] for w in candidate]
+    words_to_discard = [
+        'את',
+        'של',
+        'על',
+        'לא',
+        'כי',
+        'כל',
+        'הוא',
+        'עם',
+        'גם',
+        'זה',
+        'אל',
+        'ולא',
+        'היה',
+        'שלא',
+        'לו',
+        'זו',
+        'אם',
+        'אין',
+        'מה',
+        'בכל',
+        'מן',
+        'אחרי',
+        'עד',
+        'אלא',
+        'רק',
+        'אף',
+        'אבל',
+        'יש',
+        'בין',
+        'אנו',
+        'עוד',
+        'ביום',
+        "עמ'",
+        'נגד',
+        'י',
+        'אך',
+        'הם',
+        'היא',
+        'או',
+        'ראה',
+        'כדי',
+        ':',
+        'להוסיף:',
+        'אני',
+        'אותו',
+        'להם',
+        'וראה',
+        'אולם',
+        'שאין',
+        'כן',
+        'אמר',
+        'לפי',
+        'ואל',
+        'כמה',
+        'באותו',
+        'אליו',
+        'שם',
+        'מתוך',
+        'מר',
+        'לנו',
+        'בו',
+        'מי',
+        'יותר',
+        "גל'",
+        'בת',
+        'אינו',
+        'כאשר',
+        'אצל',
+        'שום',
+        'לכל',
+        'כך',
+        'ועל',
+        "ה'",
+        'אז',
+        'שנה',
+        'שהוא',
+        'מפני',
+        'היו',
+        'כפי',
+        'מאת',
+        'וכל',
+        'הרי',
+        'היתה',
+        'בפני',
+        'מכל',
+        'לי',
+        'להלן',
+        'זאת',
+        'בענין',
+        'צריך',
+        'להיות',
+        'הלא',
+        'אחת',
+        '1',
+        '?',
+        'פה',
+        'זו,',
+        'זה,',
+        'ואין',
+        'בעד',
+        'אפילו',
+        'עליו',
+        'כבר',
+        'וכן',
+        'ואם',
+        'הנ"ל',
+        'בקרב',
+        'בספר',
+        'בהם',
+        'אב',
+        'עצמו',
+        'מטעם',
+        'מהם',
+        'מ.',
+        'לפניו',
+        'כאילו',
+        'בזה',
+        'אסור',
+        '*',
+        '.',
+        'שהיא',
+        'יכול',
+        'בשנת',
+        'פח.',
+        'לה',
+        'חזר',
+        'זה.',
+        'אלה',
+        '♦',
+        '-',
+    ]
+    for w in just_the_words:
+        if w in words_to_discard:
+            return  # skip this candidate
+    candidate_as_str = candidate2text(candidate)
+    candidates = set()
+    candidates.add(candidate_as_str)
+    candidates.add(remove_special_chars(candidate_as_str))
+    candidate_as_str = candidate2text(candidate[::-1])
+    candidates.add(candidate_as_str)
+    candidates.add(remove_special_chars(candidate_as_str))
+    for i in candidates:
+        yield i
 
 def look_for_entities(words, entities):
     res = []
+    query_count = 0
     for candidate in slice(words, 2):
         for candidate_as_str in generate_candidate_variants(candidate):
-            t = db_api.lookup(candidate_as_str)
+            # print(candidate_as_str)
+            query_count += 1
+            t = lookup(candidate_as_str, entities)
+            # t = db_api.lookup(candidate_as_str)
             if t:
-                for a in t['aliases']:
-                    if a.find(candidate_as_str) > -1:
-                        res.append((t['id'], a, candidate, candidate_as_str))
+                res.append((t, candidate, candidate_as_str))
+                # res.append((t['id'], candidate, candidate_as_str))
+    print("number of queries: {}".format(query_count))
     return res
 
 
@@ -81,10 +234,11 @@ if __name__ == "__main__":
     words = gather_info_from_folder(path)
     # pprint(res)
     entities = [
-        {'id': 1, 'name': 'לחוק, התורהl', },
-        {'id': 2, 'name': 'חייבים, לשמוע', },
-        {'id': 3, 'name': 'ישראל, בניגוד', },
-        {'id': 4, 'name': 'לחוק, בניגוד', },
+        {'id': 1, 'name': 'לחוק התורהl', },
+        {'id': 2, 'name': 'חייבים לשמוע', },
+        {'id': 3, 'name': 'ישראל בניגוד', },
+        {'id': 4, 'name': 'לחוק בניגוד', },
+        {'id': 5, 'name': 'יונתן בן עוזיאל', },
     ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
