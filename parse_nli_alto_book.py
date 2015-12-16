@@ -8,6 +8,9 @@ from pathlib import Path
 # import db_api
 
 
+chars_to_remove = re.compile(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+')
+
+
 def extract_words_from_alto_xml(filepath):
     """
     extract words from an xml file in alto format
@@ -48,7 +51,7 @@ def candidate2text(candidate):
 
 
 def remove_special_chars(candidate_as_str):
-    temp_str = re.sub(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+', ' ', candidate_as_str)
+    temp_str = chars_to_remove.sub(' ', candidate_as_str)
     return re.sub(r' +', ' ', temp_str.strip())
 
 
