@@ -48,7 +48,7 @@ def candidate2text(candidate):
 
 
 def remove_special_chars(candidate_as_str):
-    temp_str = re.sub(r'[:/-_־,\'".!]', ' ', candidate_as_str)
+    temp_str = re.sub(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+', ' ', candidate_as_str)
     return re.sub(r' +', ' ', temp_str.strip())
 
 
