@@ -1,0 +1,11 @@
+/.idea
+/venv
+/db.sqlite3
+/media
+/static
+/node_modules
+/db-testquick.sqlite3
+/src
+/celerybeat-schedule
+/.project
+/.pydevproject
