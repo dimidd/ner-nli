@@ -194,10 +194,10 @@ def generate_candidate_variants(candidate):
             return  # skip this candidate
     candidate_as_str = candidate2text(candidate)
     candidates = set()
-    candidates.add(candidate_as_str)
+    # candidates.add(candidate_as_str)
     candidates.add(remove_special_chars(candidate_as_str))
     candidate_as_str = candidate2text(candidate[::-1])
-    candidates.add(candidate_as_str)
+    # candidates.add(candidate_as_str)
     candidates.add(remove_special_chars(candidate_as_str))
     for i in candidates:
         yield i
