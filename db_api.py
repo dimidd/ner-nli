@@ -23,6 +23,8 @@ def lookup(alias):
         return []
     good_matches = []
     for r in res:
+        if r['type'] == 'other':
+            continue
         for a in r['aliases']:
             if regex_alias.match(a):
                 good_matches.append(r)
