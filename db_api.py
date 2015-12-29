@@ -16,7 +16,11 @@ def lookup(alias):
     res = C.find({"$text": {"$search": alias_for_phrase_search}})
 
     alias_for_regex_search = r'^{}$'.format(alias)
-    regex_alias = re.compile(alias_for_regex_search)
+    try:
+        regex_alias = re.compile(alias_for_regex_search)
+    except:
+        print("problem with: '{}'!".format(alias))
+        return []
     good_matches = []
     for r in res:
         for a in r['aliases']:
