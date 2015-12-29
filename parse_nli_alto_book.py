@@ -47,7 +47,7 @@ def slice(l, size):
 
 
 def candidate2text(candidate):
-    return " ".join([w['CONTENT'] for w in candidate])
+    return " ".join([w for w in candidate])
 
 
 def remove_special_chars(candidate_as_str):
@@ -56,8 +56,9 @@ def remove_special_chars(candidate_as_str):
 
 
 def generate_candidate_variants(candidate):
-    just_the_words = [w['CONTENT'] for w in candidate]
+    just_the_words = [remove_special_chars(w['CONTENT']) for w in candidate]
     words_to_discard = [
+        '',
         'את',
         'של',
         'על',
@@ -189,16 +190,15 @@ def generate_candidate_variants(candidate):
         '♦',
         '-',
     ]
+
     for w in just_the_words:
         if w in words_to_discard:
             return  # skip this candidate
-    candidate_as_str = candidate2text(candidate)
+    candidate_as_str = candidate2text(just_the_words)
     candidates = set()
-    # candidates.add(candidate_as_str)
-    candidates.add(remove_special_chars(candidate_as_str))
-    candidate_as_str = candidate2text(candidate[::-1])
-    # candidates.add(candidate_as_str)
-    candidates.add(remove_special_chars(candidate_as_str))
+    candidates.add(candidate_as_str)
+    candidate_as_str = candidate2text(just_the_words[::-1])
+    candidates.add(candidate_as_str)
     for i in candidates:
         yield i
 
