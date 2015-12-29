@@ -231,8 +231,11 @@ def gather_info_from_folder(path):
 
 
 if __name__ == "__main__":
-    path = "books2/IE26721743/REP26723234/"
-    words = gather_info_from_folder(path)
+    page_file = 'books2/IE26721743/REP26723234/1227225-140-0066.xml'
+    words = extract_words_from_alto_xml(Path(page_file))
+
+    # path = "books2/IE26721743/REP26723234/"
+    # words = gather_info_from_folder(path)
     # pprint(res)
     entities = [
         {'id': 1, 'name': 'לחוק התורהl', },
