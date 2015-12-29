@@ -211,9 +211,10 @@ def look_for_entities(words, entities):
             query_count += 1
             # t = lookup(candidate_as_str, entities)
             t = db_api.lookup(candidate_as_str)
-            if t:
-                # res.append((t, candidate, candidate_as_str))
-                res.append((t['id'], candidate, candidate_as_str))
+            # if t:
+            #     res.append((t, candidate, candidate_as_str))
+            for r in t:
+                res.append((r['id'], r["aliases"][0], candidate, candidate_as_str))
     print("number of queries: {}".format(query_count))
     return res
 
