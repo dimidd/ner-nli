@@ -47,7 +47,7 @@ def slice(l, size):
 
 
 def candidate2text(candidate):
-    return " ".join([w['CONTENT'] for w in candidate])
+    return " ".join([w for w in candidate])
 
 
 def remove_special_chars(candidate_as_str):
@@ -56,8 +56,9 @@ def remove_special_chars(candidate_as_str):
 
 
 def generate_candidate_variants(candidate):
-    just_the_words = [w['CONTENT'] for w in candidate]
+    just_the_words = [remove_special_chars(w['CONTENT']) for w in candidate]
     words_to_discard = [
+        '',
         'את',
         'של',
         'על',
@@ -189,16 +190,15 @@ def generate_candidate_variants(candidate):
         '♦',
         '-',
     ]
+
     for w in just_the_words:
         if w in words_to_discard:
             return  # skip this candidate
-    candidate_as_str = candidate2text(candidate)
+    candidate_as_str = candidate2text(just_the_words)
     candidates = set()
     candidates.add(candidate_as_str)
-    candidates.add(remove_special_chars(candidate_as_str))
-    candidate_as_str = candidate2text(candidate[::-1])
+    candidate_as_str = candidate2text(just_the_words[::-1])
     candidates.add(candidate_as_str)
-    candidates.add(remove_special_chars(candidate_as_str))
     for i in candidates:
         yield i
 
@@ -210,11 +210,26 @@ def look_for_entities(words, entities):
         for candidate_as_str in generate_candidate_variants(candidate):
             # print(candidate_as_str)
             query_count += 1
+<<<<<<< HEAD
             # t = lookup(candidate_as_str, entities)
             t = db_api.lookup(candidate_as_str)
             if t:
                 # res.append((t, candidate, candidate_as_str))
                 res.append((t['id'], candidate, candidate_as_str))
+||||||| merged common ancestors
+            t = lookup(candidate_as_str, entities)
+            # t = db_api.lookup(candidate_as_str)
+            if t:
+                res.append((t, candidate, candidate_as_str))
+                # res.append((t['id'], candidate, candidate_as_str))
+=======
+            # t = lookup(candidate_as_str, entities)
+            t = db_api.lookup(candidate_as_str)
+            # if t:
+            #     res.append((t, candidate, candidate_as_str))
+            for r in t:
+                res.append((r['id'], r["aliases"][0], candidate, candidate_as_str))
+>>>>>>> origin/master
     print("number of queries: {}".format(query_count))
     return res
 
@@ -236,12 +251,23 @@ def gather_info_from_folder(path, page=-1):
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     path = "books2/IE26721743/REP26723234/"
     if len(sys.argv) > 1:
         page = int(sys.argv[1])
     else:
         page = -1
     words = gather_info_from_folder(path, page)
+||||||| merged common ancestors
+    path = "books2/IE26721743/REP26723234/"
+    words = gather_info_from_folder(path)
+=======
+    page_file = 'books2/IE26721743/REP26723234/1227225-140-0066.xml'
+    words = extract_words_from_alto_xml(Path(page_file))
+
+    # path = "books2/IE26721743/REP26723234/"
+    # words = gather_info_from_folder(path)
+>>>>>>> origin/master
     # pprint(res)
     entities = [
         {'id': 1, 'name': 'לחוק התורהl', },
