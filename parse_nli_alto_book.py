@@ -5,8 +5,8 @@ import re
 from lxml import etree
 from pprint import pprint
 from pathlib import Path
-# import db_api
-
+import db_api
+import sys
 
 chars_to_remove = re.compile(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+')
 
@@ -202,6 +202,7 @@ def generate_candidate_variants(candidate):
     for i in candidates:
         yield i
 
+
 def look_for_entities(words, entities):
     res = []
     query_count = 0
@@ -209,29 +210,38 @@ def look_for_entities(words, entities):
         for candidate_as_str in generate_candidate_variants(candidate):
             # print(candidate_as_str)
             query_count += 1
-            t = lookup(candidate_as_str, entities)
-            # t = db_api.lookup(candidate_as_str)
+            # t = lookup(candidate_as_str, entities)
+            t = db_api.lookup(candidate_as_str)
             if t:
-                res.append((t, candidate, candidate_as_str))
-                # res.append((t['id'], candidate, candidate_as_str))
+                # res.append((t, candidate, candidate_as_str))
+                res.append((t['id'], candidate, candidate_as_str))
     print("number of queries: {}".format(query_count))
     return res
 
 
-def gather_info_from_folder(path):
+def gather_info_from_folder(path, page=-1):
     folder = Path(path)
     res = []
     l = list(folder.glob('*.xml'))
     l = sorted(l)
-    for f in l:
+    if page != -1:
+        f = l[page]
         words = extract_words_from_alto_xml(f)
         res += words
+    else:
+        for f in l:
+            words = extract_words_from_alto_xml(f)
+            res += words
     return res
 
 
 if __name__ == "__main__":
     path = "books2/IE26721743/REP26723234/"
-    words = gather_info_from_folder(path)
+    if len(sys.argv) > 1:
+        page = int(sys.argv[1])
+    else:
+        page = -1
+    words = gather_info_from_folder(path, page)
     # pprint(res)
     entities = [
         {'id': 1, 'name': 'לחוק התורהl', },
