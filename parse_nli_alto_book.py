@@ -241,7 +241,11 @@ def gather_info_from_folder(path, page=-1):
     l = list(folder.glob('*.xml'))
     l = sorted(l)
     if page != -1:
-        f = l[page]
+        page_ind = page - 1
+        if page_ind < 0 or page_ind >= len(l):
+            print("Wrong page")
+            sys.exit(1)
+        f = l[page_ind]
         words = extract_words_from_alto_xml(f)
         res += words
     else:
