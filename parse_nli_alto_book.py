@@ -197,11 +197,46 @@ def generate_candidate_variants(candidate):
             return  # skip this candidate
     candidate_as_str = candidate2text(just_the_words)
     candidates = set()
-    candidates.add(candidate_as_str)
+    candidates = candidates.union(prefix(candidate_as_str))
     candidate_as_str = candidate2text(just_the_words[::-1])
-    candidates.add(candidate_as_str)
+    candidates = candidates.union(prefix(candidate_as_str))
     for i in candidates:
         yield i
+
+PREFIXES = ['ה', 'ו', 'ל', 'מ', 'ב', 'כ', 'ש']
+PREFIXES2 = [
+    'ול', 'ומ', 'וב', 'וכ', 'וש', 'וה',
+    'מה',
+    'שה', 'של', 'שמ', 'שב', 'שכ', 'שכ'
+]
+PREFIXES3 = [
+    'וכש', 'שכש', 'לכש', 'ולכש',
+    'ומה', 'ושה', 'כשה', 'וכשה',
+    'לכשה', 'ולכשה', 'ומש', 'ומשה'
+]
+
+
+def prefix(s):
+    res = find_prefix(s, PREFIXES)
+    if len(res) == 0:
+        res = find_prefix(s, PREFIXES2)
+    if len(res) == 0:
+        res = find_prefix(s, PREFIXES3)
+
+    return res
+
+
+def find_prefix(s, l):
+    res = set()
+    res.add(s)
+    for p in l:
+        pattern = re.compile('^' + p)
+        search = re.search(pattern, s)
+        if search:
+            sp = search.span()
+            res.add(s[sp[1]:])
+
+    return res
 
 
 def look_for_entities(words, entities):
