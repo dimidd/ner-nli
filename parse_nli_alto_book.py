@@ -208,29 +208,15 @@ def look_for_entities(words, entities):
     res = []
     query_count = 0
     for candidate in slice(words, 2):
-        for candidate_as_str in generate_candidate_variants(candidate):
+        for candidate_str in generate_candidate_variants(candidate):
             # print(candidate_as_str)
             query_count += 1
-<<<<<<< HEAD
             # t = lookup(candidate_as_str, entities)
-            t = db_api.lookup(candidate_as_str)
-            if t:
-                # res.append((t, candidate, candidate_as_str))
-                res.append((t['id'], candidate, candidate_as_str))
-||||||| merged common ancestors
-            t = lookup(candidate_as_str, entities)
-            # t = db_api.lookup(candidate_as_str)
-            if t:
-                res.append((t, candidate, candidate_as_str))
-                # res.append((t['id'], candidate, candidate_as_str))
-=======
-            # t = lookup(candidate_as_str, entities)
-            t = db_api.lookup(candidate_as_str)
+            t = db_api.lookup(candidate_str)
             # if t:
             #     res.append((t, candidate, candidate_as_str))
             for r in t:
-                res.append((r['id'], r["aliases"][0], candidate, candidate_as_str))
->>>>>>> origin/master
+                res.append((r['id'], r["aliases"][0], candidate, candidate_str))
     print("number of queries: {}".format(query_count))
     return res
 
@@ -256,24 +242,13 @@ def gather_info_from_folder(path, page=-1):
 
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     path = "books2/IE26721743/REP26723234/"
     if len(sys.argv) > 1:
         page = int(sys.argv[1])
     else:
         page = -1
     words = gather_info_from_folder(path, page)
-||||||| merged common ancestors
-    path = "books2/IE26721743/REP26723234/"
-    words = gather_info_from_folder(path)
-=======
-    page_file = 'books2/IE26721743/REP26723234/1227225-140-0066.xml'
-    words = extract_words_from_alto_xml(Path(page_file))
 
-    # path = "books2/IE26721743/REP26723234/"
-    # words = gather_info_from_folder(path)
->>>>>>> origin/master
-    # pprint(res)
     entities = [
         {'id': 1, 'name': 'לחוק התורהl', },
         {'id': 2, 'name': 'חייבים לשמוע', },
@@ -283,5 +258,5 @@ if __name__ == "__main__":
     ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
-    print("number of result: {}".format(len(res)))
+    print("number of results: {}".format(len(res)))
     pprint(res)
