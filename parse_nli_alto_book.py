@@ -58,6 +58,9 @@ def remove_special_chars(candidate_as_str):
 
 def generate_candidate_variants(candidate):
     just_the_words = [remove_special_chars(w['CONTENT']) for w in candidate]
+    if len(just_the_words) == 1:
+        if len(just_the_words[0].split()) < 2:
+            return
     words_to_discard = [
         '',
         'את',
