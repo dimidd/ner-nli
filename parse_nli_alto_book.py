@@ -194,6 +194,7 @@ def generate_candidate_variants(candidate):
         '♦',
         '-',
         'יום',
+        'רבי',
     ]
 
     for w in just_the_words:
