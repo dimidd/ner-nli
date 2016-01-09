@@ -58,6 +58,9 @@ def remove_special_chars(candidate_as_str):
 
 def generate_candidate_variants(candidate):
     just_the_words = [remove_special_chars(w['CONTENT']) for w in candidate]
+    if len(just_the_words) == 1:
+        if len(just_the_words[0].split()) < 2:
+            return
     words_to_discard = [
         '',
         'את',
@@ -190,6 +193,7 @@ def generate_candidate_variants(candidate):
         'אלה',
         '♦',
         '-',
+        'יום',
     ]
 
     for w in just_the_words:
@@ -239,19 +243,33 @@ def find_prefix(s, l):
     return res
 
 
+MAX_WORDS_IN_QUERY = 6  # should be 32 for current max alias in NLI entities...
+
+
 def look_for_entities(words, entities):
     res = []
     query_count = 0
-    for candidate in slice(words, 2):
-        for candidate_str in generate_candidate_variants(candidate):
-            # print(candidate_as_str)
-            query_count += 1
-            # t = lookup(candidate_as_str, entities)
-            t = db_api.lookup(candidate_str)
-            # if t:
-            #     res.append((t, candidate, candidate_as_str))
-            for r in t:
-                res.append((r['id'], r["aliases"][0], candidate, candidate_str))
+    word_index = 0
+    while word_index < len(words):
+        for slice_length in range(MAX_WORDS_IN_QUERY, 0, -1):
+            candidate = words[word_index:word_index + slice_length]
+            # print(candidate)
+            res_for_candidate = []
+            for candidate_str in generate_candidate_variants(candidate):
+                # print(candidate_as_str)
+                query_count += 1
+                t = lookup(candidate_str, entities)
+                t = db_api.lookup(candidate_str)
+                # if t:
+                #     res_for_candidate.append((t, candidate, candidate_str))
+                for r in t:
+                    res.append((r['id'], r["aliases"][0], candidate, candidate_str))
+            if res_for_candidate:  # found at least one match so skip over all words in it
+                res.extend(res_for_candidate)
+                word_index += slice_length
+                break
+        else:  # no matches found that start at currnt word
+            word_index += 1
     print("number of queries: {}".format(query_count))
     return res
 
