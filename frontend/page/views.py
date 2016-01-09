@@ -4,9 +4,11 @@ from django.shortcuts import render
 from django.conf import settings
 import os
 from bs4 import BeautifulSoup
+def alto_section_list(request):
+    pass
 
 
-def alto_section(request, section_id='1227225-140-0100'):
+def alto_section(request, section_id):
     highlight_ids = HIGHLIGHT_IDS[section_id]
     xml_filename = os.path.join(settings.DATA_DIR, 'alto_section_xmls', '%s.xml'%section_id)
     bs=BeautifulSoup(open(xml_filename), "html.parser")
@@ -43,9 +45,8 @@ def alto_section(request, section_id='1227225-140-0100'):
         'nlidata': PARSE_NLI_DATA[section_id]
     })
 
-
-PARSE_NLI_DATA = {
-    '1227225-140-0100': [(2,
+PARSE_NLI_DATA= {
+        '1227225-140-0100': [(2,
       [{'CONTENT': 'חייבים',
         'GRANDPARENT': 'P100_TB00001',
         'ID': 'P100_ST00009',
