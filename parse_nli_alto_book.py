@@ -234,11 +234,8 @@ def find_prefix(s, l):
     res = set()
     res.add(s)
     for p in l:
-        pattern = re.compile('^' + p)
-        search = re.search(pattern, s)
-        if search:
-            sp = search.span()
-            res.add(s[sp[1]:])
+        if s.startswith(p):
+            res.add(s[len(p):])
 
     return res
 
