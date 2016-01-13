@@ -1,13 +1,6 @@
-hello alto section {{section_id}}
-<br/>
-xml_filename: {{xml_filename}}
-<br/>
 <div dir="rtl">
-<h2>nlidata</h2>
-{% for keyword in nlidata %}
-<h3>{{keyword.2}} ({{keyword.0}})</h3>
-<pre>data: {{keyword.1}}</pre>
-{% endfor %}
+alto section: <U> {{section_id}} </U>
+
 
 <h2>text</h2>
 {% for paragraph in paragraphs %}
@@ -17,4 +10,22 @@ xml_filename: {{xml_filename}}
         {% endfor %}
     </p>
 {% endfor %}
+</div>
+
+<br>
+<br>
+
+<div dir="rtl">
+
+<h2>nlidata</h2>
+{% for keyword in nlidata %}
+<h3>{{keyword.2}} ({{keyword.0}})</h3>
+<pre>data: {{keyword.1}}</pre>
+{% endfor %}
+
+
+<br/>
+<b> xml_filename: {{xml_filename}} </b>
+<br/>
+
 </div>
