@@ -189,17 +189,30 @@ def generate_candidate_variants(candidate):
         'זה.',
         'אלה',
         '♦',
-        '-',
     ]
 
     for w in just_the_words:
         if w in words_to_discard:
             return  # skip this candidate
+
     candidate_as_str = candidate2text(just_the_words)
     candidates = set()
+    dash = r'-|־'
+
     candidates = candidates.union(prefix(candidate_as_str))
     candidate_as_str = candidate2text(just_the_words[::-1])
     candidates = candidates.union(prefix(candidate_as_str))
+    for w in candidate[0:1]:
+        content = w['CONTENT']
+        if re.search(dash, content):
+            candidates.add(content)
+            content_dashless = re.sub(dash, ' ', content)
+            candidates.add(content_dashless)
+            content = content_dashless
+        if content.find(' ') > -1:
+            candidates.add(content)
+            candidates = candidates.union(prefix(content))
+
     for i in candidates:
         yield i
 
