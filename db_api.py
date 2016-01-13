@@ -15,9 +15,11 @@ def lookup(alias, no_other=True):
     alias_for_phrase_search = '\"{}\"'.format(alias)
     res = C.find({"$text": {"$search": alias_for_phrase_search}})
 
-    alias_for_regex_search = r'^{}$'.format(alias)
+    alias_regex_str = r'^{}$'.format(alias)
+    geo_regex_str = r'^{} \(.+\)$'.format(alias)
     try:
-        regex_alias = re.compile(alias_for_regex_search)
+        alias_regex = re.compile(alias_regex_str)
+        geo_regex = re.compile(geo_regex_str)
     except:
         print("problem with: '{}'!".format(alias))
         return []
@@ -26,7 +28,9 @@ def lookup(alias, no_other=True):
         if no_other and r['type'] == 'other':
             continue
         for a in r['aliases']:
-            if regex_alias.match(a):
+            if alias_regex.match(a):
+                good_matches.append(r)
+            if geo_regex.match(a) and r['type'] == 'geo':
                 good_matches.append(r)
 
     return good_matches
