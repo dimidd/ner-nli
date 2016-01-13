@@ -251,6 +251,17 @@ def find_prefix(s, l):
 
     return res
 
+SPELLINGS = {'שרות': 'שירות'}
+
+
+def check_spell(cand):
+    for w in cand:
+        if w['CONTENT'] in SPELLINGS:
+            w['CONTENT'] = SPELLINGS[w['CONTENT']]
+
+    return cand
+
+
 
 def look_for_entities(words, entities):
     res = []
