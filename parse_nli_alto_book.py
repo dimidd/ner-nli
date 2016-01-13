@@ -315,6 +315,23 @@ def gather_info_from_folder(path, page=-1):
     return res
 
 
+def remove_dupes(res):
+    new_res = []
+    can_set = set()
+    max_size = -1
+    for r in res:
+        alias = (r[1], r[2])
+        if alias in can_set:
+            if r[3] > max_size:
+                new_res[:] = [x for x in new_res if not (x[1], x[2]) == alias]
+                can_set.add(r)
+                new_res.append(r)
+        else:
+            new_res.append(r)
+            can_set.add(alias)
+
+    return new_res
+
 if __name__ == "__main__":
     path = "books2/IE26721743/REP26723234/"
     if len(sys.argv) > 1:
@@ -332,5 +349,6 @@ if __name__ == "__main__":
     ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
+    res = remove_dupes(res)
     print("number of results: {}".format(len(res)))
     pprint(res)
