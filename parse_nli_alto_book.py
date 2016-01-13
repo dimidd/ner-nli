@@ -262,6 +262,19 @@ def check_spell(cand):
     return cand
 
 
+def traverse_cand_strs(cand_strs, no_other=True):
+    res = []
+    query_count = 0
+    for cs in cand_strs:
+        query_count += 1
+        t = db_api.lookup(cs, no_other)
+        for r in t:
+            res.append(
+                (r['id'], r['type'], r['aliases'][0], len(r['aliases']), cs)
+            )
+
+    return (res, query_count)
+
 
 def look_for_entities(words, entities):
     res = []
