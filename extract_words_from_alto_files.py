@@ -2,8 +2,8 @@
 # coding=utf-8
 
 from lxml import etree
-from pprint import pprint
 from pathlib import Path
+import sys
 
 
 def extract_words_from_alto_xml(filepath):
@@ -15,11 +15,18 @@ def extract_words_from_alto_xml(filepath):
     """
     with filepath.open() as f:
         tree = etree.parse(f)
+    res = []
     for word in tree.xpath("//String[@CONTENT]"):
-        print(word.get("CONTENT"))
+        res.append(word.get("CONTENT"))
+
+    print(' '.join(res))
 
 
-def gather_info_from_folder(path):
+def gather_info_from_folder(path, file):
+    if file:
+        extract_words_from_alto_xml(Path(file))
+        return
+
     folder = Path(path)
     l = list(folder.glob('*.xml'))
     l = sorted(l)
@@ -28,5 +35,9 @@ def gather_info_from_folder(path):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        file = sys.argv[1]
+    else:
+        file = None
     path = "../nli_entities_sample_data/additional_books/IE26721743/REP26723234/"
-    gather_info_from_folder(path)
+    gather_info_from_folder(path, file)
