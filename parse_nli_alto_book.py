@@ -330,7 +330,7 @@ def remove_dupes(res):
         if alias in can_set:
             if r[3] > max_size:
                 new_res[:] = [x for x in new_res if not (x[1], x[2]) == alias]
-                can_set.add(r)
+                can_set.add(alias)
                 new_res.append(r)
         else:
             new_res.append(r)
