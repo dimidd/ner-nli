@@ -280,15 +280,17 @@ def look_for_entities(words, entities):
     res = []
     query_count = 0
     for candidate in slice(words, 2):
-        for candidate_str in generate_candidate_variants(candidate):
-            # print(candidate_as_str)
-            query_count += 1
-            # t = lookup(candidate_as_str, entities)
-            t = db_api.lookup(candidate_str)
-            # if t:
-            #     res.append((t, candidate, candidate_as_str))
-            for r in t:
-                res.append((r['id'], r["aliases"][0], candidate, candidate_str))
+        cand_strs = generate_candidate_variants(candidate)
+        (cur_res, cur_query_count) = traverse_cand_strs(cand_strs)
+        query_count += cur_query_count
+        res += cur_res
+        if len(cur_res) == 0:
+            alt_cand = check_spell(candidate)
+            cand_strs = generate_candidate_variants(alt_cand)
+            (cur_res, cur_query_count) = traverse_cand_strs(cand_strs, False)
+            query_count += cur_query_count
+            res += cur_res
+
     print("number of queries: {}".format(query_count))
     return res
 
