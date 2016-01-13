@@ -259,7 +259,7 @@ def check_spell(cand):
     return cand
 
 
-def traverse_cand_strs(cand_strs, no_other=True):
+def traverse_cand_strs(cand_strs, cand, no_other=True):
     res = []
     query_count = 0
     for cs in cand_strs:
@@ -267,7 +267,14 @@ def traverse_cand_strs(cand_strs, no_other=True):
         t = db_api.lookup(cs, no_other)
         for r in t:
             res.append(
-                (r['id'], r['type'], r['aliases'][0], len(r['aliases']), cs)
+                (
+                    int(r['id']),
+                    r['type'],
+                    r['aliases'][0],
+                    len(r['aliases']),
+                    cs,
+                    cand
+                )
             )
 
     return (res, query_count)
@@ -278,13 +285,15 @@ def look_for_entities(words, entities):
     query_count = 0
     for candidate in slice(words, 2):
         cand_strs = generate_candidate_variants(candidate)
-        (cur_res, cur_query_count) = traverse_cand_strs(cand_strs)
+        (cur_res, cur_query_count) = traverse_cand_strs(cand_strs, candidate)
         query_count += cur_query_count
         res += cur_res
         if len(cur_res) == 0:
             alt_cand = check_spell(candidate)
             cand_strs = generate_candidate_variants(alt_cand)
-            (cur_res, cur_query_count) = traverse_cand_strs(cand_strs, False)
+            (cur_res, cur_query_count) = traverse_cand_strs(
+                                            cand_strs, candidate, False
+                                        )
             query_count += cur_query_count
             res += cur_res
 
