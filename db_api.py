@@ -9,7 +9,7 @@ DB = CL['ner-dict']
 C = DB.ents
 
 
-def lookup(alias):
+def lookup(alias, no_other=True):
     # as regex search in mongo is very slow, do a phrase search in mongo
     # and then a regex search only on the results
     alias_for_phrase_search = '\"{}\"'.format(alias)
@@ -23,7 +23,7 @@ def lookup(alias):
         return []
     good_matches = []
     for r in res:
-        if r['type'] == 'other':
+        if no_other and r['type'] == 'other':
             continue
         for a in r['aliases']:
             if regex_alias.match(a):
