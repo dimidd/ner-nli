@@ -281,7 +281,7 @@ def look_for_entities(words, entities):
             if cur_res:  # found at least one match so skip over all words in it
                 word_index += slice_length
                 break
-        else:  # no matches found that start at currnt word
+        else:  # no matches found that start at current word
             word_index += 1
     print("number of queries: {}".format(query_count))
     return res
