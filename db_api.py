@@ -16,7 +16,8 @@ C = DB.ents
 # ה, וה, מה, שה, ומה, ושה, כשה, וכשה, לכשה, ולכשה, ומש, ומשה,
 # and lookup again...
 
-def lookup(alias):
+
+def lookup(alias, no_other=True):
     # as regex search in mongo is very slow, do a phrase search in mongo
     # and then a regex search only on the results
     alias_for_phrase_search = '\"{}\"'.format(alias)

@@ -244,6 +244,27 @@ def find_prefix(s, l):
 MAX_WORDS_IN_QUERY = 6  # should be 32 for current max alias in NLI entities...
 
 
+def traverse_cand_strs(cand_strs, cand, no_other=True):
+    res = []
+    query_count = 0
+    for cs in cand_strs:
+        query_count += 1
+        t = db_api.lookup(cs, no_other)
+        for r in t:
+            res.append(
+                (
+                    int(r['id']),
+                    r['type'],
+                    r['aliases'][0],
+                    len(r['aliases']),
+                    cs,
+                    cand
+                )
+            )
+
+    return (res, query_count)
+
+
 def look_for_entities(words, entities):
     res = []
     query_count = 0
@@ -252,18 +273,12 @@ def look_for_entities(words, entities):
         for slice_length in range(MAX_WORDS_IN_QUERY, 0, -1):
             candidate = words[word_index:word_index + slice_length]
             # print(candidate)
-            res_for_candidate = []
-            for candidate_str in generate_candidate_variants(candidate):
-                # print(candidate_as_str)
-                query_count += 1
-                t = lookup(candidate_str, entities)
-                t = db_api.lookup(candidate_str)
-                # if t:
-                #     res_for_candidate.append((t, candidate, candidate_str))
-                for r in t:
-                    res.append((r['id'], r["aliases"][0], candidate, candidate_str))
-            if res_for_candidate:  # found at least one match so skip over all words in it
-                res.extend(res_for_candidate)
+            cand_strs = generate_candidate_variants(candidate)
+            (cur_res, cur_query_count) = traverse_cand_strs(cand_strs, candidate)
+            query_count += cur_query_count
+            res += cur_res
+
+            if cur_res:  # found at least one match so skip over all words in it
                 word_index += slice_length
                 break
         else:  # no matches found that start at currnt word
