@@ -274,11 +274,13 @@ def look_for_entities(words, entities):
             candidate = words[word_index:word_index + slice_length]
             # print(candidate)
             cand_strs = generate_candidate_variants(candidate)
-            (cur_res, cur_query_count) = traverse_cand_strs(cand_strs, candidate)
+            (cur_res, cur_query_count) = traverse_cand_strs(
+                cand_strs, candidate)
             query_count += cur_query_count
             res += cur_res
 
-            if cur_res:  # found at least one match so skip over all words in it
+            if cur_res:
+                # found at least one match so skip over all words in it
                 word_index += slice_length
                 break
         else:  # no matches found that start at current word
