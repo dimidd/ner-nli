@@ -5,8 +5,10 @@ import re
 from lxml import etree
 from pprint import pprint
 from pathlib import Path
-import db_api
 import sys
+import json
+
+import db_api
 
 chars_to_remove = re.compile(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+')
 
@@ -27,7 +29,7 @@ def extract_words_from_alto_xml(filepath):
             "CONTENT": word.get("CONTENT"),
             "PARENT": word.getparent().get("ID"),
             "GRANDPARENT": word.getparent().getparent().get("ID"),
-            "PAGE_FILE": filepath,
+            "PAGE_FILE": str(filepath),
             })
     return words
 
@@ -302,11 +304,12 @@ def gather_info_from_folder(path, page=-1):
         f = l[page_ind]
         words = extract_words_from_alto_xml(f)
         res += words
+        return res, f
     else:
         for f in l:
             words = extract_words_from_alto_xml(f)
             res += words
-    return res
+        return res, None
 
 
 def remove_dupes(res):
@@ -332,7 +335,7 @@ if __name__ == "__main__":
         page = int(sys.argv[1])
     else:
         page = -1
-    words = gather_info_from_folder(path, page)
+    words, in_file = gather_info_from_folder(path, page)
 
     entities = [
         {'id': 1, 'name': 'לחוק התורהl', },
@@ -347,4 +350,10 @@ if __name__ == "__main__":
     res = remove_dupes(res)
     print("number of results after removing duplicate entities: {}".format(
         len(res)))
-    pprint(res)
+    #pprint(res)
+    if in_file:
+        out_file = in_file.with_suffix(".json")
+    else:
+        out_file = Path(path + "whole_book.json")
+    with out_file.open('w') as f:
+        json.dump(res, f, ensure_ascii=False, indent=2)
