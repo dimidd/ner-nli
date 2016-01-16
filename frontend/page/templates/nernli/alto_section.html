@@ -1,15 +1,15 @@
 <div dir="rtl">
-alto section: <U> {{section_id}} </U>
+    alto section: <u> {{ section_id }} </u>
 
 
-<h2>text</h2>
-{% for paragraph in paragraphs %}
-    <p dir="rtl">
-        {% for line in paragraph %}
-            {% for word in line %}{{ word|safe }} {% endfor %}<br/>
-        {% endfor %}
-    </p>
-{% endfor %}
+    <h2>text</h2>
+    {% for paragraph in paragraphs %}
+        <p>
+            {% for line in paragraph %}
+                {% for word in line %}{{ word|safe }} {% endfor %}<br/>
+            {% endfor %}
+        </p>
+    {% endfor %}
 </div>
 
 <br>
@@ -17,15 +17,15 @@ alto section: <U> {{section_id}} </U>
 
 <div dir="rtl">
 
-<h2>nlidata</h2>
-{% for keyword in nlidata %}
-<h3>{{keyword.2}} ({{keyword.0}})</h3>
-<pre>data: {{keyword.1}}</pre>
-{% endfor %}
+    <h2>nlidata</h2>
+    {% for keyword in nlidata %}
+        <h3>{{ keyword.2 }} ({{ keyword.0 }})</h3>
+        <pre>data: {{ keyword.1 }}</pre>
+    {% endfor %}
 
 
-<br/>
-<b> xml_filename: {{xml_filename}} </b>
-<br/>
+    <br/>
+    <b> xml_filename: {{ xml_filename }} </b>
+    <br/>
 
 </div>
