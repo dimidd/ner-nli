@@ -279,6 +279,7 @@ def look_for_entities(words, entities):
             (cur_res, cur_query_count) = traverse_cand_strs(
                 cand_strs, candidate)
             query_count += cur_query_count
+            cur_res = remove_dupes(cur_res)
             res += cur_res
 
             if cur_res:
@@ -347,9 +348,6 @@ if __name__ == "__main__":
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
     print("number of results: {}".format(len(res)))
-    res = remove_dupes(res)
-    print("number of results after removing duplicate entities: {}".format(
-        len(res)))
     #pprint(res)
     if in_file:
         out_file = in_file.with_suffix(".json")
