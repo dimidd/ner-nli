@@ -218,6 +218,16 @@ def generate_candidate_variants(candidate):
     for i in candidates:
         yield i
 
+
+def get_prefixless(just_the_words):
+    candidate_as_str = candidate2text(just_the_words, 0)
+    orig_as_str = candidate2text(just_the_words, 1)
+    cand_prefixless = prefix(candidate_as_str)
+    orig_prefixless = prefix(orig_as_str)
+
+    return list(zip(cand_prefixless, orig_prefixless))
+
+
 PREFIXES = ['ה', 'ו', 'ל', 'מ', 'ב', 'כ', 'ש']
 PREFIXES2 = [
     'ול', 'ומ', 'וב', 'וכ', 'וש', 'וה',
