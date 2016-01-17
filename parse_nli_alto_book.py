@@ -286,8 +286,13 @@ def traverse_cand_strs(cand_strs, cand, no_other=True):
     query_count = 0
     for cs in cand_strs:
         query_count += 1
-        t = db_api.lookup(cs, no_other)
+        t = db_api.lookup(cs[0], no_other)
         for r in t:
+            ws = cs[0]
+            if ws.find(' ') > 0:
+                ws = ws.split()
+            for i, w in enumerate(cand):
+                w['actual_query'] = ws[i]
             res.append(
                 (
                     int(r['id']),
