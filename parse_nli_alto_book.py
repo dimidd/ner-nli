@@ -401,5 +401,9 @@ if __name__ == "__main__":
     res = remove_dupes(res)
     res = return_prefixes(res)
 
+    dict = {}
+    pagefile = str(res[0][5][0]['PAGE_FILE'])
+    code = pagefile.split('/')[-1].split('.')[0]
+    dict[code] = res
     print("number of results: {}".format(len(res)))
-    pprint(res)
+    pprint(dict)
