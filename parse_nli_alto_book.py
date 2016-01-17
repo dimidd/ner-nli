@@ -61,8 +61,14 @@ def remove_special_chars(candidate_as_str):
 def generate_candidate_variants(candidate):
     just_the_words = [remove_special_chars(w['CONTENT']) for w in candidate]
     if len(just_the_words) == 1:
-        if len(just_the_words[0].split()) < 2:
+        # don't query just one word as this gives too many results...
+        tmp = just_the_words[0].split()
+        if len(tmp) < 2:
             return
+        # in case of something like "ב דגלנו", return "בדגלנו" and then
+        # prefixes work will remove the "ב"
+        if len(tmp[0]) == 1:
+            just_the_words = ["".join(tmp)]
     words_to_discard = [
         '',
         'את',
@@ -197,6 +203,7 @@ def generate_candidate_variants(candidate):
         '-',
         'יום',
         'רבי',
+        'סז',
     ]
 
     for w in just_the_words:
