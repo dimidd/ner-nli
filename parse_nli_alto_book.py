@@ -201,23 +201,29 @@ def generate_candidate_variants(candidate):
         if w[0] in WORDS_TO_DISCARD:
             return  # skip this candidate
 
-    candidate_as_str = candidate2text(just_the_words)
     candidates = set()
     dash = r'-|־'
 
-    candidates = candidates.union(prefix(candidate_as_str))
-    candidate_as_str = candidate2text(just_the_words[::-1])
-    candidates = candidates.union(prefix(candidate_as_str))
+    prefixless = get_prefixless(just_the_words)
+    candidates = candidates.union(prefixless)
+    prefixless_rev = get_prefixless(just_the_words[::-1])
+    candidates = candidates.union(prefixless_rev)
+
     for w in candidate[0:1]:
         content = w['CONTENT']
+        orig_content = content
         if re.search(dash, content):
-            candidates.add(content)
+            candidates.add((content, content))
             content_dashless = re.sub(dash, ' ', content)
-            candidates.add(content_dashless)
+            candidates.add((content_dashless, content))
+            orig_content = copy.deepcopy(content)
             content = content_dashless
         if content.find(' ') > -1:
-            candidates.add(content)
-            candidates = candidates.union(prefix(content))
+            candidates.add((content, orig_content))
+            prefixless_cont = prefix(content)
+            prefixless_orig = prefix(orig_content)
+            prefixless_all = tuple(zip(prefixless_cont, prefixless_orig))
+            candidates = candidates.union(prefixless_all)
 
     for i in candidates:
         yield i
