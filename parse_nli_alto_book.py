@@ -7,8 +7,10 @@ from pprint import pprint
 from pathlib import Path
 import db_api
 import sys
+import copy
 
-chars_to_remove = re.compile(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+')
+CHARS_TO_REMOVE = '[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+'
+CHARS_TO_REMOVE_REGEX = re.compile(CHARS_TO_REMOVE)
 
 
 def extract_words_from_alto_xml(filepath):
@@ -52,7 +54,7 @@ def candidate2text(candidate):
 
 
 def remove_special_chars(candidate_as_str):
-    temp_str = chars_to_remove.sub(' ', candidate_as_str)
+    temp_str = CHARS_TO_REMOVE_REGEX.sub(' ', candidate_as_str)
     return re.sub(r' +', ' ', temp_str.strip())
 
 
