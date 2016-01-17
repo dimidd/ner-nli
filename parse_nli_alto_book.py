@@ -365,6 +365,22 @@ def remove_dupes(res):
 
     return new_res
 
+
+# TODO: DIRTY HACK. solve core issues
+def return_prefixes(res):
+    for i, r in enumerate(res):
+        cand = r[4]
+        lr = list(r)
+        if cand[0][0] in PREFIXES and not cand[1][0] in PREFIXES:
+            lr[4] = (cand[0], cand[0][0] + cand[1])
+            res[i] = tuple(lr)
+        if lr[4][1][-1] in list(CHARS_TO_REMOVE):
+            lr[4] = (lr[4][0], lr[4][1][0:-1])
+            res[i] = tuple(lr)
+
+    return res
+
+
 if __name__ == "__main__":
     path = "books2/IE26721743/REP26723234/"
     if len(sys.argv) > 1:
@@ -383,5 +399,7 @@ if __name__ == "__main__":
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
     res = remove_dupes(res)
+    res = return_prefixes(res)
+
     print("number of results: {}".format(len(res)))
     pprint(res)
