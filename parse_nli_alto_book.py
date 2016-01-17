@@ -49,8 +49,8 @@ def slice(l, size):
         yield l[i:i + size]
 
 
-def candidate2text(candidate):
-    return " ".join([w for w in candidate])
+def candidate2text(candidate, ind):
+    return " ".join([w[ind] for w in candidate])
 
 
 def remove_special_chars(candidate_as_str):
