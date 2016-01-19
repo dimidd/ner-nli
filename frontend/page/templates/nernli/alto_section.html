@@ -1,31 +1,35 @@
-<div dir="rtl">
-alto section: <U> {{section_id}} </U>
-
-
-<h2>text</h2>
-{% for paragraph in paragraphs %}
-    <p dir="rtl">
-        {% for line in paragraph %}
-            {% for word in line %}{{ word|safe }} {% endfor %}<br/>
-        {% endfor %}
-    </p>
-{% endfor %}
-</div>
-
-<br>
-<br>
-
-<div dir="rtl">
-
-<h2>nlidata</h2>
-{% for keyword in nlidata %}
-<h3>{{keyword.2}} ({{keyword.0}})</h3>
-<pre>data: {{keyword.1}}</pre>
-{% endfor %}
-
-
-<br/>
-<b> xml_filename: {{xml_filename}} </b>
-<br/>
-
-</div>
+<head>
+        <style type="text/css">
+            #txt{
+                background-color:#FEFDEB;
+                line-height:1.5;
+                text-align:justify;
+                position:absolute;
+                padding:3%;
+                border:2px solid black;
+                top:9.5px;
+                margin-right:100px;
+                margin-left:100px;
+                font-family:serif}
+            p{
+                font-size:12pt
+            }
+            .footnote{
+                font-size:10pt
+            }
+        </style>
+    
+</head>
+<body>
+    <div dir="rtl">
+        <div id="txt">
+            {% for paragraph in paragraphs %}
+                <p class={{paragraph.cls}} dir="rtl">
+                    {% for line in paragraph.lines %}
+                        {% for word in line %}{{ word|safe }} {% endfor %}<br/>
+                    {% endfor %}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
