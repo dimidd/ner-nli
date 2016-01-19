@@ -10,6 +10,16 @@ from dump108 import PARSE_NLI_DATA
 def alto_section_list(request):
     pass
 
+TYPE2COLOR = {
+    'person': 'blue',
+    'geo': 'green',
+    'org': 'yellow',
+    'meet': 'violet',
+    'work': 'meet',
+    'other': 'orange',
+}
+
+
 
 def alto_section(request, section_id):
     highlight_ids = HIGHLIGHT_IDS[section_id]
