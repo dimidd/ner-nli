@@ -215,7 +215,8 @@ def generate_candidate_variants(candidate):
     candidate_as_str = candidate2text(just_the_words[::-1])
     candidates = candidates.union(prefix(candidate_as_str))
     for i in candidates:
-        yield i
+        yield (i, " ".join(just_the_words))
+
 
 PREFIXES = ['ה', 'ו', 'ל', 'מ', 'ב', 'כ', 'ש']
 PREFIXES2 = [
@@ -258,7 +259,7 @@ def traverse_cand_strs(cand_strs, cand, no_other=True):
     query_count = 0
     for cs in cand_strs:
         query_count += 1
-        t = db_api.lookup(cs, no_other)
+        t = db_api.lookup(cs[0], no_other)
         for r in t:
             res.append(
                 (
@@ -355,7 +356,7 @@ if __name__ == "__main__":
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
     print("number of results: {}".format(len(res)))
-    #pprint(res)
+    # pprint(res)
     if in_file:
         out_file = in_file.with_suffix(".json")
     else:
