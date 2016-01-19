@@ -31,11 +31,11 @@ def get_paragraphs(xml_filename, highlight_ids):
                         line.append(
                                 '<a href="{}" '
                                 ' data-hit="{}" data-entity="{}"'
-                                ' data-type="{}">{}</a>'.format(
+                                ' class="entity-{}">{}</a>'.format(
                                         url,
                                         highlight_ids[id].id,
                                         highlight_ids[id].entity_id,
-                                        highlight_ids[id].entity.type,
+                                        highlight_ids[id].entity.type_code(),
                                         string['content']
                                 ))
                     else:

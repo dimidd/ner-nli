@@ -20,13 +20,15 @@ class Entity(models.Model):
             (MEETING, _('Meeting')),
             (OTHER, _('Other')),
         )
-        from_code =  {
-            'geo': GEO,
-            'meet': MEETING,
-            'org': ORGANIZATION,
-            'work': WORK,
-            'other': OTHER,
-        }
+        codes = (
+            ('geo', GEO),
+            ('meet', MEETING),
+            ('org', ORGANIZATION),
+            ('work', WORK),
+            ('other', OTHER),
+        )
+        from_code = dict(codes)
+        to_code = dict([t[::-1] for t in codes])
 
     control_number = models.IntegerField(unique=True)
     type = models.IntegerField(choices=Types.choices, null=True, blank=True)
@@ -38,3 +40,6 @@ class Entity(models.Model):
 
     def get_absolute_url(self):
         return reverse("entity_detail", args=(self.pk,))
+
+    def type_code(self):
+        return self.Types.to_code.get(self.type, 'unknown')

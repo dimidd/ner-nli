@@ -4,22 +4,20 @@
     <a href="{{ object.book.get_absolute_url }}">
         {{ object.book }}
     </a>
-    &laquo;
-    #{{ object.ordinal }}
+    &raquo;
+    עמ'
+    {{ object.ordinal }}
 {% endblock %}
 
 {% block content %}
-    <div dir="rtl">
 
-        <div class="paper">
-            {% for paragraph in paragraphs %}
-                <p>
-                    {% for line in paragraph %}
-                        {% for word in line %}{{ word|safe }} {% endfor %}<br/>
-                    {% endfor %}
-                </p>
-            {% endfor %}
-        </div>
-
+    <div class="paper">
+        {% for paragraph in paragraphs %}
+            <p>
+                {% for line in paragraph %}
+                    {% for word in line %}{{ word|safe }} {% endfor %}<br/>
+                {% endfor %}
+            </p>
+        {% endfor %}
     </div>
 {% endblock %}

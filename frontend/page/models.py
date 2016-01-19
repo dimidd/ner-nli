@@ -32,7 +32,7 @@ class Page(models.Model):
         )
 
     def __str__(self):
-        return "{} #{}".format(self.book, self.ordinal)
+        return "{} עמ' {}".format(self.book, self.ordinal)
 
     def get_absolute_url(self):
         return reverse("page_detail", args=(self.pk,))

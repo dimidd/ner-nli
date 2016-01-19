@@ -39,3 +39,12 @@ body {
     background: #fefdeb;
 
 }
+
+.entity-geo {
+    color: green;
+}
+
+.entity-other {
+    color: orange;
+}
+
