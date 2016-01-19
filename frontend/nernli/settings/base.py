@@ -123,3 +123,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DATA_DIR = os.path.join(BASE_DIR, 'data')
+BOOKS_DIR = os.path.join(BASE_DIR, '../books2/IE26721743/REP26723234')
