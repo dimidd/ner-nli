@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block header %}
+    {{ object }}
+{% endblock %}
+
+{% block content %}
+    <ul class="list-group">
+        {% for object in object.pages.all %}
+            <li class="list-group-item">
+                <a href="{{ object.get_absolute_url }}">
+                    #{{ object.ordinal }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

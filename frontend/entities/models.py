@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -31,3 +32,9 @@ class Entity(models.Model):
     type = models.IntegerField(choices=Types.choices, null=True, blank=True)
     aliases = models.TextField(null=True, blank=True)
     hebrew_alias = models.CharField(max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.hebrew_alias
+
+    def get_absolute_url(self):
+        return reverse("entity_detail", args=(self.pk,))

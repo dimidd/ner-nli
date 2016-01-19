@@ -1,25 +1,33 @@
 # coding: utf-8
 
-from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
 
 from page import alto_tools
 from . import models
 
 
-def alto_section_list(request):
-    pass
+class BookListView(ListView):
+    model = models.Book
 
 
-def page(request, pk):
-    page = get_object_or_404(models.Page, id=pk)
+class BookDetailView(DetailView):
+    model = models.Book
 
-    paragraphs = alto_tools.get_paragraphs(
-            page.full_file_path(),
-            page.all_keywords()
-    )
 
-    return render(request, 'nernli/alto_section.html', {
-        'section_id': pk,
-        'xml_filename': page.full_file_path(),
-        'paragraphs': paragraphs,
-    })
+class PageDetailView(DetailView):
+    model = models.Page
+
+    def get_context_data(self, **kwargs):
+        d = super().get_context_data(**kwargs)
+
+        page = self.object
+
+        paragraphs = alto_tools.get_paragraphs(page.full_file_path(),
+                                               page.all_keywords())
+
+        d.update({
+            'xml_filename': page.full_file_path(),
+            'paragraphs': paragraphs,
+        })
+
+        return d

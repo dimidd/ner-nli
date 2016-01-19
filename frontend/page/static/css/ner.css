@@ -1,0 +1,41 @@
+body {
+    margin-top:-2px;
+}
+
+.vid-thumb {
+    position: relative;
+}
+
+.vid-thumb .moving-thumb {
+    width: 100px;
+    height: 60px;
+}
+
+.vid-thumb .timer, .vid-thumb .times {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    padding: 1px;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.vid-thumb:hover .timer {
+    display: none;
+}
+
+.vid-thumb .times {
+    display: none;
+}
+
+.vid-thumb:hover .times {
+    display: block;
+}
+
+.paper {
+    font-size: 1.4em;
+    border: 2px solid saddlebrown;
+    padding: 6px;
+    background: #fefdeb;
+
+}
