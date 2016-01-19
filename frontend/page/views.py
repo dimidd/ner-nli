@@ -4,6 +4,9 @@ from django.shortcuts import render
 from django.conf import settings
 import os
 from bs4 import BeautifulSoup
+from dump108 import PARSE_NLI_DATA
+
+
 def alto_section_list(request):
     pass
 
