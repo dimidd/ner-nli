@@ -5,12 +5,12 @@ import re
 from lxml import etree
 from pprint import pprint
 from pathlib import Path
-import sys
-import json
-
 import db_api
+import sys
+import copy
 
-chars_to_remove = re.compile(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+')
+CHARS_TO_REMOVE = '[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+'
+CHARS_TO_REMOVE_REGEX = re.compile(CHARS_TO_REMOVE)
 
 
 def extract_words_from_alto_xml(filepath):
@@ -29,7 +29,7 @@ def extract_words_from_alto_xml(filepath):
             "CONTENT": word.get("CONTENT"),
             "PARENT": word.getparent().get("ID"),
             "GRANDPARENT": word.getparent().getparent().get("ID"),
-            "PAGE_FILE": str(filepath),
+            "PAGE_FILE": filepath,
             })
     return words
 
@@ -49,173 +49,194 @@ def slice(l, size):
         yield l[i:i + size]
 
 
-def candidate2text(candidate):
-    return " ".join([w for w in candidate])
+def candidate2text(candidate, ind):
+    return " ".join([w[ind] for w in candidate])
 
 
 def remove_special_chars(candidate_as_str):
-    temp_str = chars_to_remove.sub(' ', candidate_as_str)
+    temp_str = CHARS_TO_REMOVE_REGEX.sub(' ', candidate_as_str)
     return re.sub(r' +', ' ', temp_str.strip())
 
 
+WORDS_TO_DISCARD = [
+    '',
+    'את',
+    'של',
+    'על',
+    'לא',
+    'כי',
+    'כל',
+    'הוא',
+    'עם',
+    'גם',
+    'זה',
+    'אל',
+    'ולא',
+    'היה',
+    'שלא',
+    'לו',
+    'זו',
+    'אם',
+    'אין',
+    'מה',
+    'בכל',
+    'מן',
+    'אחרי',
+    'עד',
+    'אלא',
+    'רק',
+    'אף',
+    'אבל',
+    'יש',
+    'בין',
+    'אנו',
+    'עוד',
+    'ביום',
+    "עמ'",
+    'נגד',
+    'י',
+    'אך',
+    'הם',
+    'היא',
+    'או',
+    'ראה',
+    'כדי',
+    ':',
+    'להוסיף:',
+    'אני',
+    'אותו',
+    'להם',
+    'וראה',
+    'אולם',
+    'שאין',
+    'כן',
+    'אמר',
+    'לפי',
+    'ואל',
+    'כמה',
+    'באותו',
+    'אליו',
+    'שם',
+    'מתוך',
+    'מר',
+    'לנו',
+    'בו',
+    'מי',
+    'יותר',
+    "גל'",
+    'בת',
+    'אינו',
+    'כאשר',
+    'אצל',
+    'שום',
+    'לכל',
+    'כך',
+    'ועל',
+    "ה'",
+    'אז',
+    'שנה',
+    'שהוא',
+    'מפני',
+    'היו',
+    'כפי',
+    'מאת',
+    'וכל',
+    'הרי',
+    'היתה',
+    'בפני',
+    'מכל',
+    'לי',
+    'להלן',
+    'זאת',
+    'בענין',
+    'צריך',
+    'להיות',
+    'הלא',
+    'אחת',
+    '1',
+    '?',
+    'פה',
+    'זו,',
+    'זה,',
+    'ואין',
+    'בעד',
+    'אפילו',
+    'עליו',
+    'כבר',
+    'וכן',
+    'ואם',
+    'הנ"ל',
+    'בקרב',
+    'בספר',
+    'בהם',
+    'אב',
+    'עצמו',
+    'מטעם',
+    'מהם',
+    'מ.',
+    'לפניו',
+    'כאילו',
+    'בזה',
+    'אסור',
+    '*',
+    '.',
+    'שהיא',
+    'יכול',
+    'בשנת',
+    'פח.',
+    'לה',
+    'חזר',
+    'זה.',
+    'אלה',
+    '♦',
+]
+
+
 def generate_candidate_variants(candidate):
-    just_the_words = [remove_special_chars(w['CONTENT']) for w in candidate]
-    if len(just_the_words) == 1:
-        # don't query just one word as this gives too many results...
-        tmp = just_the_words[0].split()
-        if len(tmp) < 2:
-            return
-        # in case of something like "ב דגלנו", return "בדגלנו" and then
-        # prefixes work will remove the "ב"
-        if len(tmp[0]) == 1:
-            just_the_words = ["".join(tmp)]
-    words_to_discard = [
-        '',
-        'את',
-        'של',
-        'על',
-        'לא',
-        'כי',
-        'כל',
-        'הוא',
-        'עם',
-        'גם',
-        'זה',
-        'אל',
-        'ולא',
-        'היה',
-        'שלא',
-        'לו',
-        'זו',
-        'אם',
-        'אין',
-        'מה',
-        'בכל',
-        'מן',
-        'אחרי',
-        'עד',
-        'אלא',
-        'רק',
-        'אף',
-        'אבל',
-        'יש',
-        'בין',
-        'אנו',
-        'עוד',
-        'ביום',
-        "עמ'",
-        'נגד',
-        'י',
-        'אך',
-        'הם',
-        'היא',
-        'או',
-        'ראה',
-        'כדי',
-        ':',
-        'להוסיף:',
-        'אני',
-        'אותו',
-        'להם',
-        'וראה',
-        'אולם',
-        'שאין',
-        'כן',
-        'אמר',
-        'לפי',
-        'ואל',
-        'כמה',
-        'באותו',
-        'אליו',
-        'שם',
-        'מתוך',
-        'מר',
-        'לנו',
-        'בו',
-        'מי',
-        'יותר',
-        "גל'",
-        'בת',
-        'אינו',
-        'כאשר',
-        'אצל',
-        'שום',
-        'לכל',
-        'כך',
-        'ועל',
-        "ה'",
-        'אז',
-        'שנה',
-        'שהוא',
-        'מפני',
-        'היו',
-        'כפי',
-        'מאת',
-        'וכל',
-        'הרי',
-        'היתה',
-        'בפני',
-        'מכל',
-        'לי',
-        'להלן',
-        'זאת',
-        'בענין',
-        'צריך',
-        'להיות',
-        'הלא',
-        'אחת',
-        '1',
-        '?',
-        'פה',
-        'זו,',
-        'זה,',
-        'ואין',
-        'בעד',
-        'אפילו',
-        'עליו',
-        'כבר',
-        'וכן',
-        'ואם',
-        'הנ"ל',
-        'בקרב',
-        'בספר',
-        'בהם',
-        'אב',
-        'עצמו',
-        'מטעם',
-        'מהם',
-        'מ.',
-        'לפניו',
-        'כאילו',
-        'בזה',
-        'אסור',
-        '*',
-        '.',
-        'שהיא',
-        'יכול',
-        'בשנת',
-        'פח.',
-        'לה',
-        'חזר',
-        'זה.',
-        'אלה',
-        '♦',
-        '-',
-        'יום',
-        'רבי',
-        'סז',
+    just_the_words = [
+        (remove_special_chars(w['CONTENT']), w['CONTENT']) for w in candidate
     ]
 
     for w in just_the_words:
-        if w in words_to_discard:
+        if w[0] in WORDS_TO_DISCARD:
             return  # skip this candidate
-    candidate_as_str = candidate2text(just_the_words)
+
     candidates = set()
-    candidates = candidates.union(prefix(candidate_as_str))
-    candidate_as_str = candidate2text(just_the_words[::-1])
-    candidates = candidates.union(prefix(candidate_as_str))
+    dash = r'-|־'
+
+    prefixless = get_prefixless(just_the_words)
+    candidates = candidates.union(prefixless)
+    prefixless_rev = get_prefixless(just_the_words[::-1])
+    candidates = candidates.union(prefixless_rev)
+
+    for w in candidate[0:1]:
+        content = w['CONTENT']
+        orig_content = content
+        if re.search(dash, content):
+            candidates.add((content, content))
+            content_dashless = re.sub(dash, ' ', content)
+            candidates.add((content_dashless, content))
+            orig_content = copy.deepcopy(content)
+            content = content_dashless
+        if content.find(' ') > -1:
+            candidates.add((content, orig_content))
+            prefixless_cont = prefix(content)
+            prefixless_orig = prefix(orig_content)
+            prefixless_all = tuple(zip(prefixless_cont, prefixless_orig))
+            candidates = candidates.union(prefixless_all)
+
     for i in candidates:
         yield i
+
+
+def get_prefixless(just_the_words):
+    candidate_as_str = candidate2text(just_the_words, 0)
+    orig_as_str = candidate2text(just_the_words, 1)
+    cand_prefixless = prefix(candidate_as_str)
+    orig_prefixless = prefix(orig_as_str)
+
+    return list(zip(cand_prefixless, orig_prefixless))
+
 
 PREFIXES = ['ה', 'ו', 'ל', 'מ', 'ב', 'כ', 'ש']
 PREFIXES2 = [
@@ -249,8 +270,15 @@ def find_prefix(s, l):
 
     return res
 
+SPELLINGS = {'שרות': 'שירות'}
 
-MAX_WORDS_IN_QUERY = 6  # should be 32 for current max alias in NLI entities...
+
+def check_spell(cand):
+    for w in cand:
+        if w['CONTENT'] in SPELLINGS:
+            w['CONTENT'] = SPELLINGS[w['CONTENT']]
+
+    return cand
 
 
 def traverse_cand_strs(cand_strs, cand, no_other=True):
@@ -258,8 +286,13 @@ def traverse_cand_strs(cand_strs, cand, no_other=True):
     query_count = 0
     for cs in cand_strs:
         query_count += 1
-        t = db_api.lookup(cs, no_other)
+        t = db_api.lookup(cs[0], no_other)
         for r in t:
+            ws = cs[0]
+            if ws.find(' ') > 0:
+                ws = ws.split()
+            for i, w in enumerate(cand):
+                w['actual_query'] = ws[i]
             res.append(
                 (
                     int(r['id']),
@@ -277,24 +310,20 @@ def traverse_cand_strs(cand_strs, cand, no_other=True):
 def look_for_entities(words, entities):
     res = []
     query_count = 0
-    word_index = 0
-    while word_index < len(words):
-        for slice_length in range(MAX_WORDS_IN_QUERY, 0, -1):
-            candidate = words[word_index:word_index + slice_length]
-            # print(candidate)
-            cand_strs = generate_candidate_variants(candidate)
+    for candidate in slice(words, 2):
+        cand_strs = generate_candidate_variants(candidate)
+        (cur_res, cur_query_count) = traverse_cand_strs(cand_strs, candidate)
+        query_count += cur_query_count
+        res += cur_res
+        if len(cur_res) == 0:
+            alt_cand = check_spell(candidate)
+            cand_strs = generate_candidate_variants(alt_cand)
             (cur_res, cur_query_count) = traverse_cand_strs(
-                cand_strs, candidate)
+                                            cand_strs, candidate, False
+                                        )
             query_count += cur_query_count
-            cur_res = remove_dupes(cur_res)
             res += cur_res
 
-            if cur_res:
-                # found at least one match so skip over all words in it
-                word_index += slice_length
-                break
-        else:  # no matches found that start at current word
-            word_index += 1
     print("number of queries: {}".format(query_count))
     return res
 
@@ -312,12 +341,11 @@ def gather_info_from_folder(path, page=-1):
         f = l[page_ind]
         words = extract_words_from_alto_xml(f)
         res += words
-        return res, f
     else:
         for f in l:
             words = extract_words_from_alto_xml(f)
             res += words
-        return res, None
+    return res
 
 
 def remove_dupes(res):
@@ -337,13 +365,29 @@ def remove_dupes(res):
 
     return new_res
 
+
+# TODO: DIRTY HACK. solve core issues
+def return_prefixes(res):
+    for i, r in enumerate(res):
+        cand = r[4]
+        lr = list(r)
+        if cand[0][0] in PREFIXES and not cand[1][0] in PREFIXES:
+            lr[4] = (cand[0], cand[0][0] + cand[1])
+            res[i] = tuple(lr)
+        if lr[4][1][-1] in list(CHARS_TO_REMOVE):
+            lr[4] = (lr[4][0], lr[4][1][0:-1])
+            res[i] = tuple(lr)
+
+    return res
+
+
 if __name__ == "__main__":
     path = "books2/IE26721743/REP26723234/"
     if len(sys.argv) > 1:
         page = int(sys.argv[1])
     else:
         page = -1
-    words, in_file = gather_info_from_folder(path, page)
+    words = gather_info_from_folder(path, page)
 
     entities = [
         {'id': 1, 'name': 'לחוק התורהl', },
@@ -354,11 +398,12 @@ if __name__ == "__main__":
     ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
+    res = remove_dupes(res)
+    res = return_prefixes(res)
+
+    dict = {}
+    pagefile = str(res[0][5][0]['PAGE_FILE'])
+    code = pagefile.split('/')[-1].split('.')[0]
+    dict[code] = res
     print("number of results: {}".format(len(res)))
-    #pprint(res)
-    if in_file:
-        out_file = in_file.with_suffix(".json")
-    else:
-        out_file = Path(path + "whole_book.json")
-    with out_file.open('w') as f:
-        json.dump(res, f, ensure_ascii=False, indent=2)
+    pprint(dict)
