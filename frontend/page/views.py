@@ -21,10 +21,13 @@ TYPE2COLOR = {
 
 
 
-def alto_section(request, section_id):
-    highlight_ids = HIGHLIGHT_IDS[section_id]
-    xml_filename = os.path.join(settings.DATA_DIR, 'alto_section_xmls', '%s.xml'%section_id)
-    bs=BeautifulSoup(open(xml_filename), "html.parser")
+def alto_section(request, section_id='1227225-140-0108'):
+    rang = ranges[section_id]
+    xml_filename = os.path.join(
+                    settings.BOOKS_DIR,
+                    '%s.xml' % section_id
+                    )
+    bs = BeautifulSoup(open(xml_filename), "html.parser")
     # if xml contains multiple "Page" elements, it will only show the first one
     page = bs.alto.layout.page
     paragraphs = []
@@ -33,22 +36,45 @@ def alto_section(request, section_id):
     for printspace in page.findAll('printspace'):
         for textblock in printspace.findAll('textblock'):
             if paragraph is None:
-                paragraph = []
+                paragraph = {}
+                paragraph['lines'] = []
+                paragraph['class'] = 'reg'
             else:
                 paragraphs.append(paragraph)
-                paragraph = []
+                paragraph = {}
+                paragraph['lines'] = []
+                paragraph['class'] = 'reg'
             for textline in textblock.findAll('textline'):
                 if line is None:
                     line = []
                 else:
-                    paragraph.append(line)
+                    paragraph['lines'].append(line)
                     line = []
+                first = True
                 for string in textline.findAll('string'):
-                    if string['id'] in highlight_ids:
-                        line.append(u'<span style="color:red;">'+string['content']+u'</span> ')
+                    if first and string:
+                        if str(string).find('stylerefs') > -1:
+                            if string['stylerefs'] == 'TXT_1':
+                                line.append('</p> <p class="footnote" dir="rtl">')
+                                paragraph['class'] = 'footnote'
+                                first = False
+
+                    if string['id'] in rang:
+                        content = string['content']
+                        tup = rang[string['id']]
+                        ids, ind, aq, typ = tup
+                        color = TYPE2COLOR[typ]
+                        span_pre = u'<span style="color:{};">'.format(color)
+                        span_suf = u'</span> '
+                        html = aq
+                        if ind == 0:
+                            html = span_pre + aq
+                        if ind == len(ids) - 1:
+                            html += span_suf
+                        line.append(html)
                     else:
                         line.append(u''+string['content']+u' ')
-    paragraph.append(line)
+    paragraph['lines'].append(line)
     paragraphs.append(paragraph)
 
     return render(request, 'nernli/alto_section.html', context={
