@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block header %}
     <a href="{{ object.book.get_absolute_url }}">
@@ -20,4 +21,9 @@
             </p>
         {% endfor %}
     </div>
+
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static "js/page.js" %}"></script>
 {% endblock %}

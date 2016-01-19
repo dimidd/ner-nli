@@ -20,5 +20,8 @@ urlpatterns = [
     url(r'^entity/(?P<pk>\d+)/$', entities.views.EntityDetailView.as_view(),
         name="entity_detail"),
 
+    url(r'^entity/(?P<pk>\d+)/tooltip/$', entities.views.EntityTooltipView.as_view(),
+        name="entity_tooltip"),
+
     url(r'^admin/', admin.site.urls),
 ]

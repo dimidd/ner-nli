@@ -1,10 +1,22 @@
 {% extends "base.html" %}
 
 {% block header %}
+    {% if object.wikipedia_url %}
+        <span class="pull-right">
+            <a class="btn btn-default" href="{{ object.wikipedia_url }}">ויקיפדיה <i class="glyphicon glyphicon-link"></i> </a>
+        </span>
+    {% endif %}
+
     {{ object }}
 {% endblock %}
 
 {% block content %}
+
+    {% if object.short_description %}
+        {{ object.short_description|linebreaks }}
+    {% endif %}
+
+
     <ul class="list-group">
         {% for object in object.hits.all %}
             <li class="list-group-item">

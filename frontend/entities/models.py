@@ -34,6 +34,10 @@ class Entity(models.Model):
     type = models.IntegerField(choices=Types.choices, null=True, blank=True)
     aliases = models.TextField(null=True, blank=True)
     hebrew_alias = models.CharField(max_length=500, null=True, blank=True)
+    short_description = models.TextField(null=True, blank=True)
+    wikipedia_article = models.CharField(max_length=500, null=True, blank=True)
+    wikipedia_url = models.URLField(null=True, blank=True)
+
 
     def __str__(self):
         return self.hebrew_alias

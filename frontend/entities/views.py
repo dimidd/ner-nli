@@ -9,3 +9,8 @@ class EntityListView(ListView):
 
 class EntityDetailView(DetailView):
     model = models.Entity
+
+
+class EntityTooltipView(DetailView):
+    template_name = "entities/entity_tooltip.html"
+    model = models.Entity
