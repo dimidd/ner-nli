@@ -84,62 +84,18 @@ def alto_section(request, section_id='1227225-140-0108'):
         'nlidata': PARSE_NLI_DATA[section_id]
     })
 
-PARSE_NLI_DATA= {
-        '1227225-140-0100': [(2,
-      [{'CONTENT': 'חייבים',
-        'GRANDPARENT': 'P100_TB00001',
-        'ID': 'P100_ST00009',
-        # 'PAGE_FILE': PosixPath('books2/IE26721743/REP26723234/1227225-140-0100.xml'),
-        'PARENT': 'P100_TL00001'},
-       {'CONTENT': 'לשמוע',
-        'GRANDPARENT': 'P100_TB00001',
-        'ID': 'P100_ST00010',
-        # 'PAGE_FILE': PosixPath('books2/IE26721743/REP26723234/1227225-140-0100.xml'),
-        'PARENT': 'P100_TL00001'}],
-      'חייבים לשמוע'),
-     (3,
-      [{'CONTENT': 'ישראל',
-        'GRANDPARENT': 'P100_TB00001',
-        'ID': 'P100_ST00241',
-        # 'PAGE_FILE': PosixPath('books2/IE26721743/REP26723234/1227225-140-0100.xml'),
-        'PARENT': 'P100_TL00023'},
-       {'CONTENT': 'בניגוד',
-        'GRANDPARENT': 'P100_TB00001',
-        'ID': 'P100_ST00242',
-        # 'PAGE_FILE': PosixPath('books2/IE26721743/REP26723234/1227225-140-0100.xml'),
-        'PARENT': 'P100_TL00023'}],
-      'ישראל בניגוד'),
-     (4,
-      [{'CONTENT': 'בניגוד',
-        'GRANDPARENT': 'P100_TB00001',
-        'ID': 'P100_ST00242',
-        # 'PAGE_FILE': PosixPath('books2/IE26721743/REP26723234/1227225-140-0100.xml'),
-        'PARENT': 'P100_TL00023'},
-       {'CONTENT': 'לחוק',
-        'GRANDPARENT': 'P100_TB00001',
-        'ID': 'P100_ST00243',
-        # 'PAGE_FILE': PosixPath('books2/IE26721743/REP26723234/1227225-140-0100.xml'),
-        'PARENT': 'P100_TL00023'}],
-      'לחוק בניגוד'),
-     (1,
-      [{'CONTENT': 'לחוק',
-        'GRANDPARENT': 'P100_TB00001',
-        'ID': 'P100_ST00243',
-        # 'PAGE_FILE': PosixPath('books2/IE26721743/REP26723234/1227225-140-0100.xml'),
-        'PARENT': 'P100_TL00023'},
-       {'CONTENT': 'התורהl',
-        'GRANDPARENT': 'P100_TB00001',
-        'ID': 'P100_ST00244',
-        # 'PAGE_FILE': PosixPath('books2/IE26721743/REP26723234/1227225-140-0100.xml'),
-        'PARENT': 'P100_TL00024'}],
-      'לחוק התורהl')]
 
-}
-
-HIGHLIGHT_IDS = {}
+ranges ={}
 for section_id in PARSE_NLI_DATA:
-    HIGHLIGHT_IDS[section_id] = []
+    ranges[section_id] = {}
     section_nlidata = PARSE_NLI_DATA[section_id]
     for keyword in section_nlidata:
-        for word in keyword[1]:
-            HIGHLIGHT_IDS[section_id].append(word['ID'])
+        type = keyword[1]
+        display_str = keyword[4][1]
+        if display_str.find(' ') > -1:
+            display = display_str.split()
+        else:
+            display = [display_str]
+        ids = [[word['ID']] for word in keyword[5]]
+        for i, word in enumerate(keyword[5]):
+            ranges[section_id][word['ID']] = (ids, i, display[i], type)
