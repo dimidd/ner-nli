@@ -1,13 +1,27 @@
 from django.conf.urls import url
 from django.contrib import admin
-from page import views as page_views
+
+import entities.views
+import page.views
 
 urlpatterns = [
 
-    url(r'^$', page_views.page),
-    url(r'^alto-section/$', page_views.alto_section_list),
-    url(r'^alto-section/(?P<section_id>\d+)$', page_views.page),
-    url(r'^alto-section/(\d+)/$', page_views.page),
+    url(r'^$', page.views.BookListView.as_view(), name="book_list"),
+
+    url(r'^book/(?P<pk>\d+)/$', page.views.BookDetailView.as_view(),
+        name="book_detail"),
+
+    url(r'^page/(?P<pk>\d+)/$', page.views.PageDetailView.as_view(),
+        name="page_detail"),
+
+    url(r'^entity/$', entities.views.EntityListView.as_view(),
+        name="entity_list"),
+
+    url(r'^entity/(?P<pk>\d+)/$', entities.views.EntityDetailView.as_view(),
+        name="entity_detail"),
+
+    url(r'^entity/(?P<pk>\d+)/tooltip/$', entities.views.EntityTooltipView.as_view(),
+        name="entity_tooltip"),
 
     url(r'^admin/', admin.site.urls),
 ]

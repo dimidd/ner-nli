@@ -1,4 +1,5 @@
 import bs4
+from django.core.urlresolvers import reverse
 
 
 def get_paragraphs(xml_filename, highlight_ids):
@@ -26,13 +27,15 @@ def get_paragraphs(xml_filename, highlight_ids):
                 for string in textline.findAll('string'):
                     id = string['id']
                     if id in highlight_ids:
+                        url = reverse("entity_detail", args=(highlight_ids[id].entity_id,))
                         line.append(
-                                '<span style="color:red"'
+                                '<a href="{}" '
                                 ' data-hit="{}" data-entity="{}"'
-                                ' data-type="{}">{}</span>'.format(
+                                ' class="entity-{}">{}</a>'.format(
+                                        url,
                                         highlight_ids[id].id,
                                         highlight_ids[id].entity_id,
-                                        highlight_ids[id].entity.type,
+                                        highlight_ids[id].entity.type_code(),
                                         string['content']
                                 ))
                     else:

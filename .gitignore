@@ -69,4 +69,4 @@ target/
 /celerybeat-schedule
 /.project
 /.pydevproject
->>>>>>> ce044496bc818996a1d1191bcbc071ea060b0689
+books_fmt/*

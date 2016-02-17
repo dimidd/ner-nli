@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block header %}
+    ספרים
+{% endblock %}
+
+
+{% block content %}
+    <ul class="list-group">
+        {% for object in object_list %}
+            <li class="list-group-item">
+                <a href="{{ object.get_absolute_url }}">
+                    {{ object }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

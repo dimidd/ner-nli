@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block header %}
+    <a href="{{ object.book.get_absolute_url }}">
+        {{ object.book }}
+    </a>
+    &raquo;
+    עמ'
+    {{ object.ordinal }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="paper">
+        {% for paragraph in paragraphs %}
+            <p>
+                {% for line in paragraph %}
+                    {% for word in line %}{{ word|safe }} {% endfor %}<br/>
+                {% endfor %}
+            </p>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static "js/page.js" %}"></script>
+{% endblock %}

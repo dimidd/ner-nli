@@ -3,6 +3,7 @@ import json
 import os.path
 
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.db import models
 
 from entities.models import Entity
@@ -11,6 +12,12 @@ from entities.models import Entity
 class Book(models.Model):
     title = models.CharField(max_length=500)
     path = models.CharField(max_length=500, unique=True)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse("book_detail", args=(self.pk,))
 
 
 class Page(models.Model):
@@ -23,6 +30,12 @@ class Page(models.Model):
             ('book', 'ordinal'),
             ('book', 'path'),
         )
+
+    def __str__(self):
+        return "{} עמ' {}".format(self.book, self.ordinal)
+
+    def get_absolute_url(self):
+        return reverse("page_detail", args=(self.pk,))
 
     def file_path(self):
         return os.path.join(self.book.path, "{}.xml".format(self.path))
