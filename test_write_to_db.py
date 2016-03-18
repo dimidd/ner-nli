@@ -14,7 +14,10 @@ if __name__ == "__main__":
     c = db.test_ents
     print(type(c))
 
-    l = list(app.entity_iterators.get_authorities(from_id=0, to_id=3))
-    c.insert(l[0])
+    print("docs in test_ents:", c.count())
 
-    printf("docs in test_ents:", c.count())
+    l = list(app.entity_iterators.get_authorities(from_id=0, to_id=3))
+    for item in l:
+        c.insert(item.data)
+
+    print("docs in test_ents:", c.count())
