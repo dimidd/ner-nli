@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import json
 
-ents = []
 code2type = {
     u'151': 'geo',
     u'451': 'geo',
@@ -15,13 +14,8 @@ code2type = {
     u'400': 'person'
 }
 
-data = ''
-with open('nnl2.json', 'r') as inputfile:
-    for line in inputfile:
-        data += line
-js = json.loads(data, 'utf-8')
 
-for record in js['items']:
+def extract_data_from_json_record(record):
     ent_aliases = []
     ent_type = "other"
     ent_id = -1
@@ -38,7 +32,18 @@ for record in js['items']:
                         alias = its[0]['items'][0]
                         ent_aliases.append(alias)
 
-    ents.append({"id": ent_id, "type": ent_type, "aliases": ent_aliases})
+    return {"id": ent_id, "type": ent_type, "aliases": ent_aliases}
 
-with open('entities.json', 'w') as outfile:
-    json.dump(ents, outfile, ensure_ascii=False)
+if __name__ == "__main__":
+    ents = []
+    data = ''
+    with open('nnl2_test.json', 'r') as inputfile:
+        for line in inputfile:
+            data += line
+    js = json.loads(data, 'utf-8')
+
+    for record in js['items'][:10]:
+        ents.append(extract_data_from_json_record(record))
+
+    with open('entities_test.json', 'w') as outfile:
+        json.dump(ents, outfile, ensure_ascii=False)
