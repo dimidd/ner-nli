@@ -34,6 +34,29 @@ def extract_data_from_json_record(record):
 
     return {"id": ent_id, "type": ent_type, "aliases": ent_aliases}
 
+
+def extract_data_from_entity_dict(record):
+    ent_aliases = []
+    ent_type = "other"
+    ent_id = -1
+    ent_years = None
+
+    for k, v in record.items():
+        if k == u'001':
+            ent_id = int(v[0]['#text'])
+        elif k[0] in ['1', '4']:
+            ent_type = code2type.get(k, "other")
+            if ent_type == "person":
+                ent_years = v[0]['d']
+
+            for i in v:
+                alias = i['a']
+                ent_aliases.append(alias)
+
+
+    return {"id": ent_id, "type": ent_type, "aliases": ent_aliases, "years": ent_years}
+
+
 if __name__ == "__main__":
     ents = []
     data = ''
