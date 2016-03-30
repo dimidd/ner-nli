@@ -47,7 +47,10 @@ def extract_data_from_entity_dict(record):
         elif k[0] in ['1', '4']:
             ent_type = code2type.get(k, "other")
             if ent_type == "person":
-                ent_years = v[0]['d']
+                try:
+                    ent_years = v[0]['d']
+                except KeyError:
+                    pass
 
             for i in v:
                 alias = i['a']
