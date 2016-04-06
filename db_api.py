@@ -5,8 +5,10 @@ import pymongo
 import re
 
 CL = pymongo.MongoClient()
-DB = CL['ner-dict']
-C = DB.ents
+#DB = CL['ner-dict']
+#C = DB.ents
+DB = CL['for_test']
+C = DB.test_ents
 
 # improve: if no result found try to remove the following prefixes:
 # ו, ל, מ, ב, כ, ש,
@@ -21,7 +23,8 @@ def lookup(alias, no_other=True):
     # as regex search in mongo is very slow, do a phrase search in mongo
     # and then a regex search only on the results
     alias_for_phrase_search = '\"{}\"'.format(alias)
-    res = C.find({"$text": {"$search": alias_for_phrase_search}})
+    #res = C.find({"$text": {"$search": alias_for_phrase_search}})
+    res = C.find({"text": {"search": alias_for_phrase_search}})
 
     alias_regex_str = r'^{}$'.format(alias)
     geo_regex_str = r'^{} \(.+\)$'.format(alias)
