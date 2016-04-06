@@ -16,10 +16,16 @@ if __name__ == "__main__":
 
     print("docs in test_ents:", c.count())
 
-    l = list(c.find())
+    c.create_index([('aliases', pymongo.TEXT)], name='aliases_text', default_language='none')
+
+    #l = list(c.find())
+    alias = "יונתן בן עוזיאל"
+    alias_for_phrase_search = '\"{}\"'.format(alias)
+    #l = list(c.find({"text": {"search": alias_for_phrase_search}}))
+    l = list(c.find({"text": {"search": alias_for_phrase_search}}))
     for item in l:
         pprint.pprint(item)
         print()
-    #c.remove({})
+    # c.remove({})
 
     print("docs in test_ents:", c.count())
