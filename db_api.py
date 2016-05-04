@@ -4,7 +4,8 @@
 import pymongo
 import re
 
-CL = pymongo.MongoClient()
+#CL = pymongo.MongoClient()
+CL = pymongo.MongoClient('localhost', 29017)  # not default port!
 #DB = CL['ner-dict']
 #C = DB.ents
 DB = CL['for_test']
@@ -24,7 +25,8 @@ def lookup(alias, no_other=True):
     # and then a regex search only on the results
     alias_for_phrase_search = '\"{}\"'.format(alias)
     #res = C.find({"$text": {"$search": alias_for_phrase_search}})
-    res = C.find({"text": {"search": alias_for_phrase_search}})
+    #res = C.find({"text": {"search": alias_for_phrase_search}})
+    res = DB.command('text', 'test_ents', search=alias_for_phrase_search)
 
     alias_regex_str = r'^{}$'.format(alias)
     geo_regex_str = r'^{} \(.+\)$'.format(alias)
@@ -35,9 +37,16 @@ def lookup(alias, no_other=True):
         print("problem with: '{}'!".format(alias))
         return []
     good_matches = []
-    for r in res:
-        if r['type'] == 'other':
-            continue
+    for r in res['results']:
+        r = r['obj']
+        try:
+            if r['type'] == 'other':
+                continue
+        except KeyError as e:
+            print("exception:", e)
+            print("query:", alias_for_phrase_search)
+            print("type of r:", type(r))
+            print("r:", r)
         for a in r['aliases']:
             if alias_regex.match(a):
                 good_matches.append(r)
