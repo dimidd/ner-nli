@@ -28,7 +28,7 @@ def lookup(alias, no_other=True):
     #res = C.find({"text": {"search": alias_for_phrase_search}})
     res = DB.command('text', 'test_ents', search=alias_for_phrase_search)
 
-    alias_regex_str = r'^{}$'.format(alias)
+    alias_regex_str = r'^{}[.,]?$'.format(alias)
     geo_regex_str = r'^{} \(.+\)$'.format(alias)
     try:
         alias_regex = re.compile(alias_regex_str)
