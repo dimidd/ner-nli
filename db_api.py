@@ -8,6 +8,13 @@ CL = pymongo.MongoClient()
 DB = CL['ner-dict']
 C = DB.ents
 
+# improve: if no result found try to remove the following prefixes:
+# ו, ל, מ, ב, כ, ש,
+# ול, ומ, וב, וכ, וש,
+# של, שמ, שב, שכ,
+# כש, וכש, שכש, לכש, ולכש,
+# ה, וה, מה, שה, ומה, ושה, כשה, וכשה, לכשה, ולכשה, ומש, ומשה,
+# and lookup again...
 
 def lookup(alias, no_other=True):
     # as regex search in mongo is very slow, do a phrase search in mongo

@@ -5,8 +5,10 @@ import re
 from lxml import etree
 from pprint import pprint
 from pathlib import Path
-import db_api
 import sys
+import json
+
+import db_api
 
 chars_to_remove = re.compile(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+')
 
@@ -27,7 +29,7 @@ def extract_words_from_alto_xml(filepath):
             "CONTENT": word.get("CONTENT"),
             "PARENT": word.getparent().get("ID"),
             "GRANDPARENT": word.getparent().getparent().get("ID"),
-            "PAGE_FILE": filepath,
+            "PAGE_FILE": str(filepath),
             })
     return words
 
@@ -58,6 +60,9 @@ def remove_special_chars(candidate_as_str):
 
 def generate_candidate_variants(candidate):
     just_the_words = [remove_special_chars(w['CONTENT']) for w in candidate]
+    if len(just_the_words) == 1:
+        if len(just_the_words[0].split()) < 2:
+            return
     words_to_discard = [
         '',
         'את',
@@ -189,6 +194,9 @@ def generate_candidate_variants(candidate):
         'זה.',
         'אלה',
         '♦',
+        '-',
+        'יום',
+        'רבי',
     ]
 
     for w in just_the_words:
@@ -280,23 +288,30 @@ def traverse_cand_strs(cand_strs, cand, no_other=True):
     return (res, query_count)
 
 
+MAX_WORDS_IN_QUERY = 6  # should be 32 for current max alias in NLI entities...
+
+
 def look_for_entities(words, entities):
     res = []
     query_count = 0
-    for candidate in slice(words, 2):
-        cand_strs = generate_candidate_variants(candidate)
-        (cur_res, cur_query_count) = traverse_cand_strs(cand_strs, candidate)
-        query_count += cur_query_count
-        res += cur_res
-        if len(cur_res) == 0:
-            alt_cand = check_spell(candidate)
-            cand_strs = generate_candidate_variants(alt_cand)
+    word_index = 0
+    while word_index < len(words):
+        for slice_length in range(MAX_WORDS_IN_QUERY, 0, -1):
+            candidate = words[word_index:word_index + slice_length]
+            # print(candidate)
+            cand_strs = generate_candidate_variants(candidate)
             (cur_res, cur_query_count) = traverse_cand_strs(
-                                            cand_strs, candidate, False
-                                        )
+                cand_strs, candidate)
             query_count += cur_query_count
+            cur_res = remove_dupes(cur_res)
             res += cur_res
 
+            if cur_res:
+                # found at least one match so skip over all words in it
+                word_index += slice_length
+                break
+        else:  # no matches found that start at current word
+            word_index += 1
     print("number of queries: {}".format(query_count))
     return res
 
@@ -314,11 +329,12 @@ def gather_info_from_folder(path, page=-1):
         f = l[page_ind]
         words = extract_words_from_alto_xml(f)
         res += words
+        return res, f
     else:
         for f in l:
             words = extract_words_from_alto_xml(f)
             res += words
-    return res
+        return res, None
 
 
 def remove_dupes(res):
@@ -344,7 +360,7 @@ if __name__ == "__main__":
         page = int(sys.argv[1])
     else:
         page = -1
-    words = gather_info_from_folder(path, page)
+    words, in_file = gather_info_from_folder(path, page)
 
     entities = [
         {'id': 1, 'name': 'לחוק התורהl', },
@@ -357,4 +373,10 @@ if __name__ == "__main__":
     res = look_for_entities(words, entities)
     res = remove_dupes(res)
     print("number of results: {}".format(len(res)))
-    pprint(res)
+    #pprint(res)
+    if in_file:
+        out_file = in_file.with_suffix(".json")
+    else:
+        out_file = Path(path + "whole_book.json")
+    with out_file.open('w') as f:
+        json.dump(res, f, ensure_ascii=False, indent=2)
