@@ -16,7 +16,6 @@ C = DB.ents
 # ה, וה, מה, שה, ומה, ושה, כשה, וכשה, לכשה, ולכשה, ומש, ומשה,
 # and lookup again...
 
-
 def lookup(alias, no_other=True):
     # as regex search in mongo is very slow, do a phrase search in mongo
     # and then a regex search only on the results
@@ -33,7 +32,7 @@ def lookup(alias, no_other=True):
         return []
     good_matches = []
     for r in res:
-        if r['type'] == 'other':
+        if no_other and r['type'] == 'other':
             continue
         for a in r['aliases']:
             if alias_regex.match(a):

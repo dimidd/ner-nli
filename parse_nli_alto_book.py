@@ -202,11 +202,25 @@ def generate_candidate_variants(candidate):
     for w in just_the_words:
         if w in words_to_discard:
             return  # skip this candidate
+
     candidate_as_str = candidate2text(just_the_words)
     candidates = set()
+    dash = r'-|־'
+
     candidates = candidates.union(augment_with_prefixless_version(candidate_as_str))
     candidate_as_str = candidate2text(just_the_words[::-1])
     candidates = candidates.union(augment_with_prefixless_version(candidate_as_str))
+    for w in candidate[0:1]:
+        content = w['CONTENT']
+        if re.search(dash, content):
+            candidates.add(content)
+            content_dashless = re.sub(dash, ' ', content)
+            candidates.add(content_dashless)
+            content = content_dashless
+        if content.find(' ') > -1:
+            candidates.add(content)
+            candidates = candidates.union(augment_with_prefixless_version(content))
+
     for i in candidates:
         yield i
 
@@ -249,8 +263,15 @@ def get_prefixless_set(word, prefixes):
 
     return res
 
+SPELLINGS = {'שרות': 'שירות'}
 
-MAX_WORDS_IN_QUERY = 6  # should be 32 for current max alias in NLI entities...
+
+def check_spell(cand):
+    for w in cand:
+        if w['CONTENT'] in SPELLINGS:
+            w['CONTENT'] = SPELLINGS[w['CONTENT']]
+
+    return cand
 
 
 def traverse_cand_strs(cand_strs, cand, no_other=True):
@@ -272,6 +293,9 @@ def traverse_cand_strs(cand_strs, cand, no_other=True):
             )
 
     return (res, query_count)
+
+
+MAX_WORDS_IN_QUERY = 6  # should be 32 for current max alias in NLI entities...
 
 
 def look_for_entities(words, entities):
@@ -354,6 +378,7 @@ if __name__ == "__main__":
     ]
     # TODO probably send source (name of file which contains page?) also
     res = look_for_entities(words, entities)
+    res = remove_dupes(res)
     print("number of results: {}".format(len(res)))
     #pprint(res)
     if in_file:
