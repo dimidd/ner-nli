@@ -204,9 +204,9 @@ def generate_candidate_variants(candidate):
             return  # skip this candidate
     candidate_as_str = candidate2text(just_the_words)
     candidates = set()
-    candidates = candidates.union(prefix(candidate_as_str))
+    candidates = candidates.union(augment_with_prefixless_version(candidate_as_str))
     candidate_as_str = candidate2text(just_the_words[::-1])
-    candidates = candidates.union(prefix(candidate_as_str))
+    candidates = candidates.union(augment_with_prefixless_version(candidate_as_str))
     for i in candidates:
         yield i
 
@@ -223,22 +223,29 @@ PREFIXES3 = [
 ]
 
 
-def prefix(s):
-    res = find_prefix(s, PREFIXES)
-    if len(res) == 0:
-        res = find_prefix(s, PREFIXES2)
-    if len(res) == 0:
-        res = find_prefix(s, PREFIXES3)
+def augment_with_prefixless_version(word):
+    """build set that includes @word and the set of word without prefixes
 
+    we start with trying to remove prefixes of length 1, if none are found
+    we try longer prefixes
+    """
+    res = get_prefixless_set(word, PREFIXES)
+    if len(res) == 0:
+        res = get_prefixless_set(word, PREFIXES2)
+    if len(res) == 0:
+        res = get_prefixless_set(word, PREFIXES3)
+
+    res.add(word)
     return res
 
 
-def find_prefix(s, l):
+def get_prefixless_set(word, prefixes):
+    """build set of strings where each one is @word without one of the @prefixes
+    """
     res = set()
-    res.add(s)
-    for p in l:
-        if s.startswith(p):
-            res.add(s[len(p):])
+    for p in prefixes:
+        if word.startswith(p):
+            res.add(word[len(p):])
 
     return res
 
