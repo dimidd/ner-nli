@@ -327,25 +327,42 @@ def look_for_entities(words, entities):
     return res
 
 
-def gather_info_from_folder(path, page=-1):
+def path_to_file_list(dir_path, page=-1):
+    '''
+    Return a list of alto file(s) in a dir.
+
+    @return : list : alto file paths.
+
+    @dir_path : string : relative or absolute path to a dir containing alto files
+    @page : int : the page number, starting from 1, or -1 for all pages
+    '''
+
     folder = Path(path)
-    res = []
-    l = list(folder.glob('*.xml'))
-    l = sorted(l)
+    files = list(folder.glob('*.xml'))
+    files = sorted(files)
+
     if page != -1:
         page_ind = page - 1
-        if page_ind < 0 or page_ind >= len(l):
+        if page_ind < 0 or page_ind >= len(files):
             print("Wrong page")
             sys.exit(1)
-        f = l[page_ind]
+        return [files[page_ind]]
+    return files
+
+
+def gather_info_from_files(files):
+    '''
+    Return a list of alto words from the supplied files.
+
+    @return : list : alto words
+    @files  : list : alto files
+    '''
+    res = []
+    for f in files:
         words = extract_words_from_alto_xml(f)
         res += words
-        return res, f
-    else:
-        for f in l:
-            words = extract_words_from_alto_xml(f)
-            res += words
-        return res, None
+
+    return res
 
 
 def remove_dupes(res):
@@ -371,7 +388,8 @@ if __name__ == "__main__":
         page = int(sys.argv[1])
     else:
         page = -1
-    words, in_file = gather_info_from_folder(path, page)
+    files = path_to_file_list(path, page)
+    words = gather_info_from_files(files)
 
     entities = [
         {'id': 1, 'name': 'לחוק התורהl', },
@@ -385,8 +403,8 @@ if __name__ == "__main__":
     res = remove_dupes(res)
     print("number of results: {}".format(len(res)))
     #pprint(res)
-    if in_file:
-        out_file = in_file.with_suffix(".json")
+    if page != -1:
+        out_file = files[0].with_suffix(".json")
     else:
         out_file = Path(path + "whole_book.json")
     with out_file.open('w') as f:
