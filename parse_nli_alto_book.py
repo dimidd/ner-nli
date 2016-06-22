@@ -207,9 +207,13 @@ def generate_candidate_variants(candidate):
     candidates = set()
     dash = r'-|־'
 
-    candidates = candidates.union(augment_with_prefixless_version(candidate_as_str))
+    candidates = candidates.union(
+        augment_with_prefixless_version(candidate_as_str)
+    )
     candidate_as_str = candidate2text(just_the_words[::-1])
-    candidates = candidates.union(augment_with_prefixless_version(candidate_as_str))
+    candidates = candidates.union(
+        augment_with_prefixless_version(candidate_as_str)
+    )
     for w in candidate[0:1]:
         content = w['CONTENT']
         if re.search(dash, content):
