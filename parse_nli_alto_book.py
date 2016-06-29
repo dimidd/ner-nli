@@ -302,7 +302,7 @@ def traverse_cand_strs(cand_strs, cand, no_other=True):
 MAX_WORDS_IN_QUERY = 6  # should be 32 for current max alias in NLI entities...
 
 
-def look_for_entities(words, entities):
+def look_for_entities(words):
     res = []
     query_count = 0
     word_index = 0
@@ -384,25 +384,17 @@ def remove_dupes(res):
 
 if __name__ == "__main__":
     path = "books2/IE26721743/REP26723234/"
+    page = -1  # default - whole book
     if len(sys.argv) > 1:
         page = int(sys.argv[1])
-    else:
-        page = -1
     files = path_to_file_list(path, page)
     words = gather_info_from_files(files)
 
-    entities = [
-        {'id': 1, 'name': 'לחוק התורהl', },
-        {'id': 2, 'name': 'חייבים לשמוע', },
-        {'id': 3, 'name': 'ישראל בניגוד', },
-        {'id': 4, 'name': 'לחוק בניגוד', },
-        {'id': 5, 'name': 'יונתן בן עוזיאל', },
-    ]
     # TODO probably send source (name of file which contains page?) also
-    res = look_for_entities(words, entities)
+    res = look_for_entities(words)
     res = remove_dupes(res)
     print("number of results: {}".format(len(res)))
-    #pprint(res)
+
     if page != -1:
         out_file = files[0].with_suffix(".json")
     else:
