@@ -10,6 +10,11 @@ import json
 
 import db_api
 
+from collections import namedtuple
+
+
+Res_Entry = namedtuple('Res_Entry', 'id type alias alias_len cand_str cand')
+
 chars_to_remove = re.compile(r'[-:+/_־—,\'".!.)(~*©§■•|}{£«□¥#♦^<>?✓=;\\[\]]+')
 
 
@@ -286,7 +291,7 @@ def traverse_cand_strs(cand_strs, cand, no_other=True):
         t = db_api.lookup(cs, no_other)
         for r in t:
             res.append(
-                (
+                Res_Entry(
                     int(r['id']),
                     r['type'],
                     r['aliases'][0],
@@ -370,9 +375,9 @@ def remove_dupes(res):
     can_set = set()
     max_size = -1
     for r in res:
-        alias = (r[1], r[2])
+        alias = (r.type, r.alias)
         if alias in can_set:
-            if r[3] > max_size:
+            if r.alias_len > max_size:
                 new_res[:] = [x for x in new_res if not (x[1], x[2]) == alias]
                 can_set.add(alias)
                 new_res.append(r)
