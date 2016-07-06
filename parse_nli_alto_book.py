@@ -6,6 +6,7 @@ from lxml import etree
 from pathlib import Path
 import sys
 import json
+import subprocess
 
 import db_api
 
@@ -399,9 +400,14 @@ if __name__ == "__main__":
     res = remove_dupes(res)
     print("number of results: {}".format(len(res)))
 
+    # TODO: handle errors
+    sha1_bytes = subprocess.check_output(['git', 'rev-parse', 'HEAD'])
+    sha1 = sha1_bytes[0:-1].decode('utf-8')
+
     if page != -1:
-        out_file = files[0].with_suffix(".json")
+        base = files[0].stem + "_" + sha1 + ".json"
+        out_file = files[0].with_name(base)
     else:
-        out_file = Path(path + "whole_book.json")
+        out_file = Path(path + "whole_book_" + sha1 + ".json")
     with out_file.open('w') as f:
         json.dump(res, f, ensure_ascii=False, indent=2)
