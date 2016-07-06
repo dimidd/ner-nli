@@ -3,7 +3,6 @@
 
 import re
 from lxml import etree
-from pprint import pprint
 from pathlib import Path
 import sys
 import json
