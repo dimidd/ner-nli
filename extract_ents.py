@@ -36,7 +36,8 @@ def extract_data_from_json_record(record):
 
 
 def extract_data_from_entity_dict(record):
-    ent_aliases = []
+    ent_primary_aliases = []
+    ent_secondary_aliases = []
     ent_type = "other"
     ent_id = -1
     ent_years = None
@@ -54,10 +55,17 @@ def extract_data_from_entity_dict(record):
 
             for i in v:
                 alias = i['a']
-                ent_aliases.append(alias)
+                if k[0] == '1':
+                    ent_primary_aliases.append(alias)
+                elif k[0] == '4':
+                    ent_secondary_aliases.append(alias)
 
 
-    return {"id": ent_id, "type": ent_type, "aliases": ent_aliases, "years": ent_years}
+    return {"id": ent_id,
+            "type": ent_type,
+            "primary_aliases": ent_primary_aliases,
+            "secondary_aliases": ent_secondary_aliases,
+            "years": ent_years}
 
 
 if __name__ == "__main__":

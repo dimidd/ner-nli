@@ -47,7 +47,7 @@ def lookup(alias, no_other=True):
             print("query:", alias_for_phrase_search)
             print("type of r:", type(r))
             print("r:", r)
-        for a in r['aliases']:
+        for a in (r['primary_aliases'] + r['secondary_aliases']):
             if alias_regex.match(a):
                 good_matches.append(r)
             if geo_regex.match(a) and r['type'] == 'geo':

@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     #print("docs in test_ents:", c.count())
 
-    c.create_index([('aliases', pymongo.TEXT)], name='aliases_text', default_language='none')
+    c.create_index([('primary_aliases', pymongo.TEXT), ('secondary_aliases', pymongo.TEXT)], name='aliases_text', default_language='none')
 
     #l = list(c.find())
 

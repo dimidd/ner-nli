@@ -257,8 +257,8 @@ def traverse_cand_strs(cand_strs, cand, no_other=True):
                 (
                     int(r['id']),
                     r['type'],
-                    r['aliases'][0],
-                    len(r['aliases']),
+                    r['primary_aliases'][0],
+                    len(r['primary_aliases'] + r['secondary_aliases']),
                     cs,
                     cand
                 )
