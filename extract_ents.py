@@ -35,6 +35,10 @@ def extract_data_from_json_record(record):
     return {"id": ent_id, "type": ent_type, "aliases": ent_aliases}
 
 
+# mail from Eyal:
+wanted_fields = ("100", "400", "110", "410", "150", "450", "151", "451")
+
+
 def extract_data_from_entity_dict(record):
     ent_primary_aliases = []
     ent_secondary_aliases = []
@@ -45,7 +49,7 @@ def extract_data_from_entity_dict(record):
     for k, v in record.items():
         if k == u'001':
             ent_id = int(v[0]['#text'])
-        elif k[0] in ['1', '4']:
+        elif k in wanted_fields:
             ent_type = code2type.get(k, "other")
             if ent_type == "person":
                 try:
