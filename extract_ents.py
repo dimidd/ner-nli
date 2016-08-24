@@ -64,12 +64,14 @@ def extract_data_from_entity_dict(record):
                 elif k[0] == '4':
                     ent_secondary_aliases.append(alias)
 
-
-    return {"id": ent_id,
-            "type": ent_type,
-            "primary_aliases": ent_primary_aliases,
-            "secondary_aliases": ent_secondary_aliases,
-            "years": ent_years}
+    if len(ent_primary_aliases):
+        return {"id": ent_id,
+                "type": ent_type,
+                "primary_aliases": ent_primary_aliases,
+                "secondary_aliases": ent_secondary_aliases,
+                "years": ent_years}
+    else:
+        return None
 
 
 if __name__ == "__main__":

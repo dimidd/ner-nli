@@ -27,7 +27,9 @@ if __name__ == "__main__":
         #print('===========================')
         #pprint.pprint(extract_ents.extract_data_from_entity_dict(item.data))
         try:
-            c.insert(extract_ents.extract_data_from_entity_dict(item.data))
+            ent_data = extract_ents.extract_data_from_entity_dict(item.data)
+            if ent_data:
+                c.insert(ent_data)
         except Exception as e:
             print('exception from extract_data_from_entity_dict:', e)
             pprint.pprint(item.data)
