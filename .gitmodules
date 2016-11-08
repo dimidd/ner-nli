@@ -1,0 +1,3 @@
+[submodule "LibraryWiki"]
+	path = LibraryWiki
+	url = https://github.com/nelzas/LibraryWiki.git
