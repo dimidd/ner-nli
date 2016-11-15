@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 import pymongo
 import sys
-sys.path.append('../LibraryWiki/')
+sys.path.append('./LibraryWiki/')
 import app.entity_iterators
 from pprint import pprint
 
 
 if __name__ == "__main__":
-    cl = pymongo.MongoClient('localhost', 29017)  # not default port!
+    cl = pymongo.MongoClient('localhost', 27017)  # default port!
     #print(type(cl))
     db = cl['for_test']
     #print(type(db))

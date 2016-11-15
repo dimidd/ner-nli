@@ -7,7 +7,7 @@ import extract_ents
 import pprint
 
 if __name__ == "__main__":
-    cl = pymongo.MongoClient('localhost', 29017)  # not default port!
+    cl = pymongo.MongoClient('localhost', 27017)  # default port!
     print(type(cl))
     db = cl['for_test']
     print(type(db))
