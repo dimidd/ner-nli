@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import pymongo
 import sys
-sys.path.append('../LibraryWiki/')
+sys.path.append('./LibraryWiki/')
 import app.entity_iterators
 import extract_ents
 import pprint
@@ -16,10 +16,11 @@ if __name__ == "__main__":
 
     print("docs in test_ents:", c.count())
 
-    # l = list(app.entity_iterators.get_authorities(from_id=72040, to_id=73860))
-    #l = list(app.entity_iterators.get_authorities(from_id=72049, to_id=72049))
-    #ents = app.entity_iterators.get_authorities(from_id=72000, to_id=75000)
-    ents = app.entity_iterators.get_authorities()  # all of them
+    entities_file = "/home/nelzas/for_nli/nnl10_dump_20_03_2016.xml"
+
+    #ents = app.entity_iterators.get_authorities(from_id=72000, to_id=75000, entities_file=entities_file)
+    ents = app.entity_iterators.get_authorities(to_id=500, entities_file=entities_file)
+    #ents = app.entity_iterators.get_authorities(entities_file=entities_file)  # all of them
     #for item in l:
     for item in ents:
         #c.insert(extract_ents.extract_data_from_json_record(item.data))
