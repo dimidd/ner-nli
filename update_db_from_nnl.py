@@ -2,8 +2,9 @@
 
 from sickle import Sickle
 from pprint import pprint
+from lxml import etree, objectify
 
-if __name__ == "__main__":
+def get_some_records():
     """Example from Eyal's mail:
        http://aleph.nli.org.il/OAI?verb=ListRecords&metadataprefix=marc21&set=AUTREIMRC"""
 
@@ -29,9 +30,45 @@ if __name__ == "__main__":
         **{'metadataprefix': 'marc21',
            'set': 'AUTREIMRC',
            'from': '2016-12-18T05:31:45Z',
-           'until': '2016-12-18T05:31:45Z',
+           'until': '2016-12-19T05:31:45Z',
           })
+    return nli_records
+
+
+def extract_data_from_oai_nli_record(record):
+    pass
+
+
+if __name__ == "__main__":
+    #nli_records = get_some_records()
+    nli_records = []
+    with open('/home/nelzas/for_nli/sample_output_from_sickle_script_as_is.xml', 'r') as f:
+        for line in f:
+            nli_records.append(line)
+
+
     for item in nli_records:
         print(item)
+#        record = objectify.fromstring(item)
+#        print(dir(record))
+#        print(record)
+#        pprint(record.keys())
+        example = etree.fromstring(item)
+        print("attrib:")
+        pprint(example.attrib)
+        print("getchildren:")
+        pprint(example.getchildren())
+        for c in example.getchildren():
+            print("in child")
+            print(c)
+            print("in child getchildren:")
+            pprint(c.getchildren())
+            for cc in c.getchildren():
+                print("cc")
+                pprint(cc)
+                pprint(cc.getchildren())
+            #print(dir(c))
+            #print(c.items())
+        #pprint(example.xpath(u'//metadata',
+        #                     namespaces={'def': 'http://www.openarchives.org/OAI/2.0/'}))
     print()
-
