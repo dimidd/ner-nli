@@ -17,21 +17,27 @@ if __name__ == "__main__":
     #print("docs in test_ents:", c.count())
 
     c.create_index([('primary_aliases', pymongo.TEXT), ('secondary_aliases', pymongo.TEXT)], name='aliases_text', default_language='none')
+    #print(c.index_information())
 
     #l = list(c.find())
 
     #for i in l:
     #    print(i['id'])
 
-    alias = "יונתן בן עוזיאל"
+    #alias = "יונתן בן עוזיאל"
+    alias = "Bet ḥolim Alin"
     alias_for_phrase_search = '\"{}\"'.format(alias)
 
     #res = db.command('text', 'test_ents', search='בן')
-    res = db.command('text', 'test_ents', search=alias_for_phrase_search)
+    #res = db.command('text', 'test_ents', search=alias_for_phrase_search)
+    res = c.find({"$text": {"$search": "Hospital"}})
+    #res = c.find({"$text": {"$search": alias_for_phrase_search}})
     #print(type(res))
-    pprint(res)
-    print()
-    pprint(res['results'])
+    #pprint(res)
+    #print()
+    #pprint(res['results'])
+    for i in res:
+        pprint(i)
 
     # c.remove({})
 

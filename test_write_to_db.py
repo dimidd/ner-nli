@@ -17,13 +17,16 @@ if __name__ == "__main__":
     print("docs in test_ents:", c.count())
 
     # entities_file = "/home/nelzas/for_nli/nnl10_dump_20_03_2016.xml"
-    entities_file = "/home/nelzas/for_nli/sample_output_from_sickle_script.xml"
+    entities_file = "/home/nelzas/sources/ner-nli/nnl10all_head.xml"
+    # entities_file = "/home/nelzas/for_nli/sample_output_from_sickle_script.xml"
 
     #ents = app.entity_iterators.get_authorities(from_id=72000, to_id=75000, entities_file=entities_file)
     #ents = app.entity_iterators.get_authorities(to_id=500, entities_file=entities_file)
     ents = app.entity_iterators.get_authorities(entities_file=entities_file)  # all of them
-    print("got {} entities".format(len(list(ents))))
-    #for item in l:
+    #print(type(ents))
+    #n.e. as ents is now a generator the next line ends all of it so need to be
+    # commented in order that loop will work...
+    ### print("got {} entities".format(len(list(ents))))
     for item in ents:
         #c.insert(extract_ents.extract_data_from_json_record(item.data))
         #pprint.pprint(item.data)
