@@ -3,6 +3,12 @@
 from sickle import Sickle
 from pprint import pprint
 from lxml import etree, objectify
+import pymongo
+
+import sys
+sys.path.append('./LibraryWiki/')
+import app.entity_iterators
+import extract_ents
 
 def get_some_records():
     """Example from Eyal's mail:
@@ -41,34 +47,47 @@ def extract_data_from_oai_nli_record(record):
 
 if __name__ == "__main__":
     #nli_records = get_some_records()
-    nli_records = []
-    with open('/home/nelzas/for_nli/sample_output_from_sickle_script_as_is.xml', 'r') as f:
-        for line in f:
-            nli_records.append(line)
 
+    in_file_name = '/home/nelzas/for_nli/sample_output_from_sickle_script_as_is.xml'
+    extracted_meta_file_name = '/home/nelzas/for_nli/extracted_meta_from_sickle_output.xml'
 
-    for item in nli_records:
-        print(item)
-#        record = objectify.fromstring(item)
-#        print(dir(record))
-#        print(record)
-#        pprint(record.keys())
-        example = etree.fromstring(item)
-        print("attrib:")
-        pprint(example.attrib)
-        print("getchildren:")
-        pprint(example.getchildren())
-        for c in example.getchildren():
-            print("in child")
-            print(c)
-            print("in child getchildren:")
-            pprint(c.getchildren())
-            for cc in c.getchildren():
-                print("cc")
-                pprint(cc)
-                pprint(cc.getchildren())
-            #print(dir(c))
-            #print(c.items())
-        #pprint(example.xpath(u'//metadata',
-        #                     namespaces={'def': 'http://www.openarchives.org/OAI/2.0/'}))
-    print()
+    with open(in_file_name, 'r') as in_file, \
+         open(extracted_meta_file_name, 'w') as out_file:
+        xml_header = ['<?xml version = "1.0" encoding = "UTF-8"?>',
+                      '  <collection xmlns="http://www.loc.gov/MARC21/slim"',
+                      'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"',
+                      'xsi:schemaLocation="http://www.loc.gov/MARC21/slim',
+                      'http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">',
+                      '']
+        xml_end = ['',
+                   '</collection>']
+        xml_header = map(lambda l: l + '\n', xml_header)
+        xml_end = map(lambda l: l + '\n', xml_end)
+
+        out_file.writelines(xml_header)
+
+        for line in in_file:
+            example = etree.fromstring(line)
+            ex_meta = example.find('{http://www.openarchives.org/OAI/2.0/}metadata')
+            actual_record = list(ex_meta)[0]
+            out_file.write(etree.tostring(actual_record, encoding='utf-8', pretty_print=True).decode('utf-8'))
+        out_file.writelines(xml_end)
+
+    cl = pymongo.MongoClient('localhost', 27017)  # default port!
+    db = cl['for_test']
+    c = db.test_ents
+
+    print("docs in test_ents:", c.count())
+    ents = app.entity_iterators.get_authorities(entities_file=extracted_meta_file_name, xml_prefix='marc:')  # all of them
+    for item in ents:
+        try:
+            # print("in update_db - item:", item)
+            ent_data = extract_ents.extract_data_from_entity_dict(item.data)
+            if ent_data:
+                c.insert(ent_data)
+        except Exception as e:
+            print('exception from extract_data_from_entity_dict:', e)
+            pprint.pprint(item.data)
+
+    print("docs in test_ents:", c.count())
+
