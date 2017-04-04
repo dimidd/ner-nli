@@ -19,7 +19,7 @@ if __name__ == "__main__":
     c.create_index([('primary_aliases', pymongo.TEXT), ('secondary_aliases', pymongo.TEXT)], name='aliases_text', default_language='none')
     #print(c.index_information())
 
-    #l = list(c.find())
+    # l = c.find()
 
     #for i in l:
     #    print(i['id'])
