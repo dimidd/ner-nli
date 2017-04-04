@@ -95,7 +95,7 @@ if __name__ == "__main__":
                              upsert=True)
         except Exception as e:
             print('exception from extract_data_from_entity_dict:', e)
-            pprint.pprint(item.data)
+            pprint(item.data)
 
     print("docs in test_ents:", c.count())
 
