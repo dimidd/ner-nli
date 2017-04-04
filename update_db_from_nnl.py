@@ -45,12 +45,7 @@ def extract_data_from_oai_nli_record(record):
     pass
 
 
-if __name__ == "__main__":
-    #nli_records = get_some_records()
-
-    in_file_name = '/home/nelzas/for_nli/sample_output_from_sickle_script_as_is.xml'
-    extracted_meta_file_name = '/home/nelzas/for_nli/extracted_meta_from_sickle_output.xml'
-
+def convert_oai_file_to_marc21_dump(in_file_name, extracted_meta_file_name):
     with open(in_file_name, 'r') as in_file, \
          open(extracted_meta_file_name, 'w') as out_file:
         xml_header = ['<?xml version = "1.0" encoding = "UTF-8"?>',
@@ -72,6 +67,15 @@ if __name__ == "__main__":
             actual_record = list(ex_meta)[0]
             out_file.write(etree.tostring(actual_record, encoding='utf-8', pretty_print=True).decode('utf-8'))
         out_file.writelines(xml_end)
+
+
+if __name__ == "__main__":
+    #nli_records = get_some_records()
+
+    in_file_name = '/home/nelzas/for_nli/sample_output_from_sickle_script_as_is.xml'
+    extracted_meta_file_name = '/home/nelzas/for_nli/extracted_meta_from_sickle_output.xml'
+
+    convert_oai_file_to_marc21_dump(in_file_name, extracted_meta_file_name)
 
     cl = pymongo.MongoClient('localhost', 27017)  # default port!
     db = cl['for_test']
