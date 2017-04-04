@@ -88,7 +88,11 @@ if __name__ == "__main__":
             # print("in update_db - item:", item)
             ent_data = extract_ents.extract_data_from_entity_dict(item.data)
             if ent_data:
-                c.insert(ent_data)
+                # pprint(ent_data)
+                # Do we need to look at the result from update_one?
+                c.update_one(filter={"id": ent_data["id"]},
+                        update={"$set": ent_data},
+                             upsert=True)
         except Exception as e:
             print('exception from extract_data_from_entity_dict:', e)
             pprint.pprint(item.data)
