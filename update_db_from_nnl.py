@@ -36,7 +36,7 @@ def get_some_records():
         **{'metadataprefix': 'marc21',
            'set': 'AUTREIMRC',
            'from': '2016-12-18T05:31:45Z',
-           'until': '2016-12-19T05:31:45Z',
+           'until': '2016-12-18T05:31:55Z',
           })
     return nli_records
 
@@ -69,17 +69,11 @@ def convert_oai_file_to_marc21_dump(in_file_name, extracted_meta_file_name):
         out_file.writelines(xml_end)
 
 
-if __name__ == "__main__":
-    #nli_records = get_some_records()
-
+def test_update_db_from_sickle_xml_output_file(c):
     in_file_name = '/home/nelzas/for_nli/sample_output_from_sickle_script_as_is.xml'
     extracted_meta_file_name = '/home/nelzas/for_nli/extracted_meta_from_sickle_output.xml'
 
     convert_oai_file_to_marc21_dump(in_file_name, extracted_meta_file_name)
-
-    cl = pymongo.MongoClient('localhost', 27017)  # default port!
-    db = cl['for_test']
-    c = db.test_ents
 
     print("docs in test_ents:", c.count())
     ents = app.entity_iterators.get_authorities(entities_file=extracted_meta_file_name, xml_prefix='marc:')  # all of them
@@ -99,3 +93,23 @@ if __name__ == "__main__":
 
     print("docs in test_ents:", c.count())
 
+if __name__ == "__main__":
+
+    cl = pymongo.MongoClient('localhost', 27017)  # default port!
+    db = cl['for_test']
+    c = db.test_ents
+
+    test_update_db_from_sickle_xml_output_file(c)
+
+    nli_records = get_some_records()
+
+    id_start = 'oai:aleph-nli:NNL10-'
+    for r in nli_records:
+        if r.deleted:
+            raw_id = r.header.identifier
+            assert raw_id.startswith(id_start)
+            r_id = int(raw_id[len(id_start):])
+            print('deleting: ', r_id)
+            c.remove({'id': {"$eq": r_id}})
+        else:  # update or create new record
+            pass
