@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from sickle import Sickle
+from sickle.oaiexceptions import NoRecordsMatch as Sickle_NoRecordsMatch
 from pprint import pprint
 from lxml import etree, objectify
 import xmltodict
@@ -34,13 +35,16 @@ def get_some_records():
     # record = sickle.GetRecord(metadataprefix='marc21', identifier='oai:aleph-nli:NNL10-002131482')
     # print(type(record))
 
-    nli_records = sickle.ListRecords(
-        **{'metadataprefix': 'marc21',
-           'set': 'AUTREIMRC',
-           'from': '2016-12-18T05:31:45Z',
-           'until': '2016-12-18T05:31:46Z',
-          })
-    return nli_records
+    try:
+        nli_records = sickle.ListRecords(
+            **{'metadataprefix': 'marc21',
+               'set': 'AUTREIMRC',
+               'from': '2017-04-01T00:00:00Z',
+               'until': '2017-05-09T23:59:59Z',
+              })
+        return nli_records
+    except Sickle_NoRecordsMatch:
+        return []
 
 
 def extract_data_from_oai_nli_record(record):
