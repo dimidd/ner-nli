@@ -124,13 +124,15 @@ if __name__ == "__main__":
 
     nli_records = get_some_records()
 
-    id_start = 'oai:aleph-nli:NNL10-'
+    # this prefix appears in the results from NLI OAI queries
+    # and we need to remove it from the string to get the actual ID
+    ID_PREFIX = 'oai:aleph-nli:NNL10-'
     for i, r in enumerate(nli_records):
         print('processing record: ', i)
         if r.deleted:
             raw_id = r.header.identifier
-            assert raw_id.startswith(id_start)
-            r_id = int(raw_id[len(id_start):])
+            assert raw_id.startswith(ID_PREFIX)
+            r_id = int(raw_id[len(ID_PREFIX):])
             print('deleting: ', r_id)
             c.remove({'id': {"$eq": r_id}})
         else:  # update or create new record
