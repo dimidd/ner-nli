@@ -2,10 +2,11 @@
 
 from sickle import Sickle
 from sickle.oaiexceptions import NoRecordsMatch as Sickle_NoRecordsMatch
-from pprint import pprint
+from pprint import pprint, pformat
 from lxml import etree, objectify
 import xmltodict
 import pymongo
+import logging
 
 import sys
 sys.path.append('./LibraryWiki/')
@@ -113,12 +114,21 @@ def xml_record_2_authority(record_str, xml_prefix=''):
             k == "{xml_prefix}controlfield".format(xml_prefix=xml_prefix) or
             k == "{xml_prefix}datafield".format(xml_prefix=xml_prefix)}
     if result.get('{xml_prefix}datafield'.format(xml_prefix=xml_prefix)):
-        return Authority(app.authorities.convert_dict(result, xml_prefix))
+        try:
+            return Authority(app.authorities.convert_dict(result, xml_prefix))
+        except KeyError as e:
+            logging.exception(
+                    "error during process of record_str {}\nrecord is:{}\nresult is: {}".format(
+                        record_str,
+                        pformat(record),
+                        pformat(result)))
+            return None
     else:
         return None
 
 
 if __name__ == "__main__":
+    logging.basicConfig(filename='update_db_from_nnl.log', format='%(asctime)s %(message)s', level=logging.DEBUG)
 
     cl = pymongo.MongoClient('localhost', 27017)  # default port!
     db = cl['for_test']
@@ -131,13 +141,14 @@ if __name__ == "__main__":
     # this prefix appears in the results from NLI OAI queries
     # and we need to remove it from the string to get the actual ID
     ID_PREFIX = 'oai:aleph-nli:NNL10-'
-    for i, r in enumerate(nli_records):
-        print('processing record: ', i)
+    i = 0
+    for r in nli_records:
+        raw_id = r.header.identifier
+        assert raw_id.startswith(ID_PREFIX)
+        r_id = int(raw_id[len(ID_PREFIX):])
+        logging.info('processing record number {} with id {}'.format(i, r_id))
         if r.deleted:
-            raw_id = r.header.identifier
-            assert raw_id.startswith(ID_PREFIX)
-            r_id = int(raw_id[len(ID_PREFIX):])
-            print('deleting: ', r_id)
+            logging.info('deleting record with id: {}'.format(r_id))
             c.remove({'id': {"$eq": r_id}})
         else:  # update or create new record
             # print(i, r.header)
@@ -150,6 +161,11 @@ if __name__ == "__main__":
             try:
                 # print("in update_db - ent.data:", ent.data)
                 ent_data = extract_ents.extract_data_from_entity_dict(ent.data)
+            except AttributeError as e:
+                logging.exception(
+                    "error during extracting from entity {}".format(
+                        pformat(ent)))
+            try:
                 if ent_data:
                     # pprint(ent_data)
                     # Do we need to look at the result from update_one?
@@ -159,3 +175,4 @@ if __name__ == "__main__":
             except Exception as e:
                 print('exception from extract_data_from_entity_dict:', e)
                 pprint(ent.data)
+        i += 1
