@@ -7,6 +7,8 @@ from lxml import etree, objectify
 import xmltodict
 import pymongo
 import logging
+from tenacity import retry, TryAgain, retry_if_exception_type, \
+                     wait_exponential, stop_after_attempt
 
 import sys
 sys.path.append('./LibraryWiki/')
@@ -112,13 +114,19 @@ def xml_record_2_authority(record_str, xml_prefix=''):
         return None
 
 
+# sometimes I got here a no more records exception although I added a try block in get_nli_entities_as_oai_records
+# note: I run the same query twice, got an error after 794 records, second time no error till 23875... 
+# so using the external lib tenacity to make this more robust
+@retry(reraise=True,
+       retry=retry_if_exception_type(Sickle_NoRecordsMatch),
+       wait=wait_exponential(multiplier=1, max=10),
+       stop=stop_after_attempt(7),
+      )
 def convert_records_and_store_into_db(nli_records):
     # this prefix appears in the results from NLI OAI queries
     # and we need to remove it from the string to get the actual ID
     ID_PREFIX = 'oai:aleph-nli:NNL10-'
     i = 0
-    # TODO sometimes I got here a no more records exception although I added a try block in get_nli_entities_as_oai_records
-    # note: I run the same query twice, got an error after 794 records, second time no error till 23875... 
     for r in nli_records:
         raw_id = r.header.identifier
         last_timestamp = r.header.datestamp  # used for retries
@@ -168,3 +176,4 @@ if __name__ == "__main__":
     nli_records = get_nli_entities_as_oai_records()
 
     convert_records_and_store_into_db(nli_records)
+    logging.info('convert_records_and_store_into_db retry stats: {}'.format(convert_records_and_store_into_db.retry.statistics))

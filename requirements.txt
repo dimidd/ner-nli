@@ -4,3 +4,4 @@ pymongo==3.3.0
 requests==2.12.1
 Sickle==0.6.1
 #-r frontend/requirements/heroku.txt
+tenacity==4.4.0
