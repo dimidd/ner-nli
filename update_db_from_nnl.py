@@ -14,34 +14,19 @@ import app.entity_iterators
 import extract_ents
 from app.node_entities import Authority
 
-def get_some_records():
+def get_nli_entities_as_oai_records():
     """Example from Eyal's mail:
        http://aleph.nli.org.il/OAI?verb=ListRecords&metadataprefix=marc21&set=AUTREIMRC"""
 
     sickle = Sickle('http://aleph.nli.org.il/OAI')
-    nli_identify = sickle.Identify()
-    # print(type(nli_identify))
-    # print(nli_identify)
-    #for item in nli_identify:
-    #    print(item)
-    #print()
-    #nli_sets = sickle.ListSets()
-    # print(type(nli_sets))
-    # print(nli_sets)
-    #for item in nli_sets:
-    #    print(item)
-    #print()
-
-    # record = sickle.GetRecord(identifier="001891756", metadataprefix="marc21")
-    # record = sickle.GetRecord(metadataprefix='marc21', identifier='oai:aleph-nli:NNL10-002131482')
-    # print(type(record))
 
     try:
+        # 'from': '2017-04-01T00:00:00Z',
         nli_records = sickle.ListRecords(
             **{'metadataprefix': 'marc21',
                'set': 'AUTREIMRC',
-               'from': '2017-04-01T00:00:00Z',
-               'until': '2017-05-09T23:59:59Z',
+               'from': '2017-07-03T03:06:19Z',
+               'until': '2017-07-03T03:06:20Z',
               })
         return nli_records
     except Sickle_NoRecordsMatch:
@@ -127,23 +112,16 @@ def xml_record_2_authority(record_str, xml_prefix=''):
         return None
 
 
-if __name__ == "__main__":
-    logging.basicConfig(filename='update_db_from_nnl.log', format='%(asctime)s %(message)s', level=logging.DEBUG)
-
-    cl = pymongo.MongoClient('localhost', 27017)  # default port!
-    db = cl['for_test']
-    c = db.test_ents
-
-    #test_update_db_from_sickle_xml_output_file(c)
-
-    nli_records = get_some_records()
-
+def convert_records_and_store_into_db(nli_records):
     # this prefix appears in the results from NLI OAI queries
     # and we need to remove it from the string to get the actual ID
     ID_PREFIX = 'oai:aleph-nli:NNL10-'
     i = 0
+    # TODO sometimes I got here a no more records exception although I added a try block in get_nli_entities_as_oai_records
+    # note: I run the same query twice, got an error after 794 records, second time no error till 23875... 
     for r in nli_records:
         raw_id = r.header.identifier
+        last_timestamp = r.header.datestamp  # used for retries
         assert raw_id.startswith(ID_PREFIX)
         r_id = int(raw_id[len(ID_PREFIX):])
         logging.info('processing record number {} with id {}'.format(i, r_id))
@@ -176,3 +154,17 @@ if __name__ == "__main__":
                 print('exception from extract_data_from_entity_dict:', e)
                 pprint(ent.data)
         i += 1
+
+
+if __name__ == "__main__":
+    logging.basicConfig(filename='update_db_from_nnl.log', format='%(asctime)s %(message)s', level=logging.DEBUG)
+
+    cl = pymongo.MongoClient('localhost', 27017)  # default port!
+    db = cl['for_test']
+    c = db.test_ents
+
+    #test_update_db_from_sickle_xml_output_file(c)
+
+    nli_records = get_nli_entities_as_oai_records()
+
+    convert_records_and_store_into_db(nli_records)
