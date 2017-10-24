@@ -9,6 +9,9 @@ import pymongo
 import logging
 from tenacity import retry, TryAgain, retry_if_exception_type, \
                      wait_exponential, stop_after_attempt
+from datetime import date
+
+from datetime import datetime, timedelta, timezone
 
 import sys
 sys.path.append('./LibraryWiki/')
@@ -16,7 +19,7 @@ import app.entity_iterators
 import extract_ents
 from app.node_entities import Authority
 
-def get_nli_entities_as_oai_records():
+def get_nli_entities_as_oai_records(from_str, until_str):
     """Example from Eyal's mail:
        http://aleph.nli.org.il/OAI?verb=ListRecords&metadataprefix=marc21&set=AUTREIMRC"""
 
@@ -27,8 +30,8 @@ def get_nli_entities_as_oai_records():
         nli_records = sickle.ListRecords(
             **{'metadataprefix': 'marc21',
                'set': 'AUTREIMRC',
-               'from': '2017-07-03T03:06:19Z',
-               'until': '2017-07-03T03:06:20Z',
+               'from': from_str,
+               'until': until_str,
               })
         return nli_records
     except Sickle_NoRecordsMatch:
@@ -114,6 +117,21 @@ def xml_record_2_authority(record_str, xml_prefix=''):
         return None
 
 
+def update_last_modified_in_db(m, until_str):
+    m.update_one(filter={'last_update':{'$exists': True}},
+                 update={
+                     "$currentDate": {
+                         "lastModified": {
+                             "$type": "date"
+                             }
+                         },
+                     "$set": {
+                         'last_update': until_str,
+                         }
+                        },
+                 upsert = True)
+
+
 # sometimes I got here a no more records exception although I added a try block in get_nli_entities_as_oai_records
 # note: I run the same query twice, got an error after 794 records, second time no error till 23875... 
 # so using the external lib tenacity to make this more robust
@@ -170,10 +188,28 @@ if __name__ == "__main__":
     cl = pymongo.MongoClient('localhost', 27017)  # default port!
     db = cl['for_test']
     c = db.test_ents
+    m = db.meta_test_ents
 
     #test_update_db_from_sickle_xml_output_file(c)
 
-    nli_records = get_nli_entities_as_oai_records()
+    #from_str = '2017-07-03T03:06:19Z'
+    #until_str = '2017-07-03T03:06:20Z'
+    d = m.find_one({'last_update':{'$exists': True}})
+    if d:
+        timeformat = "%Y-%m-%dT%H:%M:%SZ"
 
-    convert_records_and_store_into_db(nli_records)
-    logging.info('convert_records_and_store_into_db retry stats: {}'.format(convert_records_and_store_into_db.retry.statistics))
+        #from_str = d['lastModified'].date()
+        #from_str = (datetime.now(timezone.utc) - timedelta(seconds=1)).strftime(timeformat)
+        from_str = d['last_update']
+        #until_str = date.today()
+        until_str = datetime.now(timezone.utc).strftime(timeformat)
+        print(from_str, "-->", until_str)
+        nli_records = get_nli_entities_as_oai_records(from_str, until_str)
+
+        #TODO why c is not an argument here? how it works? github_issue #4
+        convert_records_and_store_into_db(nli_records)
+        #TODO error handling - it is important to not store new date in case of error as this will result in skipping updates
+        update_last_modified_in_db(m, until_str)
+        logging.info('convert_records_and_store_into_db retry stats: {}'.format(convert_records_and_store_into_db.retry.statistics))
+    else:
+        print("could not read last_update data from mongodb")
