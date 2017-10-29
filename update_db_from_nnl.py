@@ -207,9 +207,14 @@ if __name__ == "__main__":
         nli_records = get_nli_entities_as_oai_records(from_str, until_str)
 
         #TODO why c is not an argument here? how it works? github_issue #4
-        convert_records_and_store_into_db(nli_records)
-        #TODO error handling - it is important to not store new date in case of error as this will result in skipping updates
-        update_last_modified_in_db(m, until_str)
-        logging.info('convert_records_and_store_into_db retry stats: {}'.format(convert_records_and_store_into_db.retry.statistics))
+        try:
+            convert_records_and_store_into_db(nli_records)
+            update_last_modified_in_db(m, until_str)
+        except Exception as e:
+            #error handling - it is important to not store new date in case of error as this will result in skipping updates
+            logging.exception("exception during convert_records_and_store_into_db")
+            raise
+        finally:
+            logging.info('convert_records_and_store_into_db retry stats: {}'.format(convert_records_and_store_into_db.retry.statistics))
     else:
         print("could not read last_update data from mongodb")
